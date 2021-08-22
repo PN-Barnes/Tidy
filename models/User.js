@@ -16,7 +16,7 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    fistName: {
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -64,4 +64,4 @@ User.init(
   }
 );
 
-module.exports = user;
+module.exports = User;

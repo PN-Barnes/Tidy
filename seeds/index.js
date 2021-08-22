@@ -10,6 +10,8 @@ const seedDB = async () => {
 
   await seedUsers();
   console.log('\n----- USERS SEEDED -----\n');
+
+  process.exit(0);
 };
 
 seedDB();

@@ -26,6 +26,7 @@ User.init(
     },
     username: {
       type: DataTypes.STRING,
+      primaryKey: true,
       allowNull: false,
       unique: true,
     },

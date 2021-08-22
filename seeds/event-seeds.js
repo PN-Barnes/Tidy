@@ -4,7 +4,7 @@ const eventData = [
   {
     date: Date.now(),
     content: "Team Meeting: Server-Side API's",
-    attendees: 'pbarnes',
+    attendees: 1,
   },
 ];
 

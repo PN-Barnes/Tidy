@@ -15,10 +15,10 @@ Event.init(
       allowNull: false,
     },
     attendees: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       references: {
         model: 'User',
-        key: 'username',
+        key: 'id',
         unique: false,
       },
     },

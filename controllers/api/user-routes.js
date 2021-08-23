@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// ! --------------------------------------------- ! //
+// * SUCCESSFUL ROUTE for login function * //
 
 router.post('/login', async (req, res) => {
   try {

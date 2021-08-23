@@ -12,19 +12,20 @@ Event.init(
       autoIncrement: true,
     },
     date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
-    location: {
-      type: DataTypes.STRING,
-    },
-    user_id: {
+    attendees: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id',
+        unique: false,
       },
     },
   },

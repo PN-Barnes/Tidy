@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Event extends Model {}
+class workEvent extends Model {}
 
-Event.init(
+workEvent.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -34,8 +34,8 @@ Event.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'event',
+    modelName: 'workEvent',
   }
 );
 
-module.exports = Event;
+module.exports = workEvent;

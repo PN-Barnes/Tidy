@@ -5,7 +5,7 @@ const userData = [
     firstName: 'Paul',
     lastName: 'Barnes',
     username: 'pbarnes',
-    password: 'password123',
+    password: '$2b$10$w3QxbWaFZW9fIPOpbDPUOuqU0YHMO3Z./BQtl6p.Gcxkinu82C2Tq',
     role: 'Software Engineer',
   },
 ];

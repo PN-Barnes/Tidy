@@ -1,4 +1,4 @@
-const { Event } = require('../models');
+const { workEvent } = require('../models');
 
 const eventData = [
   {
@@ -8,6 +8,6 @@ const eventData = [
   },
 ];
 
-const seedEvents = () => Event.bulkCreate(eventData);
+const seedEvents = () => workEvent.bulkCreate(eventData);
 
 module.exports = seedEvents;

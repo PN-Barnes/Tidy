@@ -5,6 +5,12 @@ class Event extends Model {}
 
 Event.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     date: {
       type: DataTypes.DATEONLY,
       allowNull: false,
@@ -17,7 +23,7 @@ Event.init(
     attendees: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'User',
+        model: 'user',
         key: 'id',
         unique: false,
       },

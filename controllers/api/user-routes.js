@@ -24,6 +24,24 @@ router.get('/:username', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    const dbUserData = await User.create(req.body);
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.userId = dbUserData.get({ plain: true }).id;
+
+      res.status(200).json(dbUserData);
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
+
+// ! --------------------------------------------- ! //
+
 router.post('/login', async (req, res) => {
   try {
     const dbUserData = await User.findOne({

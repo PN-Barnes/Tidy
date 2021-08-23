@@ -2,13 +2,13 @@ const User = require('./User');
 const Task = require('./Task');
 const Photo = require('./Photo');
 const Message = require('./Message');
-const Event = require('./Event');
+const workEvent = require('./workEvent');
 
-User.hasMany(Event, {
+User.hasMany(workEvent, {
   foreignKey: 'attendees',
 });
 
-Event.belongsTo(User, {
+workEvent.belongsTo(User, {
   foreignKey: 'attendees',
   onDelete: 'CASCADE',
 });
@@ -31,4 +31,4 @@ Photo.belongsTo(User, {
   onDelete: 'CASCADE',
 });
 
-module.exports = { User, Task, Photo, Message, Event };
+module.exports = { User, Task, Photo, Message, workEvent };

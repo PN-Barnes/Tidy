@@ -1,25 +1,14 @@
 const router = require('express').Router();
-const { User, Task, Event, message } = require('../../models');
+const { User, Task, message, workEvent } = require('../../models');
 const { withAuth } = require('../../utils/auth');
 
 // GET User info with username === req.params.username
-// * SUCCESSFUL
+// * -------------------- SUCCESSFUL ---------------------- //
 router.get('/:username', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
-      attributes: {
-        exclude: ['password'],
-        include: [
-          {
-            model: Task,
-            attributes: ['content'],
-          },
-          {
-            model: Event,
-            attributes: ['date', 'content'],
-          },
-        ],
-      },
+      include: [{ model: workEvent }],
+      exclude: ['password'],
       where: { username: req.params.username },
     });
 

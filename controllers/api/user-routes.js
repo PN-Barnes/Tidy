@@ -24,6 +24,7 @@ router.get('/:username', async (req, res) => {
   }
 });
 
+// * SUCCESSFUL Post route to create Users
 router.post('/', async (req, res) => {
   try {
     const dbUserData = await User.create(req.body);

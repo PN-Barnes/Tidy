@@ -4,6 +4,7 @@ const { withAuth } = require('../../utils/auth');
 
 // GET User info with username === req.params.username
 // * -------------------- SUCCESSFUL ---------------------- //
+// ? -------------------- GET ROUTES ---------------------- //
 router.get('/:username', async (req, res) => {
   try {
     const dbUserData = await User.findOne({

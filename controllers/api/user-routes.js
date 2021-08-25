@@ -5,11 +5,25 @@ const { withAuth } = require('../../utils/auth');
 // GET User info with username === req.params.username
 // * -------------------- SUCCESSFUL ---------------------- //
 // ? -------------------- GET ROUTES ---------------------- //
+router.get('/', async (req, res) => {
+  try {
+    const dbUserData = await User.findAll({});
+    if (!dbUserData) {
+      res.status(400).json({ message: 'cannot retrieve the users' });
+    } else {
+      res.status(200).json(dbUserData);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(400).json(error);
+  }
+});
+
 router.get('/:username', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
+      attributes: { exclude: ['password'] },
       include: [{ model: workEvent }],
-      exclude: ['password'],
       where: { username: req.params.username },
     });
 
@@ -25,6 +39,7 @@ router.get('/:username', async (req, res) => {
   }
 });
 
+// ? ----------------- POST ROUTES -------------------- ? //
 // * SUCCESSFUL Post route to create Users
 router.post('/', async (req, res) => {
   try {

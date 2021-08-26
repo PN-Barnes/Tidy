@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { Message } = require('../../models');
 const { withAuth } = require('../../utils/auth');
 
+// ? ----------------- GET ROUTES -------------------- ? //
+
 router.get('/', async (req, res) => {
   try {
     const dbMessageData = await Message.findAll({});
@@ -29,6 +31,27 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// ? ----------------- PUT ROUTES -------------------- ? //
+
+router.put('/:id', async (req, res) => {
+  try {
+    const dbMessageData = await Message.update({
+      date: req.body.date,
+      content: req.body.content,
+      sender_id: req.body.sender_id,
+      receiver_id: req.body.receiver_id,
+    });
+
+    const updatedMessage = dbMessageData.get({ plain: true });
+    res.json(updatedMessage);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// ? ----------------- POST ROUTES -------------------- ? //
+
 router.post('/', async (req, res) => {
   try {
     const dbMessageData = await Message.create({
@@ -45,6 +68,8 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// ? ----------------- DELETE ROUTES -------------------- ? //
 
 router.delete('/:id', async (req, res) => {
   try {

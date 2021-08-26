@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { workEvent } = require('../../models');
 const { withAuth } = require('../../utils/auth');
 
+// ? ----------------- GET ROUTES -------------------- ? //
+
 router.get('/', async (req, res) => {
   try {
     const dbEventData = await workEvent.findAll();
@@ -26,6 +28,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// ? ----------------- POST ROUTES -------------------- ? //
+
 router.post('/', async (req, res) => {
   try {
     const dbEventData = await workEvent.create({
@@ -41,6 +45,26 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// ? ----------------- PUT ROUTES -------------------- ? //
+
+router.put('/:id', async (req, res) => {
+  try {
+    const dbEventData = await workEvent.update({
+      date: req.body.date,
+      content: req.body.content,
+      attendees: req.body.attendees,
+    });
+
+    const updatedEvent = dbEventData.get({ plain: true });
+    res.json(updatedEvent);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// ? ----------------- DELETE ROUTES -------------------- ? //
 
 router.delete('/:id', async (req, res) => {
   try {

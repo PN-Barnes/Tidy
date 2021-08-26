@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { Task } = require('../../models');
 const { withAuth } = require('../../utils/auth');
 
+// ? ----------------- GET ROUTES -------------------- ? //
+
 router.get('/', async (req, res) => {
   try {
     const dbTaskData = await Task.findAll({});
@@ -29,6 +31,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// ? ----------------- POST ROUTES -------------------- ? //
+
 router.post('/', async (req, res) => {
   try {
     const dbTaskData = await Task.create({
@@ -44,6 +48,26 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// ? ----------------- PUT ROUTES -------------------- ? //
+
+router.put('/:id', async (req, res) => {
+  try {
+    const dbTaskData = await Task.update({
+      content: req.body.content,
+      date: req.body.date,
+      userId: req.body.userId,
+    });
+
+    const updatedTask = dbTaskData.get({ plain: true });
+    res.json(updatedTask);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// ? ----------------- DELETE ROUTES -------------------- ? //
 
 router.delete('/:id', async (req, res) => {
   try {

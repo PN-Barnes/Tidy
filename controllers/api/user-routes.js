@@ -57,6 +57,26 @@ router.post('/', async (req, res) => {
   }
 });
 
+// ? ----------------- PUT ROUTES -------------------- ? //
+
+router.put('/:id', async (req, res) => {
+  try {
+    const dbUserData = await User.update({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      username: req.body.username,
+      password: req.body.password,
+      role: req.body.role,
+    });
+
+    const updatedUser = dbUserData.get({ plain: true });
+    res.json(updatedUser);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // !== SUCCESSFUL ROUTE for login & logout function == ! //
 
 router.post('/login', async (req, res) => {

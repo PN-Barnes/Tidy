@@ -3,7 +3,15 @@ const { workEvent } = require('../../models');
 const { withAuth } = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
-  const dbEventData = await workEvent.findAll();
+  try {
+    const dbEventData = await workEvent.findAll();
+
+    const event = dbEventData.get({ plain: true });
+    res.status(200).json(event);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
 });
 
 router.get('/:id', async (req, res) => {
@@ -21,9 +29,9 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const dbEventData = await workEvent.create({
-      date: req.body.content,
-      content: req.body.date,
-      attendees: req.body.userId,
+      date: req.body.date,
+      content: req.body.content,
+      attendees: req.body.attendees,
     });
 
     const event = dbEventData.get({ plain: true });

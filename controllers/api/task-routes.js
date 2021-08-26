@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
     if (!dbTaskData) {
       res.status(400).json({ message: 'No tasks were found!' });
     } else {
-      res.status(200).json(dbTaskData);
+      const task = dbTaskData.get({ plain: true });
+      res.status(200).json(task);
     }
   } catch (error) {
     console.log(error);

@@ -16,6 +16,18 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const dbTaskData = await Task.findByPk(req.params.id);
+
+    const task = dbTaskData.get({ plain: true });
+    res.json(task);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const dbTaskData = await Task.create({
@@ -25,7 +37,23 @@ router.post('/', async (req, res) => {
     });
 
     const task = dbTaskData.get({ plain: true });
-    res.status(200).json(dbTaskData);
+    res.status(200).json(task);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const dbTaskData = await task.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    const task = dbTaskData.get({ plain: true });
+    res.json(task);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

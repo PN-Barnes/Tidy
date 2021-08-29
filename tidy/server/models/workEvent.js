@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const workEventSchema = new schema({
+const workEventSchema = new Schema({
   date: {
     type: Date,
     default: Date.now,

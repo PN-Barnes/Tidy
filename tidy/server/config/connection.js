@@ -22,7 +22,7 @@
 
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/tidy', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/tidydb', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

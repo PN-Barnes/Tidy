@@ -1,41 +1,23 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema, model } = require('mongoose');
 
-class workEvent extends Model {}
-
-workEvent.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    content: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    attendees: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-        unique: false,
-      },
-    },
+const workEventSchema = new schema({
+  date: {
+    type: Date,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'workEvent',
-  }
-);
+  content: {
+    type: String,
+    required: true,
+  },
+  attendees: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
+});
+
+const workEvent = model('workEvent', workEventSchema);
 
 module.exports = workEvent;

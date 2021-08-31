@@ -9,8 +9,8 @@ const resolvers = {
     users: async () => {
       return User.find();
     },
-    user: async (parent, { userName }) => {
-      return User.findOne({ userName });
+    user: async (parent, { username }) => {
+      return User.findOne({ username });
     },
     // messages: async () => {
     //   return Message.find().populate('sender_id', 'receiver_id');

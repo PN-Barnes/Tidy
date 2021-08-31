@@ -24,7 +24,7 @@ const typeDefs = gql`
     _id: ID
     firstName: String
     lastName: String
-    username: String
+    userName: String
     email: String
     password: String
   }

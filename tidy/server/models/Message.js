@@ -2,7 +2,9 @@ const { Schema, model } = require('mongoose');
 
 const messageSchema = new schema({
   date: {
-    type: String,
+    type: Date,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
   content: {
     type: String,

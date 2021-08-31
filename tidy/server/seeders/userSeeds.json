@@ -1,0 +1,34 @@
+[
+  {
+    "firstName": "James",
+    "lastName": "Boblak",
+    "username": "jboblak",
+    "email": "jamesB@moo.com",
+    "password": "password321",
+    "role": "Software Engineer"
+  },
+  {
+    "firstName": "Cristina",
+    "lastName": "Tepelikian",
+    "username": "CTepelikian",
+    "email": "CT@moo.com",
+    "password": "password456",
+    "role": "Frontend Developer"
+  },
+  {
+    "firstName": "Paul",
+    "lastName": "Barnes",
+    "username": "pbarnes5",
+    "email": "pb5@moo.com",
+    "password": "password123",
+    "role": "FullStack Developer"
+  },
+  {
+    "firstName": "Huiran",
+    "lastName": "Lin",
+    "username": "HLin",
+    "email": "hlin@moo.com",
+    "password": "password654",
+    "role": "Software Engineer"
+  }
+]

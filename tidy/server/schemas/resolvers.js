@@ -5,6 +5,7 @@ const { User, Message, Photo, Task, workEvent } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
+  // * successful query of user data
   Query: {
     users: async () => {
       return User.find();

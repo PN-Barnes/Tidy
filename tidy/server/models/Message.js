@@ -1,44 +1,26 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema, model } = require('mongoose');
+const { schema } = require('./Photo');
 
-class Message extends Model {}
-
-Message.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    date: {
-      type: DataTypes.INTEGER,
-    },
-    content: {
-      type: DataTypes.STRING,
-    },
-    sender_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
-    receiver_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
+const messageSchema = new schema({
+  date: {
+    type: String,
   },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'message',
-  }
-);
+  content: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  sender_id: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
+  },
+  receiver_id: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
+  },
+});
 
+const Message = model('Message', messageSchema);
 module.exports = Message;

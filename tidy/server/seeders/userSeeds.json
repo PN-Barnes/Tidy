@@ -2,7 +2,7 @@
   {
     "firstName": "Paul",
     "lastName": "Barnes",
-    "userName": "pbarnes",
+    "username": "pbarnes",
     "email": "pb@moo.com",
     "password": "password123",
     "role": "Software Engineer"

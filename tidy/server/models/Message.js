@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const { schema } = require('./Photo');
 
 const messageSchema = new schema({
   date: {

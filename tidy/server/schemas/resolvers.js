@@ -40,7 +40,9 @@ const resolvers = {
     //   return workEvent.findOne({ event_id }).populate('attendees');
     // },
   },
+
   Mutation: {
+    // *Successful mutation
     addUser: async (
       parent,
       { firstName, lastName, username, email, password, role }

@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type Message {
     _id: ID
-    date: Date
+    date: String
     content: String
     sender_id: User
     receiver_id: User
@@ -17,7 +17,7 @@ const typeDefs = gql`
   type Task {
     _id: ID
     content: String
-    date: Date
+    date: String
     userId: User
   }
   type User {
@@ -29,14 +29,14 @@ const typeDefs = gql`
     password: String
   }
   type workEvent {
-    date: Date
+    date: String
     content: String
     attendees: User
   }
 
   type Query {
     users: [User]
-    user(userName: String!): User
+    user(username: String!): User
   }
 `;
 

@@ -1,38 +1,20 @@
-// const { Model, DataTypes } = require('sequelize');
-// const sequelize = require('../config/connection');
+const { Schema, model } = require('mongoose');
 
-// class Task extends Model {}
+const taskSchema = new Schema({
+  content: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+});
 
-// Task.init(
-//   {
-//     id: {
-//       type: DataTypes.INTEGER,
-//       allowNull: false,
-//       primaryKey: true,
-//       autoIncrement: true,
-//     },
-//     content: {
-//       type: DataTypes.STRING,
-//       allowNull: true,
-//     },
-//     date: {
-//       type: DataTypes.DATE,
-//     },
-//     userId: {
-//       type: DataTypes.INTEGER,
-//       references: {
-//         model: 'user',
-//         key: 'id',
-//       },
-//     },
-//   },
-//   {
-//     sequelize,
-//     timestamps: false,
-//     freezeTableName: true,
-//     underscored: true,
-//     modelName: 'task',
-//   }
-// );
-
-// module.exports = Task;
+const Task = model('Task', taskSchema);
+module.exports = Task;

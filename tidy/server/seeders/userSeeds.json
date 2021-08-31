@@ -1,0 +1,10 @@
+[
+  {
+    "firstName": "Paul",
+    "lastName": "Barnes",
+    "userName": "pbarnes",
+    "email": "pb@moo.com",
+    "password": "password123",
+    "role": "Software Engineer"
+  }
+]

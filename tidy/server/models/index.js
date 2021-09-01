@@ -1,5 +1,6 @@
 const User = require('./User');
 const workEvent = require('./workEvent');
+const Task = require('./Task');
 
 // User.hasMany(workEvent, {
 //   foreignKey: 'attendees',
@@ -28,4 +29,4 @@ const workEvent = require('./workEvent');
 //   onDelete: 'CASCADE',
 // });
 
-module.exports = { User, workEvent };
+module.exports = { User, workEvent, Task };

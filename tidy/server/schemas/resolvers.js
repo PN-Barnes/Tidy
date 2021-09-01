@@ -101,12 +101,13 @@ const resolvers = {
     //     receiver_id,
     //   });
     // },
-    // addWorkEvent: async (parent, { content, attendees }) => {
-    //   return await workEvent.create({
-    //     content,
-    //     attendees,
-    //   });
-    // },
+    addEvent: async (parent, { date, content, attendees }) => {
+      return await workEvent.create({
+        date,
+        content,
+        attendees,
+      });
+    },
     // // Can be further changed to specifically change content or attendees
     // updateWorkEvent: async (parent, { newContent, updatedAttendees }) => {
     //   return await workEvent.findOneAndUpdate(

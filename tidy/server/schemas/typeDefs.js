@@ -63,6 +63,7 @@ const typeDefs = gql`
       role: String!
     ): User
     updateUser(username: String, email: String, password: String): User
+    addEvent(date: String!, content: String!): workEvent
   }
 `;
 

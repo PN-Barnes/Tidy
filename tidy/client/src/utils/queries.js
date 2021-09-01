@@ -12,6 +12,15 @@ export const QUERY_SINGLE_USER = gql`
   }
 `;
 
+export const QUERY_CATEGORIES = gql`
+  {
+    categories {
+      _id
+      name
+    }
+  }
+`;
+
 export const QUERY_USERS = gql`
   query getUsers {
     users {

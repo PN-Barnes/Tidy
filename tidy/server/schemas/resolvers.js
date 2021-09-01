@@ -111,6 +111,9 @@ const resolvers = {
         attendees,
       });
     },
+    removeEvent: async (parent, event) => {
+      return await workEvent.findOneAndDelete({ _id: event });
+    },
     // // Can be further changed to specifically change content or attendees
     // updateWorkEvent: async (parent, { newContent, updatedAttendees }) => {
     //   return await workEvent.findOneAndUpdate(

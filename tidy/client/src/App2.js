@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable jsx-a11y/alt-text */
+import React from 'react';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   Typography,
@@ -15,13 +16,13 @@ import {
   Paper,
   Toolbar,
   Container,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
 // get Tools icon
-import { Pages } from "@material-ui/icons";
+import { Pages } from '@material-ui/icons';
 
 // import styles
-import useStyles from "./styles";
+import useStyles from './styles';
 
 // import { spacing } from "@material-ui/system";
 
@@ -30,7 +31,6 @@ const App = () => {
 
   return (
     <>
-
       {/* Header */}
       <CssBaseline />
       <AppBar position="relative" backgroundColor="alert">
@@ -45,7 +45,7 @@ const App = () => {
               color="textSecondary"
               variant="h5"
               onClick={() => {
-                console.info("SignUp Request button hit");
+                console.info('SignUp Request button hit');
               }}
             >
               SignUp
@@ -59,7 +59,7 @@ const App = () => {
               color="textSecondary"
               variant="h5"
               onClick={() => {
-                console.info("LogIn Request button hit");
+                console.info('LogIn Request button hit');
               }}
             >
               LogIn
@@ -96,7 +96,6 @@ const App = () => {
         </div>
         <Container classname={classes.cardGrid} maxWidth="lg" align="center">
           <Grid container spacing={4}>
-
             {/* WEATHER CARD */}
             <Grid item>
               <Card className={classes.card}>
@@ -188,15 +187,15 @@ const App = () => {
 
           {/* Welcome message */}
           <Typography
-              variant="h6"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              Welcome to your Dashboard! Here you can quickly and easily see an
-              overview of each of your tools. Simply click on any of your tools
-              below to drill into it.
-            </Typography>
+            variant="h6"
+            align="center"
+            color="textSecondary"
+            paragraph
+          >
+            Welcome to your Dashboard! Here you can quickly and easily see an
+            overview of each of your tools. Simply click on any of your tools
+            below to drill into it.
+          </Typography>
         </Container>
       </main>
     </>

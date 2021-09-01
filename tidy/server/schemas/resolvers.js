@@ -13,33 +13,33 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
-    // messages: async () => {
-    //   return Message.find().populate('sender_id', 'receiver_id');
-    // },
-    // message: async (parent, { message_id }) => {
-    //   return Message.findOne({ message_id }).populate(
-    //     'sender_id',
-    //     'receiver_id'
-    //   );
-    // },
-    // photos: async () => {
-    //   return Photo.find().populate('owner');
-    // },
-    // photo: async (parent, { photo_id }) => {
-    //   return Photo.findOne({ photo_id }).populate('owner');
-    // },
-    // tasks: async () => {
-    //   return Task.find().populate('userId');
-    // },
-    // task: async (parent, { task_id }) => {
-    //   return Task.findOne({ task_id }).populate('userId');
-    // },
-    // workEvents: async () => {
-    //   return workEvent.find().populate('attendees');
-    // },
-    // workEvent: async (parent, { event_id }) => {
-    //   return workEvent.findOne({ event_id }).populate('attendees');
-    // },
+    messages: async () => {
+      return Message.find({});
+    },
+    message: async (parent, { message_id }) => {
+      return Message.findOne({ message_id }).populate(
+        'sender_id',
+        'receiver_id'
+      );
+    },
+    photos: async () => {
+      return Photo.find().populate('owner');
+    },
+    photo: async (parent, { photo_id }) => {
+      return Photo.findOne({ photo_id }).populate('owner');
+    },
+    tasks: async () => {
+      return Task.find().populate('userId');
+    },
+    task: async (parent, { task_id }) => {
+      return Task.findOne({ task_id }).populate('userId');
+    },
+    workEvents: async () => {
+      return workEvent.find().populate('attendees');
+    },
+    workEvent: async (parent, { event_id }) => {
+      return workEvent.findOne({ event_id }).populate('attendees');
+    },
   },
 
   Mutation: {
@@ -65,13 +65,13 @@ const resolvers = {
     //     { password: password }
     //   );
     // },
-    // addTask: async (parent, { content, date, userId }) => {
-    //   return await Task.create({
-    //     content,
-    //     date,
-    //     userId,
-    //   });
-    // },
+    addTask: async (parent, { content, date, userId }) => {
+      return await Task.create({
+        content,
+        date,
+        userId,
+      });
+    },
     // // Can be further changed to specifically change content or date or userId
     // updateTask: async (parent, { newContent, newDate, newUser }) => {
     //   return await Task.findOneAndUpdate(

@@ -8,6 +8,7 @@ export const QUERY_SINGLE_USER = gql`
       lastName
       userName
       email
+      role
     }
   }
 `;
@@ -32,3 +33,15 @@ export const QUERY_USERS = gql`
     }
   }
 `;
+// export const QUERY_USERS = gql`
+//   query getUsers {
+//     users {
+//       _id
+//       firstName
+//       lastName
+//       userName
+//       email
+//       role
+//     }
+//   }
+// `;

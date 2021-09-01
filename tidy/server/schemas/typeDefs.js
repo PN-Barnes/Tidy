@@ -62,6 +62,7 @@ const typeDefs = gql`
       role: String!
     ): User
     updateUser(username: String, email: String, password: String): User
+    addTask(content: String, date: String, userId: User): Task
   }
 `;
 

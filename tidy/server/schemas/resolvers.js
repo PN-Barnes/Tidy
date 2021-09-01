@@ -105,6 +105,7 @@ const resolvers = {
     //     receiver_id,
     //   });
     // },
+    // * Successful mutation
     addEvent: async (parent, { date, content, attendees }) => {
       return await workEvent.create({
         date,
@@ -112,6 +113,7 @@ const resolvers = {
         attendees,
       });
     },
+    // * Successful mutation
     removeEvent: async (parent, event) => {
       return await workEvent.findOneAndDelete({ _id: event });
     },

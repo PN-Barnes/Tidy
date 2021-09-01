@@ -44,7 +44,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     workEvents: [workEvent]
-    workEvent(eventId: ID!): workEvent
+    workEvent(id: ID!): workEvent
     messages: [Message]
     message(username: String!): Message
     tasks: [Task]

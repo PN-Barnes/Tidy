@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     icon: {
-        marginRight: "15px"
+        marginRight: "20px"
     },
 
     button: {

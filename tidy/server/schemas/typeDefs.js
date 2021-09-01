@@ -20,7 +20,7 @@ const typeDefs = gql`
     _id: ID
     content: String
     date: String
-    userId: [User]
+    userId: User
   }
 
   type User {
@@ -63,11 +63,9 @@ const typeDefs = gql`
       role: String!
     ): User
     removeUser(_id: ID!): User
-    updateUser(username: String, email: String, password: String): User
-    addTask(content: String, date: String, userId: User): Task
+    addTask(content: String, date: String, userId: String): Task
     addEvent(date: String!, content: String!, attendees: [String]!): workEvent
     removeEvent(_id: ID!): workEvent
-    addTask(content: String, date: String, userId: [String]): Task
   }
 `;
 

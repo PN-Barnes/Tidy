@@ -57,6 +57,7 @@ const resolvers = {
         role,
       });
     },
+    // * Successful mutation
     removeUser: async (parent, user) => {
       return await User.findOneAndDelete({ _id: user });
     },

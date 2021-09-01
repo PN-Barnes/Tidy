@@ -28,13 +28,16 @@ export const ADD_USER = gql`
       password: $password
       role: $role
     ) {
-      _id
-      firstName
-      lastName
-      username
-      email
-      password
-      role
+      token
+      user {
+        _id
+        firstName
+        lastName
+        username
+        email
+        password
+        role
+      }
     }
   }
 `;

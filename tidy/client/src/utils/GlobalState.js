@@ -1,23 +1,18 @@
-import React, { createContext, useContext } from "react";
-import { useProductReducer } from './reducers'
+import React, { createContext, useContext } from 'react';
+import { useAccountReducer } from './reducers';
 
-const StoreContext = createContext();
-const { Provider } = StoreContext;
+const AccountContext = createContext();
+const { Provider } = AccountContext;
 
-const StoreProvider = ({ value = [], ...props }) => {
-  const [state, dispatch] = useProductReducer({
-    products: [],
-    cart: [],
-    cartOpen: false,
-    categories: [],
-    currentCategory: '',
+const AccountProvider = ({ value = [], ...props }) => {
+  const [state, dispatch] = useAccountReducer({
+    isLoggedIn: false,
+    userName: 'admin',
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
 };
 
-const useStoreContext = () => {
-  return useContext(StoreContext);
-};
+const useAccountContext = () => useContext(AccountContext);
 
-export { StoreProvider, useStoreContext };
+export { AccountProvider, useAccountContext };

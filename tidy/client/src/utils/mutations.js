@@ -73,3 +73,25 @@ export const ADD_PHOTO = gql`
     }
   }
 `;
+
+export const ADD_MESSAGE = gql`
+  mutation addMessage($content: String!, $sender_id: ID, $receiver_id: ID) {
+    addMessage(
+      content: $content
+      sender_id: $sender_id
+      receiver_id: $receiver_id
+    ) {
+      message {
+        content
+        sender_id
+        receiver_id
+      }
+    }
+  }
+`;
+
+// export const ADD_WorkEvent = gql`
+//   mutation addWorkEvent($content: String!, $attendees: String!) {
+//       addWorkEvent
+//   }
+// `;

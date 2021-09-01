@@ -37,8 +37,8 @@ const resolvers = {
     workEvents: async () => {
       return workEvent.find().populate('attendees');
     },
-    workEvent: async (parent, { event_id }) => {
-      return workEvent.findOne({ event_id }).populate('attendees');
+    workEvent: async (parent, { eventId }) => {
+      return workEvent.findOne({ eventId: eventId }).populate('attendees');
     },
   },
 

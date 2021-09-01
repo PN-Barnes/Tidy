@@ -44,7 +44,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     workEvents: [workEvent]
-    workEvent(date: String!): workEvent
+    workEvent(eventId: ID!): workEvent
     messages: [Message]
     message(username: String!): Message
     tasks: [Task]
@@ -63,7 +63,7 @@ const typeDefs = gql`
       role: String!
     ): User
     updateUser(username: String, email: String, password: String): User
-    addEvent(date: String!, content: String!): workEvent
+    addEvent(date: String!, content: String!, attendees: [String]!): workEvent
   }
 `;
 

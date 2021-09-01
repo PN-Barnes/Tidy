@@ -57,6 +57,9 @@ const resolvers = {
         role,
       });
     },
+    removeUser: async (parent, user) => {
+      return await User.findOneAndDelete({ _id: user });
+    },
     // // Can be further changed to specifically change userName or email or password
     // updateUser: async (parent, { userName, email, password }) => {
     //   return await User.findOneAndUpdate(

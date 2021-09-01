@@ -62,6 +62,7 @@ const typeDefs = gql`
       password: String!
       role: String!
     ): User
+    removeUser(_id: ID!): User
     updateUser(username: String, email: String, password: String): User
     addEvent(date: String!, content: String!, attendees: [String]!): workEvent
   }

@@ -34,9 +34,10 @@ const typeDefs = gql`
   }
 
   type workEvent {
+    _id: ID
     date: String
     content: String
-    attendees: User
+    attendees: [User]
   }
 
   type Query {

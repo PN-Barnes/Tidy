@@ -34,12 +34,12 @@ const resolvers = {
     // task: async (parent, { task_id }) => {
     //   return Task.findOne({ task_id }).populate('userId');
     // },
-    // workEvents: async () => {
-    //   return workEvent.find().populate('attendees');
-    // },
-    // workEvent: async (parent, { event_id }) => {
-    //   return workEvent.findOne({ event_id }).populate('attendees');
-    // },
+    workEvents: async () => {
+      return workEvent.find().populate('attendees');
+    },
+    workEvent: async (parent, { event_id }) => {
+      return workEvent.findOne({ event_id }).populate('attendees');
+    },
   },
 
   Mutation: {

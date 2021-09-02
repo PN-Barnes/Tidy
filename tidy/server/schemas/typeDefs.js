@@ -40,6 +40,11 @@ const typeDefs = gql`
     attendees: [User]
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     users: [User]
     user(username: String!): User

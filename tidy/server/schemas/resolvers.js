@@ -60,15 +60,37 @@ const resolvers = {
     // task: async (parent, { task_id }) => {
     //   return Task.findOne({ task_id }).populate('userId');
     // },
-    // workEvents: async () => {
-    //   return workEvent.find().populate('attendees');
-    // },
-    // workEvent: async (parent, { id }) => {
-    //   return workEvent.findOne({ _id: id }).populate('attendees');
-    // },
+    workEvents: async () => {
+      return workEvent.find().populate('attendees');
+    },
+    workEvent: async (parent, { id }) => {
+      return workEvent.findOne({ _id: id }).populate('attendees');
+    },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return user.findOne({ _id: context.user._id }).populate('');
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError('No user found with this email');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect Password');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
     // *Successful mutation
     // addUser: async (
     //   parent,

@@ -31,6 +31,7 @@ const typeDefs = gql`
     email: String
     password: String
     role: String
+    events: [workEvent]!
   }
 
   type workEvent {
@@ -38,6 +39,11 @@ const typeDefs = gql`
     date: String
     content: String
     attendees: [User]
+  }
+
+  type Auth {
+    token: ID!
+    user: User
   }
 
   type Query {
@@ -51,6 +57,7 @@ const typeDefs = gql`
     task(date: String!): Task
     photos: [Photo]
     photo(_id: ID!): [Photo]
+    me: User
   }
 
   type Mutation {
@@ -66,6 +73,7 @@ const typeDefs = gql`
     addTask(content: String, date: String, userId: String): Task
     addEvent(date: String!, content: String!, attendees: [String]!): workEvent
     removeEvent(_id: ID!): workEvent
+    login(email: String!, password: String!): Auth
   }
 `;
 

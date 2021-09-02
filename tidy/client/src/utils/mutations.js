@@ -1,11 +1,12 @@
 import { gql } from '@apollo/client';
 
-export const LOGIN = gql`
+export const LOGIN_ME = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
       user {
         _id
+        username
       }
     }
   }
@@ -15,7 +16,11 @@ export const ADD_USER = gql`
   mutation addUser(
     $firstName: String!
     $lastName: String!
+<<<<<<< HEAD
     $userName: String!
+=======
+    $username: String!
+>>>>>>> 3870460f8e3099e9cc4c0060f2752d442c9dbde4
     $email: String!
     $password: String!
     $role: String!
@@ -23,6 +28,7 @@ export const ADD_USER = gql`
     addUser(
       firstName: $firstName
       lastName: $lastName
+      username: $username
       email: $email
       password: $password
       role: $role
@@ -32,8 +38,9 @@ export const ADD_USER = gql`
         _id
         firstName
         lastName
-        userName
+        username
         email
+        password
         role
       }
     }
@@ -48,6 +55,14 @@ export const UPDATE_USER = gql`
         email
       }
     }
+    `;
+
+export const REMOVE_USER = gql`
+  mutation removeUser($_id: ID!) {
+    removeUser(_id: $_id) {
+      _id
+      username
+    }
   }
 `;
 
@@ -58,6 +73,19 @@ export const ADD_TASK = gql`
         content
         date
         userId
+      }
+      `;
+
+export const ADD_EVENT = gql`
+  mutation addEvent($date: String!, $content: String!, $attendees: [String]!) {
+    addEvent(date: $date, content: $content, attendees: $attendees) {
+      _id
+      date
+      content
+      attendees {
+        _id
+        lastName
+        firstName
       }
     }
   }
@@ -108,3 +136,10 @@ export const ADD_MESSAGE = gql`
 //       addWorkEvent
 //   }
 // `;
+export const REMOVE_EVENT = gql`
+  mutation removeEvent($_id: ID!) {
+    removeEvent(_id: $_id) {
+      _id
+    }
+  }
+`;

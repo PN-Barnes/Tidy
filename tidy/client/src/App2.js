@@ -1,5 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 // import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   Typography,
@@ -26,181 +35,190 @@ import useStyles from './styles';
 
 // import { spacing } from "@material-ui/system";
 
-const App = () => {
-  const classes = useStyles();
+import { Home } from './pages/Home';
+import { SignIn } from './pages/SignIn';
+import { SignUp } from './pages/SignUp';
+import { Tasks } from './pages/tasks';
+import { ToDo } from './pages/todos';
+import { Weather } from './pages/weather';
+import Nav from './components/Nav';
+import { StoreProvider } from './utils/GlobalState';
 
-  return (
-    <>
-      {/* Header */}
-      <CssBaseline />
-      <AppBar position="relative" backgroundColor="alert">
-        <Toolbar>
-          <Pages className={classes.icon} />
-          <Typography variant="h6">TIDY</Typography>
+// const App = () => {
+//   const classes = useStyles();
 
-          {/* Signup button */}
-          <Box mx="auto">
-            <Link
-              component="button"
-              color="textSecondary"
-              variant="h5"
-              onClick={() => {
-                console.info('SignUp Request button hit');
-              }}
-            >
-              SignUp
-            </Link>
-          </Box>
+//   return (
+//     <>
+//       {/* Header */}
+//       <CssBaseline />
+//       <AppBar position="relative" backgroundColor="alert">
+//         <Toolbar>
+//           <Pages className={classes.icon} />
+//           <Typography variant="h6">TIDY</Typography>
 
-          {/* Login button */}
-          <Box>
-            <Link
-              component="button"
-              color="textSecondary"
-              variant="h5"
-              onClick={() => {
-                console.info('LogIn Request button hit');
-              }}
-            >
-              LogIn
-            </Link>
-          </Box>
-        </Toolbar>
-      </AppBar>
+//           {/* Signup button */}
+//           <Box mx="auto">
+//             <Link
+//               component="button"
+//               color="textSecondary"
+//               variant="h5"
+//               onClick={() => {
+//                 console.info('SignUp Request button hit');
+//               }}
+//             >
+//               SignUp
+//             </Link>
+//           </Box>
 
-      {/* Body */}
-      <main>
-        <div className={classes.container}>
-          <Container maxwidth="sm">
-            {/* TIDY logo */}
-            <Paper elevation={0} align="center" marginTop="50px">
-              <img src="/logo.png" />
-            </Paper>
+//           {/* Login button */}
+//           <Box>
+//             <Link
+//               component="button"
+//               color="textSecondary"
+//               variant="h5"
+//               onClick={() => {
+//                 console.info('LogIn Request button hit');
+//               }}
+//             >
+//               LogIn
+//             </Link>
+//           </Box>
+//         </Toolbar>
+//       </AppBar>
 
-            {/* Unused buttons */}
-            {/* <div className={classes.button}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    See tools
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Second
-                  </Button>
-                </Grid>
-              </Grid>
-            </div> */}
-          </Container>
-        </div>
-        <Container classname={classes.cardGrid} maxWidth="lg" align="center">
-          <Grid container spacing={4}>
-            {/* WEATHER CARD */}
-            <Grid item>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image="https://source.unsplash.com/featured/?weather/320x180"
-                  title="image title"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography variant="h5" gutterBottom>
-                    Weather
-                  </Typography>
-                  <Typography>Weather preview</Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="sm" color="primary">
-                    View
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
+//       {/* Body */}
+//       <main>
+//         <div className={classes.container}>
+//           <Container maxwidth="sm">
+//             {/* TIDY logo */}
+//             <Paper elevation={0} align="center" marginTop="50px">
+//               <img src="/logo.png" />
+//             </Paper>
 
-            {/* CALENDAR CARD */}
-            <Grid item>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image="https://source.unsplash.com/featured/?calendar/320x180"
-                  title="Calendar"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography variant="h5" gutterBottom>
-                    Calendar
-                  </Typography>
-                  <Typography>Calendar preview</Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="sm" color="primary">
-                    View
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
+//             {/* Unused buttons */}
+//             {/* <div className={classes.button}>
+//               <Grid container spacing={2} justify="center">
+//                 <Grid item>
+//                   <Button variant="contained" color="primary">
+//                     See tools
+//                   </Button>
+//                 </Grid>
+//                 <Grid item>
+//                   <Button variant="outlined" color="primary">
+//                     Second
+//                   </Button>
+//                 </Grid>
+//               </Grid>
+//             </div> */}
+//           </Container>
+//         </div>
+//         <Container classname={classes.cardGrid} maxWidth="lg" align="center">
+//           <Grid container spacing={4}>
+//             {/* WEATHER CARD */}
+//             <Grid item>
+//               <Card className={classes.card}>
+//                 <CardMedia
+//                   className={classes.cardMedia}
+//                   image="https://source.unsplash.com/featured/?weather/320x180"
+//                   title="image title"
+//                 />
+//                 <CardContent className={classes.cardContent}>
+//                   <Typography variant="h5" gutterBottom>
+//                     Weather
+//                   </Typography>
+//                   <Typography>Weather preview</Typography>
+//                 </CardContent>
+//                 <CardActions>
+//                   <Button size="sm" color="primary">
+//                     View
+//                   </Button>
+//                 </CardActions>
+//               </Card>
+//             </Grid>
 
-            {/* TODOS CARD */}
-            <Grid item>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image="https://source.unsplash.com/featured/?words/320x180"
-                  title="ToDo List"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography variant="h5" gutterBottom>
-                    ToDo's
-                  </Typography>
-                  <Typography>ToDos preview</Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="sm" color="primary">
-                    View
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
+//             {/* CALENDAR CARD */}
+//             <Grid item>
+//               <Card className={classes.card}>
+//                 <CardMedia
+//                   className={classes.cardMedia}
+//                   image="https://source.unsplash.com/featured/?calendar/320x180"
+//                   title="Calendar"
+//                 />
+//                 <CardContent className={classes.cardContent}>
+//                   <Typography variant="h5" gutterBottom>
+//                     Calendar
+//                   </Typography>
+//                   <Typography>Calendar preview</Typography>
+//                 </CardContent>
+//                 <CardActions>
+//                   <Button size="sm" color="primary">
+//                     View
+//                   </Button>
+//                 </CardActions>
+//               </Card>
+//             </Grid>
 
-            {/* TEAM CARD */}
-            <Grid item>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image="https://source.unsplash.com/featured/?team/320x180"
-                  title="Team"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography variant="h5" gutterBottom>
-                    Team
-                  </Typography>
-                  <Typography>Team preview</Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="sm" color="primary">
-                    View
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          </Grid>
+//             {/* TODOS CARD */}
+//             <Grid item>
+//               <Card className={classes.card}>
+//                 <CardMedia
+//                   className={classes.cardMedia}
+//                   image="https://source.unsplash.com/featured/?words/320x180"
+//                   title="ToDo List"
+//                 />
+//                 <CardContent className={classes.cardContent}>
+//                   <Typography variant="h5" gutterBottom>
+//                     ToDo's
+//                   </Typography>
+//                   <Typography>ToDos preview</Typography>
+//                 </CardContent>
+//                 <CardActions>
+//                   <Button size="sm" color="primary">
+//                     View
+//                   </Button>
+//                 </CardActions>
+//               </Card>
+//             </Grid>
 
-          {/* Welcome message */}
-          <Typography
-            variant="h6"
-            align="center"
-            color="textSecondary"
-            paragraph
-          >
-            Welcome to your Dashboard! Here you can quickly and easily see an
-            overview of each of your tools. Simply click on any of your tools
-            below to drill into it.
-          </Typography>
-        </Container>
-      </main>
-    </>
-  );
-};
+//             {/* TEAM CARD */}
+//             <Grid item>
+//               <Card className={classes.card}>
+//                 <CardMedia
+//                   className={classes.cardMedia}
+//                   image="https://source.unsplash.com/featured/?team/320x180"
+//                   title="Team"
+//                 />
+//                 <CardContent className={classes.cardContent}>
+//                   <Typography variant="h5" gutterBottom>
+//                     Team
+//                   </Typography>
+//                   <Typography>Team preview</Typography>
+//                 </CardContent>
+//                 <CardActions>
+//                   <Button size="sm" color="primary">
+//                     View
+//                   </Button>
+//                 </CardActions>
+//               </Card>
+//             </Grid>
+//           </Grid>
+
+//           {/* Welcome message */}
+//           <Typography
+//             variant="h6"
+//             align="center"
+//             color="textSecondary"
+//             paragraph
+//           >
+//             Welcome to your Dashboard! Here you can quickly and easily see an
+//             overview of each of your tools. Simply click on any of your tools
+//             below to drill into it.
+//           </Typography>
+//         </Container>
+//       </main>
+//     </>
+//   );
+// };
 
 // ROUTER
 // import { createBrowserHistory } from "history";
@@ -246,6 +264,29 @@ const App = () => {
 //   document.getElementById("root")
 // );
 
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -254,28 +295,53 @@ function App() {
           <StoreProvider>
             <Nav />
             <Switch>
-              <Route exact path="/tidy/client/src/pages/Home.js" component={Home} />
-              <Route exact path="/tidy/client/src/pages/SignIn.js" component={SignIn} />
-              <Route exact path="/tidy/client/src/pages/Signup.js" component={SignUp} />
-              <Route exact path="/tidy/client/src/pages/tasks.js" component={Tasks} />
-              <Route exact path="/tidy/client/src/pages/todos.js" component={ToDo} />
-              <Route exact path="/tidy/client/src/pages/weather.js" component={Weather} />
-              <Route component={NoMatch} />
+              <Route
+                exact
+                path='/tidy/client/src/pages/Home.js'
+                component={Home}
+              />
+              <Route
+                exact
+                path='/tidy/client/src/pages/SignIn.js'
+                component={SignIn}
+              />
+              <Route
+                exact
+                path='/tidy/client/src/pages/Signup.js'
+                component={SignUp}
+              />
+              <Route
+                exact
+                path='/tidy/client/src/pages/tasks.js'
+                component={Tasks}
+              />
+              <Route
+                exact
+                path='/tidy/client/src/pages/todos.js'
+                component={ToDo}
+              />
+              <Route
+                exact
+                path='/tidy/client/src/pages/weather.js'
+                component={Weather}
+              />
+              <Route />
             </Switch>
           </StoreProvider>
         </div>
       </Router>
     </ApolloProvider>
-
   );
 }
 
 export default App;
 
-{/* <Header>
+{
+  /* <Header>
   <SignupButton>props
   </SignupButton>
   <LoginButton>
 
   </LoginButton>
-</Header> */}
+</Header> */
+}

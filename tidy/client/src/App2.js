@@ -250,9 +250,7 @@ const App = () => {
 
 export default App;
 
-{
-  /* <Header>
+/* <Header>
   <SignupButton>props</SignupButton>
   <LoginButton></LoginButton>
 </Header>; */
-}

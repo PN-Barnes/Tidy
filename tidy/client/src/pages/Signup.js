@@ -99,6 +99,7 @@ export default function SignUp() {
                 id='firstName'
                 label='First Name'
                 autoFocus
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -110,6 +111,7 @@ export default function SignUp() {
                 label='Last Name'
                 name='lastName'
                 autoComplete='lname'
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -121,6 +123,7 @@ export default function SignUp() {
                 label='Email Address'
                 name='email'
                 autoComplete='email'
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -133,6 +136,7 @@ export default function SignUp() {
                 type='password'
                 id='password'
                 autoComplete='current-password'
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>

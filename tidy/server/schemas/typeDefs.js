@@ -73,6 +73,7 @@ const typeDefs = gql`
     updateUser(username: String, email: String, password: String): User
     addEvent(date: String!, content: String!, attendees: [String]!): workEvent
     removeEvent(_id: ID!): workEvent
+    login(email: String!, password: String!): Auth
   }
 `;
 

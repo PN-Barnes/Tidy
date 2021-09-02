@@ -1,6 +1,23 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-// import CssBaseline from '@material-ui/core/CssBaseline';
+import { createBrowserHistory } from "history";
+import { Router, Route, Switch } from "react-router-dom";
+import Calendar from "pages/calendar.js";
+import Contacts from "pages/contacts.js";
+import Events from "pages/events.js";
+import Home from "pages/Home.js";
+import Landing from "pages/landing.js";
+import Photos from "pages/photos.js";
+import Profile from "pages/profile.js";
+import SignIn from "pages/Login.js/";
+import SignUp from "pages/Signup.js";
+import Tasks from "pages/tasks.js";
+import Team from "pages/team.js";
+import Todos from "pages/todos.js";
+import Weather from "pages/weather.js";
+
+import "assets/scss/material-kit-react.scss?v=1.10.0";
+import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   Typography,
   AppBar,
@@ -223,7 +240,7 @@ const App = () => {
 // import Todos from "pages/todos.js";
 // import Weather from "pages/weather.js";
 
-// var hist = createBrowserHistory();
+var hist = createBrowserHistory();
 
 // ReactDOM.render(
 //   <Router history={hist}>
@@ -255,10 +272,17 @@ function App() {
             <Nav />
             <Switch>
               <Route exact path="/tidy/client/src/pages/Home.js" component={Home} />
+              <Route exact path="/tidy/client/src/pages/calendar.js" component={Calendar} />
+              <Route exact path="/tidy/client/src/pages/contacts.js" component={Contacts} />
+              <Route exact path="tidy/client/src/pages/events.js" component={Events} />
+              <Route exact path="tidy/client/src/pages/landing.js" component={Landing} />
+              <Route exact path="tidy/client/src/pages/photos.js" component={Photos} />
+              <Route exact path="tidy/client/src/pages/profile.js" component={Profile} />
+              <Route exact path="tidy/client/src/pages/team.js" component={Team} />
+              <Route exact path="tidy/client/src/pages/todos.js" component={Todos} />
               <Route exact path="/tidy/client/src/pages/SignIn.js" component={SignIn} />
               <Route exact path="/tidy/client/src/pages/Signup.js" component={SignUp} />
               <Route exact path="/tidy/client/src/pages/tasks.js" component={Tasks} />
-              <Route exact path="/tidy/client/src/pages/todos.js" component={ToDo} />
               <Route exact path="/tidy/client/src/pages/weather.js" component={Weather} />
               <Route component={NoMatch} />
             </Switch>

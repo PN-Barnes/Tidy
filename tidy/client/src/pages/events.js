@@ -1,14 +1,14 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 
-function Home(){
+function Events(){
     return(
         <div className="App">
             <Typography variant="h1">
-                Dashboard
+                Work Events
             </Typography>
         </div>
     );
 }
 
-export default Home;
+export default Events;

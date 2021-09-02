@@ -16,6 +16,9 @@ db.once('open', async () => {
     await workEvent.deleteMany({});
     const events = await workEvent.create(eventSeeds);
 
+    await Task.deleteMany({});
+    await Task.create(taskSeeds);
+
     for (newUser of users) {
       const tempEvent = events[Math.floor(Math.random() * events.length)];
       tempEvent.attendees.push(newUser._id);

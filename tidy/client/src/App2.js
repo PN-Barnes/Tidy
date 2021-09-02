@@ -202,4 +202,56 @@ const App = () => {
   );
 };
 
+// ROUTER
+// import { createBrowserHistory } from "history";
+// import { Router, Route, Switch } from "react-router-dom";
+
+// import "assets/scss/material-kit-react.scss?v=1.10.0";
+
+// // pages for this product
+// import Calendar from "pages/calendar.js";
+// import Contacts from "pages/contacts.js";
+// import Events from "pages/events.js";
+// import Home from "pages/Home.js";
+// import Landing from "pages/landing.js";
+// import Photos from "pages/photos.js";
+// import Profile from "pages/profile.js";
+// import SignIn from "pages/Login.js/";
+// import SignUp from "pages/Signup.js";
+// import Tasks from "pages/tasks.js";
+// import Team from "pages/team.js";
+// import Todos from "pages/todos.js";
+// import Weather from "pages/weather.js";
+
+// var hist = createBrowserHistory();
+
+// ReactDOM.render(
+//   <Router history={hist}>
+//     <Switch>
+//       <Route path="/pages/calendar" component={pages} />
+//       <Route path="/pages/contacts" component={contacts} />
+//       <Route path="/pages/events" component={events} />
+//       <Route path="/pages/home" component={Home} />
+//       <Route path="/pages/landing" component={landing} />
+//       <Route path="/pages/photos" component={photos} />
+//       <Route path="/pages/profile" component={profile} />
+//       <Route path="/pages/SignIn" component={SignIn} />
+//       <Route path="/pages/Signup" component={SignUp} />
+//       <Route path="/pages/tasks" component={tasks} />
+//       <Route path="/pages/team" component={team} />
+//       <Route path="/pages/todos" component={todos} />
+//       <Route path="/" component={home} />
+//     </Switch>
+//   </Router>,
+//   document.getElementById("root")
+// );
+
 export default App;
+
+<Header>
+  <SignupButton>props
+  </SignupButton>
+  <LoginButton>
+
+  </LoginButton>
+</Header>

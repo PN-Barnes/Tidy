@@ -66,3 +66,11 @@ export const ADD_EVENT = gql`
     }
   }
 `;
+
+export const REMOVE_EVENT = gql`
+  mutation removeEvent($_id: ID!) {
+    removeEvent(_id: $_id) {
+      _id
+    }
+  }
+`;

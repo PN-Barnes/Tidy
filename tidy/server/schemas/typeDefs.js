@@ -31,7 +31,7 @@ const typeDefs = gql`
     email: String
     password: String
     role: String
-    Events: [Workevent]!
+    events: [workEvent]!
   }
 
   type workEvent {

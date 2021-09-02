@@ -1,37 +1,20 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema, model } = require('mongoose');
 
-class Photo extends Model {}
-
-Photo.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    url_link: {
-      type: DataTypes.STRING,
-    },
-    description: {
-      type: DataTypes.STRING,
-    },
-    owner: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
+const photoSchema = new schema({
+  url_link: {
+    type: String,
+    required: true,
+    trim: true,
   },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'photo',
-  }
-);
+  description: {
+    type: String,
+  },
+  owner: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
+  },
+});
 
+const Photo = model('Photo', photoSchema);
 module.exports = Photo;

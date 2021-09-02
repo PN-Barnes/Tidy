@@ -5,25 +5,21 @@ const userSchema = new Schema({
   firstName: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   lastName: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
-  userName: {
+  username: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true,
     match: [/.+@.+\..+/, 'Must match an email address!'],
   },
   password: {
@@ -31,6 +27,16 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
+  role: {
+    type: String,
+    required: true,
+  },
+  events: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'workEvent',
+    },
+  ],
 });
 
 userSchema.pre('save', async function (next) {

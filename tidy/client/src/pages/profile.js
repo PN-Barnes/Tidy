@@ -1,14 +1,14 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 
-function Home(){
+function ToDos(){
     return(
         <div className="App">
             <Typography variant="h1">
-                Dashboard
+                Profile
             </Typography>
         </div>
     );
 }
 
-export default Home;
+export default ToDos;

@@ -31,6 +31,7 @@ const typeDefs = gql`
     email: String
     password: String
     role: String
+    Events: [Workevent]!
   }
 
   type workEvent {
@@ -56,6 +57,7 @@ const typeDefs = gql`
     task(date: String!): Task
     photos: [Photo]
     photo(_id: ID!): [Photo]
+    me: User
   }
 
   type Mutation {

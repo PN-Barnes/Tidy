@@ -246,12 +246,36 @@ const App = () => {
 //   document.getElementById("root")
 // );
 
+function App() {
+  return (
+    <ApolloProvider client={client}>
+      <Router>
+        <div>
+          <StoreProvider>
+            <Nav />
+            <Switch>
+              <Route exact path="/tidy/client/src/pages/Home.js" component={Home} />
+              <Route exact path="/tidy/client/src/pages/SignIn.js" component={SignIn} />
+              <Route exact path="/tidy/client/src/pages/Signup.js" component={SignUp} />
+              <Route exact path="/tidy/client/src/pages/tasks.js" component={Tasks} />
+              <Route exact path="/tidy/client/src/pages/todos.js" component={ToDo} />
+              <Route exact path="/tidy/client/src/pages/weather.js" component={Weather} />
+              <Route component={NoMatch} />
+            </Switch>
+          </StoreProvider>
+        </div>
+      </Router>
+    </ApolloProvider>
+
+  );
+}
+
 export default App;
 
-<Header>
+{/* <Header>
   <SignupButton>props
   </SignupButton>
   <LoginButton>
 
   </LoginButton>
-</Header>
+</Header> */}

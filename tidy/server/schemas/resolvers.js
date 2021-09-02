@@ -10,8 +10,8 @@ const resolvers = {
     users: async () => {
       return User.find();
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username });
+    user: async (parent, { _id }) => {
+      return User.findOne({ _id });
     },
     // messages: async () => {
     //   return Message.find({});
@@ -109,10 +109,10 @@ const resolvers = {
     // removeUser: async (parent, user) => {
     //   return await User.findOneAndDelete({ _id: user });
     // },
-    // // Can be further changed to specifically change userName or email or password
-    // updateUser: async (parent, { userName, email, password }) => {
+    // // Can be further changed to specifically change username or email or password
+    // updateUser: async (parent, { username, email, password }) => {
     //   return await User.findOneAndUpdate(
-    //     { userName: userName },
+    //     { username: username },
     //     { email: email },
     //     { password: password }
     //   );

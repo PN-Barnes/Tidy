@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable jsx-a11y/alt-text */
+import React from 'react';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   Typography,
@@ -15,13 +16,13 @@ import {
   Paper,
   Toolbar,
   Container,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
 // get Tools icon
-import { Pages } from "@material-ui/icons";
+import { Pages } from '@material-ui/icons';
 
 // import styles
-import useStyles from "./styles";
+import useStyles from './styles';
 
 // import { spacing } from "@material-ui/system";
 
@@ -30,7 +31,6 @@ const App = () => {
 
   return (
     <>
-
       {/* Header */}
       <CssBaseline />
       <AppBar position="relative" backgroundColor="alert">
@@ -45,7 +45,7 @@ const App = () => {
               color="textSecondary"
               variant="h5"
               onClick={() => {
-                console.info("SignUp Request button hit");
+                console.info('SignUp Request button hit');
               }}
             >
               SignUp
@@ -59,7 +59,7 @@ const App = () => {
               color="textSecondary"
               variant="h5"
               onClick={() => {
-                console.info("LogIn Request button hit");
+                console.info('LogIn Request button hit');
               }}
             >
               LogIn
@@ -96,7 +96,6 @@ const App = () => {
         </div>
         <Container classname={classes.cardGrid} maxWidth="lg" align="center">
           <Grid container spacing={4}>
-
             {/* WEATHER CARD */}
             <Grid item>
               <Card className={classes.card}>
@@ -188,19 +187,71 @@ const App = () => {
 
           {/* Welcome message */}
           <Typography
-              variant="h6"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              Welcome to your Dashboard! Here you can quickly and easily see an
-              overview of each of your tools. Simply click on any of your tools
-              below to drill into it.
-            </Typography>
+            variant="h6"
+            align="center"
+            color="textSecondary"
+            paragraph
+          >
+            Welcome to your Dashboard! Here you can quickly and easily see an
+            overview of each of your tools. Simply click on any of your tools
+            below to drill into it.
+          </Typography>
         </Container>
       </main>
     </>
   );
 };
 
+// ROUTER
+// import { createBrowserHistory } from "history";
+// import { Router, Route, Switch } from "react-router-dom";
+
+// import "assets/scss/material-kit-react.scss?v=1.10.0";
+
+// // pages for this product
+// import Calendar from "pages/calendar.js";
+// import Contacts from "pages/contacts.js";
+// import Events from "pages/events.js";
+// import Home from "pages/Home.js";
+// import Landing from "pages/landing.js";
+// import Photos from "pages/photos.js";
+// import Profile from "pages/profile.js";
+// import SignIn from "pages/Login.js/";
+// import SignUp from "pages/Signup.js";
+// import Tasks from "pages/tasks.js";
+// import Team from "pages/team.js";
+// import Todos from "pages/todos.js";
+// import Weather from "pages/weather.js";
+
+// var hist = createBrowserHistory();
+
+// ReactDOM.render(
+//   <Router history={hist}>
+//     <Switch>
+//       <Route path="/pages/calendar" component={pages} />
+//       <Route path="/pages/contacts" component={contacts} />
+//       <Route path="/pages/events" component={events} />
+//       <Route path="/pages/home" component={Home} />
+//       <Route path="/pages/landing" component={landing} />
+//       <Route path="/pages/photos" component={photos} />
+//       <Route path="/pages/profile" component={profile} />
+//       <Route path="/pages/SignIn" component={SignIn} />
+//       <Route path="/pages/Signup" component={SignUp} />
+//       <Route path="/pages/tasks" component={tasks} />
+//       <Route path="/pages/team" component={team} />
+//       <Route path="/pages/todos" component={todos} />
+//       <Route path="/" component={home} />
+//     </Switch>
+//   </Router>,
+//   document.getElementById("root")
+// );
+
 export default App;
+
+<Header>
+  <SignupButton>props
+  </SignupButton>
+  <LoginButton>
+
+  </LoginButton>
+</Header>

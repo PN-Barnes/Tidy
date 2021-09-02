@@ -18,7 +18,11 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
+<<<<<<< HEAD
         Your Website
+=======
+        Tidy
+>>>>>>> 917277135faa8df06a047e73595b373db6d2b9f5
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}

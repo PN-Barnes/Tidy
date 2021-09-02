@@ -16,11 +16,7 @@ export const ADD_USER = gql`
   mutation addUser(
     $firstName: String!
     $lastName: String!
-<<<<<<< HEAD
-    $userName: String!
-=======
     $username: String!
->>>>>>> 3870460f8e3099e9cc4c0060f2752d442c9dbde4
     $email: String!
     $password: String!
     $role: String!
@@ -77,7 +73,7 @@ export const ADD_TASK = gql`
       `;
 
 export const ADD_EVENT = gql`
-  mutation addEvent($date: String!, $content: String!, $attendees: [String]!) {
+  mutation addEvent($date: String, $content: String!, $attendees: [ID]!) {
     addEvent(date: $date, content: $content, attendees: $attendees) {
       _id
       date

@@ -48,7 +48,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    user(username: String!): User
+    user(_id: ID!): User
     workEvents: [workEvent]
     workEvent(id: ID!): workEvent
     messages: [Message]
@@ -70,7 +70,7 @@ const typeDefs = gql`
       role: String!
     ): User
     removeUser(_id: ID!): User
-    addTask(content: String, date: String, userId: ID!): Task
+    addTask(content: String, date: String, userId: String!): Task
     addEvent(date: String!, content: String!, attendees: [String]!): workEvent
     removeEvent(_id: ID!): workEvent
     login(email: String!, password: String!): Auth

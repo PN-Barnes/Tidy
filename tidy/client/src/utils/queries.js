@@ -1,18 +1,5 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_SINGLE_USER = gql`
-  query user($_id: ID!) {
-    user(_id: $_id) {
-      _id
-      firstName
-      lastName
-      username
-      email
-      role
-    }
-  }
-`;
-
 export const QUERY_CATEGORIES = gql`
   {
     categories {
@@ -90,6 +77,15 @@ export const QUERY_ME = gql`
           lastname
         }
       }
+    }
+  }
+`;
+
+export const QUERY_TASKS = gql`
+  query getTasks {
+    task {
+      content
+      userId
     }
   }
 `;

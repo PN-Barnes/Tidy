@@ -51,7 +51,8 @@ export const UPDATE_USER = gql`
         email
       }
     }
-    `;
+  }
+`;
 
 export const REMOVE_USER = gql`
   mutation removeUser($_id: ID!) {
@@ -70,7 +71,9 @@ export const ADD_TASK = gql`
         date
         userId
       }
-      `;
+    }
+  }
+`;
 
 export const ADD_EVENT = gql`
   mutation addEvent($date: String, $content: String!, $attendees: [ID]!) {

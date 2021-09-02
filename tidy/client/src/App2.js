@@ -35,14 +35,14 @@ import useStyles from './styles';
 
 // import { spacing } from "@material-ui/system";
 
-import { Home } from './pages/Home';
-import { SignIn } from './pages/SignIn';
-import { SignUp } from './pages/SignUp';
-import { Tasks } from './pages/tasks';
-import { ToDo } from './pages/todos';
-import { Weather } from './pages/weather';
+import Home from './pages/Home';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/Signup';
+import Tasks from './pages/tasks';
+import ToDo from './pages/todos';
+import Weather from './pages/weather';
 import Nav from './components/Nav';
-import { StoreProvider } from './utils/GlobalState';
+import { AccountProvider } from './utils/GlobalState';
 
 // const App = () => {
 //   const classes = useStyles();
@@ -292,7 +292,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider>
+          <AccountProvider>
             <Nav />
             <Switch>
               <Route
@@ -327,7 +327,7 @@ function App() {
               />
               <Route />
             </Switch>
-          </StoreProvider>
+          </AccountProvider>
         </div>
       </Router>
     </ApolloProvider>
@@ -336,12 +336,10 @@ function App() {
 
 export default App;
 
-{
-  /* <Header>
+/* <Header>
   <SignupButton>props
   </SignupButton>
   <LoginButton>
 
   </LoginButton>
 </Header> */
-}

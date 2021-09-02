@@ -31,7 +31,8 @@ export const QUERY_USERS = gql`
       username
       email
     }
-    `;
+  }
+`;
 
 export const QUERY_EVENT = gql`
   query ($_id: ID!) {
@@ -83,13 +84,11 @@ export const QUERY_ME = gql`
         _id
         date
         content
-        attendees{
+        attendees {
           _id
           firstname
           lastname
-          
         }
-      }
       }
     }
   }

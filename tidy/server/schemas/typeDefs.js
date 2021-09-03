@@ -32,7 +32,7 @@ const typeDefs = gql`
     email: String
     password: String
     role: String
-    events: [workEvent]!
+    events: [workEvent]
   }
 
   type workEvent {
@@ -67,10 +67,8 @@ const typeDefs = gql`
     addUser(
       firstName: String!
       lastName: String!
-      username: String!
       email: String!
       password: String!
-      role: String!
     ): User
     removeUser(_id: ID!): User
     addTask(content: String, date: String, username: String!): Task

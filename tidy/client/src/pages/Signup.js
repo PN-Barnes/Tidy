@@ -60,18 +60,24 @@ export default function SignUp() {
     password: '',
     role: '',
   });
-  const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [AddUser, { error, data }] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
+    console.log('arrived at handleFormSubmit function');
+
     event.preventDefault();
+
+    console.log(formState);
     try {
-      const { data } = await addUser({
+      const { data } = await AddUser({
         variables: { ...formState },
       });
 
+      console.log('data');
+
       Auth.login(data.addUser.token);
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
   };
 

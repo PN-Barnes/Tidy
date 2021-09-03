@@ -73,7 +73,7 @@ export default function SignUp() {
         variables: { ...formState },
       });
 
-      console.log('data');
+      console.log('data', data);
 
       Auth.login(data.addUser.token);
     } catch (error) {
@@ -83,10 +83,14 @@ export default function SignUp() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+
+    console.log(event.target);
     setFormState({
       ...formState,
       [name]: value,
     });
+
+    console.log(formState);
   };
 
   return (
@@ -101,29 +105,29 @@ export default function SignUp() {
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleFormSubmit}>
           <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete='uname'
-                name='userName'
+                autoComplete='fname'
+                name='firstName'
                 variant='outlined'
                 required
                 fullWidth
-                id='userName'
-                label='User Name'
+                id='firstName'
+                label='First Name'
                 autoFocus
                 onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                 variant='outlined'
-                 required
-                 fullWidth
-                 id='userName'
-                 label='User Name'
-                 name='userName'
-                 autoComplete='userName'
-                 onChange={handleChange}
+                variant='outlined'
+                required
+                fullWidth
+                id='username'
+                label='User Name'
+                name='username'
+                autoComplete='uname'
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>

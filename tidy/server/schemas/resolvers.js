@@ -101,8 +101,8 @@ const resolvers = {
       parent,
       { firstName, lastName, username, email, password, role }
     ) => {
-      // console.log('Arrived at addUser route');
-      return await User.create({
+      console.log('Arrived at addUser route');
+      const data = await User.create({
         firstName,
         lastName,
         username: 'HL',
@@ -110,6 +110,7 @@ const resolvers = {
         password,
         role: 'programmer',
       });
+      console.log(data);
     },
     // * Successful mutation
     // removeUser: async (parent, user) => {

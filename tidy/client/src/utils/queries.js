@@ -83,21 +83,26 @@ export const QUERY_ME = gql`
 
 export const QUERY_TASKS = gql`
   query getTasks {
-    task {
+    tasks {
+      _id
+      date
       content
-      userId
+      username
     }
   }
 `;
-// export const QUERY_USERS = gql`
-//   query getUsers {
-//     users {
-//       _id
-//       firstName
-//       lastName
-//       userName
-//       email
-//       role
+
+// For testing
+// export const QUERY_TASKS = gql`
+//   query getTasks {
+//     tasks {
+//       content
+//       date
+//       userId {
+//         _id
+//         firstName
+//         lastName
+//       }
 //     }
 //   }
 // `;

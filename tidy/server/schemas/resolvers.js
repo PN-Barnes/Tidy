@@ -13,6 +13,11 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
+
+    // user: async (parent, { _id }) => {
+    //   return User.findOne({ _id });
+    // },
+
     // messages: async () => {
     //   return Message.find({});
     // },
@@ -29,10 +34,10 @@ const resolvers = {
     //   return Photo.findOne({ photo_id }).populate('owner');
     // },
     tasks: async () => {
-      return Task.find().populate('userId');
+      return Task.find();
     },
     task: async (parent, { task_id }) => {
-      return Task.findOne({ task_id }).populate('userId');
+      return Task.findOne({ task_id });
     },
     // workEvents: async () => {
     //   return workEvent.find().populate('attendees');

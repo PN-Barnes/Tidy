@@ -64,8 +64,8 @@ export const REMOVE_USER = gql`
 `;
 
 export const ADD_TASK = gql`
-  mutation addTask($content: String!, $date: String!, $userId: String!) {
-    addTask(content: $content, date: $date, userId: $userId) {
+  mutation addTask($content: String!, $date: String!, $username: String!) {
+    addTask(content: $content, date: $date, username: $username) {
       task {
         content
         date

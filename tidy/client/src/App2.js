@@ -24,6 +24,7 @@ import Team from './pages/team.js';
 import Todos from './pages/todos.js';
 import Weather from './pages/weather.js';
 import Nav from './components/Nav';
+import Dashboard from './pages/dashboard.js';
 import NoMatch from './pages/NoMatch';
 
 // import 'assets/scss/material-kit-react.scss?v=1.10.0';

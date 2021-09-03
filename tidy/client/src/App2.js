@@ -84,6 +84,7 @@ function App() {
             <Nav />
             <Switch>
               <Route exact path='/home' component={Home} />
+              <Route exact path='/dashboard' component={Dashboard} />
               <Route exact path='/calendar' component={Calendar} />
               <Route exact path='/contacts' component={Contacts} />
               <Route exact path='/events' component={Events} />

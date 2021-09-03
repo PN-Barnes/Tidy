@@ -37,17 +37,17 @@ const Landing = () => {
     <>
       {/* Header */}
       <CssBaseline />
-      <AppBar position="relative" backgroundColor="alert">
+      <AppBar position='relative' backgroundColor='alert'>
         <Toolbar>
           <Pages className={classes.icon} />
-          <Typography variant="h6">TIDY</Typography>
+          <Typography variant='h6'>TIDY</Typography>
 
           {/* Signup button */}
-          <Box mx="auto">
+          <Box mx='auto'>
             <Link
-              component="button"
-              color="textSecondary"
-              variant="h5"
+              component='button'
+              color='textSecondary'
+              variant='h5'
               onClick={() => {
                 console.info('SignUp Request button hit');
               }}
@@ -59,9 +59,9 @@ const Landing = () => {
           {/* Login button */}
           <Box>
             <Link
-              component="button"
-              color="textSecondary"
-              variant="h5"
+              component='button'
+              color='textSecondary'
+              variant='h5'
               onClick={() => {
                 console.info('LogIn Request button hit');
               }}
@@ -75,10 +75,10 @@ const Landing = () => {
       {/* Body */}
       <main>
         <div className={classes.container}>
-          <Container maxwidth="sm">
+          <Container maxwidth='sm'>
             {/* TIDY logo */}
-            <Paper elevation={0} align="center" marginTop="50px">
-              <img src="/logo.png" />
+            <Paper elevation={0} align='center' marginTop='50px'>
+              <img src='/logo.png' />
             </Paper>
 
             {/* Unused buttons */}
@@ -98,24 +98,24 @@ const Landing = () => {
               </div> */}
           </Container>
         </div>
-        <Container classname={classes.cardGrid} maxWidth="lg" align="center">
+        <Container classname={classes.cardGrid} maxWidth='lg' align='center'>
           <Grid container spacing={4}>
             {/* WEATHER CARD */}
             <Grid item>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image="https://source.unsplash.com/featured/?weather/320x180"
-                  title="image title"
+                  image='https://source.unsplash.com/featured/?weather/320x180'
+                  title='image title'
                 />
                 <CardContent className={classes.cardContent}>
-                  <Typography variant="h5" gutterBottom>
+                  <Typography variant='h5' gutterBottom>
                     Weather
                   </Typography>
                   <Typography>Weather preview</Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="sm" color="primary">
+                  <Button size='sm' color='primary'>
                     View
                   </Button>
                 </CardActions>
@@ -127,17 +127,17 @@ const Landing = () => {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image="https://source.unsplash.com/featured/?calendar/320x180"
-                  title="Calendar"
+                  image='https://source.unsplash.com/featured/?calendar/320x180'
+                  title='Calendar'
                 />
                 <CardContent className={classes.cardContent}>
-                  <Typography variant="h5" gutterBottom>
+                  <Typography variant='h5' gutterBottom>
                     Calendar
                   </Typography>
                   <Typography>Calendar preview</Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="sm" color="primary">
+                  <Button size='sm' color='primary'>
                     View
                   </Button>
                 </CardActions>
@@ -149,17 +149,17 @@ const Landing = () => {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image="https://source.unsplash.com/featured/?words/320x180"
-                  title="ToDo List"
+                  image='https://source.unsplash.com/featured/?words/320x180'
+                  title='ToDo List'
                 />
                 <CardContent className={classes.cardContent}>
-                  <Typography variant="h5" gutterBottom>
+                  <Typography variant='h5' gutterBottom>
                     ToDo's
                   </Typography>
                   <Typography>ToDos preview</Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="sm" color="primary">
+                  <Button size='sm' color='primary'>
                     View
                   </Button>
                 </CardActions>
@@ -171,17 +171,17 @@ const Landing = () => {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image="https://source.unsplash.com/featured/?team/320x180"
-                  title="Team"
+                  image='https://source.unsplash.com/featured/?team/320x180'
+                  title='Team'
                 />
                 <CardContent className={classes.cardContent}>
-                  <Typography variant="h5" gutterBottom>
+                  <Typography variant='h5' gutterBottom>
                     Team
                   </Typography>
                   <Typography>Team preview</Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="sm" color="primary">
+                  <Button size='sm' color='primary'>
                     View
                   </Button>
                 </CardActions>
@@ -191,9 +191,9 @@ const Landing = () => {
 
           {/* Welcome message */}
           <Typography
-            variant="h6"
-            align="center"
-            color="textSecondary"
+            variant='h6'
+            align='center'
+            color='textSecondary'
             paragraph
           >
             Welcome to your Dashboard! Here you can quickly and easily see an

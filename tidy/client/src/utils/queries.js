@@ -9,6 +9,18 @@ export const QUERY_CATEGORIES = gql`
   }
 `;
 
+export const QUERY_USERS = gql`
+  query getUsers {
+    users {
+      _id
+      firstName
+      lastName
+      username
+      email
+    }
+  }
+`;
+
 export const QUERY_EVENT = gql`
   query ($_id: ID!) {
     workEvent(id: $_id) {
@@ -49,20 +61,6 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_USERS = gql`
-  query {
-    users {
-      _id
-      firstName
-      lastName
-      username
-      email
-      password
-      role
-    }
-  }
-`;
-
 export const QUERY_ME = gql`
   query me {
     me {
@@ -73,14 +71,38 @@ export const QUERY_ME = gql`
         _id
         date
         content
-        attendees{
+        attendees {
           _id
           firstname
           lastname
-          
         }
-      }
       }
     }
   }
 `;
+
+export const QUERY_TASKS = gql`
+  query getTasks {
+    tasks {
+      _id
+      date
+      content
+      username
+    }
+  }
+`;
+
+// For testing
+// export const QUERY_TASKS = gql`
+//   query getTasks {
+//     tasks {
+//       content
+//       date
+//       userId {
+//         _id
+//         firstName
+//         lastName
+//       }
+//     }
+//   }
+// `;

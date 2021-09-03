@@ -23,10 +23,11 @@ import Tasks from './pages/tasks.js';
 import Team from './pages/team.js';
 import Todos from './pages/todos.js';
 import Weather from './pages/weather.js';
-import Nav from './components/Nav';
+import PolishNav from './components/PolishNav';
 import Dashboard from './pages/dashboard.js';
 import NoMatch from './pages/NoMatch';
 import Tests from './pages/testPage';
+
 
 // import 'assets/scss/material-kit-react.scss?v=1.10.0';
 
@@ -82,7 +83,7 @@ function App() {
       <Router>
         <div>
           <AccountProvider>
-            <Nav />
+            <PolishNav />
             <Switch>
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/calendar" component={Calendar} />

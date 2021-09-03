@@ -60,16 +60,15 @@ export default function SignUp() {
     password: '',
     role: '',
   });
-  const [AddUser, { error, data }] = useMutation(ADD_USER);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     console.log('arrived at handleFormSubmit function');
 
     event.preventDefault();
-
     console.log(formState);
     try {
-      const { data } = await AddUser({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
@@ -107,7 +106,7 @@ export default function SignUp() {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete='fname'
+                // autoComplete="uname"
                 name='firstName'
                 variant='outlined'
                 required
@@ -123,10 +122,10 @@ export default function SignUp() {
                 variant='outlined'
                 required
                 fullWidth
-                id='username'
-                label='User Name'
-                name='username'
-                autoComplete='uname'
+                id='lastName'
+                label='Last Name'
+                name='lastName'
+                autoComplete='lname'
                 onChange={handleChange}
               />
             </Grid>
@@ -135,13 +134,14 @@ export default function SignUp() {
                 variant='outlined'
                 required
                 fullWidth
-                id='lastName'
-                label='Last Name'
-                name='lastName'
-                autoComplete='lname'
+                id='username'
+                label='username'
+                name='username'
+                autoComplete='username'
                 onChange={handleChange}
               />
             </Grid>
+
             <Grid item xs={12}>
               <TextField
                 variant='outlined'
@@ -164,6 +164,18 @@ export default function SignUp() {
                 type='password'
                 id='password'
                 autoComplete='current-password'
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant='outlined'
+                required
+                fullWidth
+                name='role'
+                label='role'
+                type='text'
+                id='role'
                 onChange={handleChange}
               />
             </Grid>

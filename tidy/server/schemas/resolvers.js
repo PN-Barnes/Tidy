@@ -101,16 +101,16 @@ const resolvers = {
       parent,
       { firstName, lastName, username, email, password, role }
     ) => {
-      console.log('Arrived at addUser route');
-      const data = await User.create({
+      const user = await User.create({
         firstName,
         lastName,
-        username: 'HL',
+        username,
         email,
         password,
-        role: 'programmer',
+        role,
       });
-      console.log(data);
+      const token = signToken(user);
+      return { token, user };
     },
     // * Successful mutation
     // removeUser: async (parent, user) => {

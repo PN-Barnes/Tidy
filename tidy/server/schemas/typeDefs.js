@@ -69,6 +69,7 @@ const typeDefs = gql`
       lastName: String!
       email: String!
       password: String!
+      role: String!
     ): Auth
     removeUser(_id: ID!): User
     addTask(content: String, date: String, username: String!): Task

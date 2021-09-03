@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { AccountProvider } from './utils/GlobalState';
 import { setContext } from '@apollo/client/link/context';
-import { createBrowserHistory } from 'history';
+// import { createBrowserHistory } from 'history';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Calendar from './pages/calendar.js';
 import Contacts from './pages/contacts.js';

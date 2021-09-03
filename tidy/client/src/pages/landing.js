@@ -22,14 +22,6 @@ import { Pages } from '@material-ui/icons';
 // import styles
 import useStyles from './styles';
 
-// function Landing() {
-//   return (
-//     <div className="App">
-//       <Typography variant="h1">Welcome</Typography>
-//     </div>
-//   );
-// }
-
 const Landing = () => {
   const classes = useStyles();
 
@@ -78,7 +70,7 @@ const Landing = () => {
           <Container maxwidth='sm'>
             {/* TIDY logo */}
             <Paper elevation={0} align='center' marginTop='50px'>
-              <img src='/logo.png' />
+              <img src='/logo.png' alt='TIDY logo'/>
             </Paper>
 
             {/* Unused buttons */}

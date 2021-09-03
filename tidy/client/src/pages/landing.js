@@ -10,60 +10,25 @@ import {
   CardMedia,
   CssBaseline,
   Grid,
-  Link,
+  Link, // styling from Materil-UI
   Paper,
   Toolbar,
   Container,
 } from '@material-ui/core';
 
-// get Tools icon
-import { Pages } from '@material-ui/icons';
+
 
 // import styles
 import useStyles from './styles';
+
+
 
 const Landing = () => {
   const classes = useStyles();
 
   return (
     <>
-      {/* Header */}
-      <CssBaseline />
-      <AppBar position='relative' backgroundColor='alert'>
-        <Toolbar>
-          <Pages className={classes.icon} />
-          <Typography variant='h6'>TIDY</Typography>
-
-          {/* Signup button */}
-          <Box mx='auto'>
-            <Link
-              component='button'
-              color='textSecondary'
-              variant='h5'
-              onClick={() => {
-                console.info('SignUp Request button hit');
-              }}
-            >
-              SignUp
-            </Link>
-          </Box>
-
-          {/* Login button */}
-          <Box>
-            <Link
-              component='button'
-              color='textSecondary'
-              variant='h5'
-              onClick={() => {
-                console.info('LogIn Request button hit');
-              }}
-            >
-              LogIn
-            </Link>
-          </Box>
-        </Toolbar>
-      </AppBar>
-
+    <CssBaseline />
       {/* Body */}
       <main>
         <div className={classes.container}>
@@ -72,22 +37,6 @@ const Landing = () => {
             <Paper elevation={0} align='center' marginTop='50px'>
               <img src='/logo.png' alt='TIDY logo'/>
             </Paper>
-
-            {/* Unused buttons */}
-            {/* <div className={classes.button}>
-                <Grid container spacing={2} justify="center">
-                  <Grid item>
-                    <Button variant="contained" color="primary">
-                      See tools
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button variant="outlined" color="primary">
-                      Second
-                    </Button>
-                  </Grid>
-                </Grid>
-              </div> */}
           </Container>
         </div>
         <Container classname={classes.cardGrid} maxWidth='lg' align='center'>

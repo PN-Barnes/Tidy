@@ -1,15 +1,36 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import {
+  Typography,
+  AppBar,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  CssBaseline,
+  Grid,
+  Link,
+  Paper,
+  Toolbar,
+  Container,
+} from '@material-ui/core';
 
-function Landing() {
-  return (
-    <div className='App'>
-      <Typography variant='h1'>Welcome</Typography>
-    </div>
-  );
-}
+// get Tools icon
+import { Pages } from '@material-ui/icons';
 
-const App = () => {
+// import styles
+import useStyles from './styles';
+
+// function Landing() {
+//   return (
+//     <div className="App">
+//       <Typography variant="h1">Welcome</Typography>
+//     </div>
+//   );
+// }
+
+const Landing = () => {
   const classes = useStyles();
 
   return (

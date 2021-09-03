@@ -25,7 +25,7 @@ import Team from 'pages/team.js';
 import Todos from 'pages/todos.js';
 import Weather from 'pages/weather.js';
 
-import 'assets/scss/material-kit-react.scss?v=1.10.0';
+// import 'assets/scss/material-kit-react.scss?v=1.10.0';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   Typography,
@@ -326,11 +326,7 @@ function App() {
                 path='tidy/client/src/pages/events.js'
                 component={Events}
               />
-              <Route
-                exact
-                path='tidy/client/src/pages/landing.js'
-                component={Landing}
-              />
+              <Route exact path='/' component={Landing} />
               <Route
                 exact
                 path='tidy/client/src/pages/photos.js'

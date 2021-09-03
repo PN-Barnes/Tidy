@@ -32,7 +32,7 @@ export const QUERY_EVENT = gql`
 `;
 
 export const QUERY_EVENTS = gql`
-  query getEvents {
+  query {
     workEvents {
       _id
       date

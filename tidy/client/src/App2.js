@@ -26,7 +26,7 @@ import Weather from './pages/weather.js';
 import Nav from './components/Nav';
 import Dashboard from './pages/dashboard.js';
 import NoMatch from './pages/NoMatch';
-import tests from './pages/testPage';
+import Tests from './pages/testPage';
 
 // import 'assets/scss/material-kit-react.scss?v=1.10.0';
 
@@ -95,7 +95,7 @@ function App() {
               <Route exact path="/signin" component={SignIn} />
               <Route exact path="/signup" component={SignUp} />
               <Route exact path="/tasks" component={Tasks} />
-              <Route exact path="/tests" component={tests} />
+              <Route exact path="/tests" component={Tests} />
               <Route exact path="/weather" component={Weather} />
               <Route exact path="/" component={Landing} />
               <Route component={NoMatch} />

@@ -26,6 +26,7 @@ import Weather from './pages/weather.js';
 import Nav from './components/Nav';
 import Dashboard from './pages/dashboard.js';
 import NoMatch from './pages/NoMatch';
+import Tests from './pages/testPage';
 
 // import 'assets/scss/material-kit-react.scss?v=1.10.0';
 
@@ -83,20 +84,20 @@ function App() {
           <AccountProvider>
             <Nav />
             <Switch>
-              <Route exact path='/home' component={Home} />
-              <Route exact path='/dashboard' component={Dashboard} />
-              <Route exact path='/calendar' component={Calendar} />
-              <Route exact path='/contacts' component={Contacts} />
-              <Route exact path='/events' component={Events} />
-              <Route exact path='/photos' component={Photos} />
-              <Route exact path='/profile' component={Profile} />
-              <Route exact path='/team' component={Team} />
-              <Route exact path='/todos' component={Todos} />
-              <Route exact path='/signin' component={SignIn} />
-              <Route exact path='/signup' component={SignUp} />
-              <Route exact path='/tasks' component={Tasks} />
-              <Route exact path='/weather' component={Weather} />
-              <Route exact path='/' component={Landing} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/calendar" component={Calendar} />
+              <Route exact path="/contacts" component={Contacts} />
+              <Route exact path="/events" component={Events} />
+              <Route exact path="/photos" component={Photos} />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/team" component={Team} />
+              <Route exact path="/todos" component={Todos} />
+              <Route exact path="/signin" component={SignIn} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/tasks" component={Tasks} />
+              <Route exact path="/tests" component={Tests} />
+              <Route exact path="/weather" component={Weather} />
+              <Route exact path="/" component={Landing} />
               <Route component={NoMatch} />
             </Switch>
           </AccountProvider>

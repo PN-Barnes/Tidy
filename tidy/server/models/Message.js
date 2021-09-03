@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
-const messageSchema = new schema({
+const messageSchema = new Schema({
   date: {
     type: Date,
     default: Date.now,

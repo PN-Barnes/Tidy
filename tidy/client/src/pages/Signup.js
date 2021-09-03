@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,11 +13,15 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
+import { ADD_USER } from '../utils/mutations';
+
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant='body2' color='textSecondary' align='center'>
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color='inherit' href='https://material-ui.com/'>
         Tidy
       </Link>{' '}
       {new Date().getFullYear()}
@@ -48,84 +52,111 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component='h1' variant='h5'>
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleFormSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
+                autoComplete='fname'
+                name='firstName'
+                variant='outlined'
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id='firstName'
+                label='First Name'
                 autoFocus
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                id='lastName'
+                label='Last Name'
+                name='lastName'
+                autoComplete='lname'
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id='email'
+                label='Email Address'
+                name='email'
+                autoComplete='email'
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                name='password'
+                label='Password'
+                type='password'
+                id='password'
+                autoComplete='current-password'
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                control={<Checkbox value='allowExtraEmails' color='primary' />}
+                label='I want to receive inspiration, marketing promotions and updates via email.'
               />
             </Grid>
           </Grid>
           <Button
-            type="submit"
+            type='submit'
             fullWidth
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             className={classes.submit}
           >
             Sign Up
           </Button>
-          <Grid container justifyContent="flex-end">
+          <Grid container justifyContent='flex-end'>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href='#' variant='body2'>
                 Already have an account? Sign in
               </Link>
             </Grid>

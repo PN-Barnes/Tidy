@@ -13,6 +13,37 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
+
+    // user: async (parent, { _id }) => {
+    //   return User.findOne({ _id });
+    // },
+
+    // messages: async () => {
+    //   return Message.find({});
+    // },
+    // message: async (parent, { message_id }) => {
+    //   return Message.findOne({ message_id }).populate(
+    //     'sender_id',
+    //     'receiver_id'
+    //   );
+    // },
+    // photos: async () => {
+    //   return Photo.find().populate('owner');
+    // },
+    // photo: async (parent, { photo_id }) => {
+    //   return Photo.findOne({ photo_id }).populate('owner');
+    // },
+    tasks: async () => {
+      return Task.find();
+    },
+    task: async (parent, { task_id }) => {
+      return Task.findOne({ task_id });
+    },
+    // workEvents: async () => {
+    //   return workEvent.find().populate('attendees');
+    // },
+    // workEvent: async (parent, { event_id }) => {
+    //   return workEvent.findOne({ event_id }).populate('attendees');
     // messages: async () => {
     //   return Message.find().populate('sender_id', 'receiver_id');
     // },
@@ -66,23 +97,23 @@ const resolvers = {
       return { token, user };
     },
     // *Successful mutation
-    addUser: async (
-      parent,
-      { firstName, lastName, username, email, password, role }
-    ) => {
-      return await User.create({
-        firstName,
-        lastName,
-        username,
-        email,
-        password,
-        role,
-      });
-    },
+    // addUser: async (
+    //   parent,
+    //   { firstName, lastName, username, email, password, role }
+    // ) => {
+    //   return await User.create({
+    //     firstName,
+    //     lastName,
+    //     username,
+    //     email,
+    //     password,
+    //     role,
+    //   });
+    // },
     // * Successful mutation
-    removeUser: async (parent, user) => {
-      return await User.findOneAndDelete({ _id: user });
-    },
+    // removeUser: async (parent, user) => {
+    //   return await User.findOneAndDelete({ _id: user });
+    // },
     // // Can be further changed to specifically change userName or email or password
     // updateUser: async (parent, { userName, email, password }) => {
     //   return await User.findOneAndUpdate(
@@ -91,13 +122,13 @@ const resolvers = {
     //     { password: password }
     //   );
     // },
-    // addTask: async (parent, { content, date, userId }) => {
-    //   return await Task.create({
-    //     content,
-    //     date,
-    //     userId,
-    //   });
-    // },
+    addTask: async (parent, { content, date, userId }) => {
+      return await Task.create({
+        content,
+        date,
+        userId,
+      });
+    },
     // // Can be further changed to specifically change content or date or userId
     // updateTask: async (parent, { newContent, newDate, newUser }) => {
     //   return await Task.findOneAndUpdate(
@@ -128,17 +159,17 @@ const resolvers = {
     //   });
     // },
     // * Successful mutation
-    addEvent: async (parent, { date, content, attendees }) => {
-      return await workEvent.create({
-        date,
-        content,
-        attendees,
-      });
-    },
+    // addEvent: async (parent, { date, content, attendees }) => {
+    //   return await workEvent.create({
+    //     date,
+    //     content,
+    //     attendees,
+    //   });
+    // },
     // * Successful mutation
-    removeEvent: async (parent, event) => {
-      return await workEvent.findOneAndDelete({ _id: event });
-    },
+    // removeEvent: async (parent, event) => {
+    //   return await workEvent.findOneAndDelete({ _id: event });
+    // },
     // // Can be further changed to specifically change content or attendees
     // updateWorkEvent: async (parent, { newContent, updatedAttendees }) => {
     //   return await workEvent.findOneAndUpdate(

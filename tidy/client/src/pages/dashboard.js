@@ -71,7 +71,7 @@ export default function Album() {
         <Toolbar>
           <CameraIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
-            Album layout
+            Dashboard
           </Typography>
         </Toolbar>
       </AppBar>

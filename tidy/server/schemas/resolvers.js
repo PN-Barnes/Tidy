@@ -97,19 +97,21 @@ const resolvers = {
       return { token, user };
     },
     // *Successful mutation
-    // addUser: async (
-    //   parent,
-    //   { firstName, lastName, username, email, password, role }
-    // ) => {
-    //   return await User.create({
-    //     firstName,
-    //     lastName,
-    //     username,
-    //     email,
-    //     password,
-    //     role,
-    //   });
-    // },
+    addUser: async (
+      parent,
+      { firstName, lastName, username, email, password, role }
+    ) => {
+      const user = await User.create({
+        firstName,
+        lastName,
+        username,
+        email,
+        password,
+        role,
+      });
+      const token = signToken(user);
+      return { token, user };
+    },
     // * Successful mutation
     // removeUser: async (parent, user) => {
     //   return await User.findOneAndDelete({ _id: user });

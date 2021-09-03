@@ -20,12 +20,7 @@ const EventList = ({ events, title }) => {
                 <h6 className="card-header bg-dark text-light p-2 m-0">
                   {event.content} <br />
                 </h6>
-                {events.attendees.map((attendee) => (
-                  <Link
-                    className="btn btn-block btn-squared btn-light text-dark"
-                    to={`/events/${event._id}`}
-                  ></Link>
-                ))}
+                <li></li>
               </div>
             </div>
           ))}

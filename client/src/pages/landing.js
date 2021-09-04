@@ -30,13 +30,13 @@ const Landing = () => {
         <div className={classes.container}>
           <Container maxwidth="sm">
             {/* TIDY logo */}
-            <Paper elevation={0} align="center" marginTop="50px">
+            <Paper elevation={0} align="center" margin="50px">
               <img src="/logo.png" alt="TIDY logo" />
             </Paper>
           </Container>
         </div>
-        <Container classname={classes.cardGrid} maxWidth="lg" align="center">
-          <Grid container spacing={4}>
+        <Container classname={classes.cardGrid} maxWidth="lg" align="center" padding="10px">
+          <Grid container spacing={4} align="center">
             {/* WEATHER CARD */}
             <Grid item>
               <Card className={classes.card}>
@@ -219,7 +219,7 @@ const Landing = () => {
                 <CardMedia
                   className={classes.cardMedia}
                   image="https://source.unsplash.com/featured/?dashboard/320x180"
-                  title="Team"
+                  title="Dashboard"
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography variant="h5" gutterBottom>

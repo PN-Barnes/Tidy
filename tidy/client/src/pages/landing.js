@@ -41,6 +41,7 @@ const Landing = () => {
         </div>
         <Container classname={classes.cardGrid} maxWidth='lg' align='center'>
           <Grid container spacing={4}>
+
             {/* WEATHER CARD */}
             <Grid item>
               <Card className={classes.card}>
@@ -129,6 +130,116 @@ const Landing = () => {
               </Card>
             </Grid>
           </Grid>
+
+            {/* PROFILE CARD */}
+            <Grid item>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image='https://source.unsplash.com/featured/?profile/320x180'
+                  title='Profile'
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography variant='h5' gutterBottom>
+                    Profile
+                  </Typography>
+                  <Typography>My Profile</Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size='sm' color='primary'>
+                    View
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+
+            {/* CONTACTS CARD */}
+            <Grid item>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image='https://source.unsplash.com/featured/?contacts/320x180'
+                  title='Contacts'
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography variant='h5' gutterBottom>
+                    Contacts
+                  </Typography>
+                  <Typography>Team preview</Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size='sm' color='primary'>
+                    View
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+
+            {/* PHOTOS CARD */}
+            <Grid item>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image='https://source.unsplash.com/featured/?photos/320x180'
+                  title='Photos'
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography variant='h5' gutterBottom>
+                    Photos
+                  </Typography>
+                  <Typography>Team preview</Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size='sm' color='primary'>
+                    View
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+
+            {/* WORK EVENTS CARD */}
+            <Grid item>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image='https://source.unsplash.com/featured/?work/320x180'
+                  title='Work Events'
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography variant='h5' gutterBottom>
+                    Work Events
+                  </Typography>
+                  <Typography>Team preview</Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size='sm' color='primary'>
+                    View
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+
+            {/* DASHBOARD CARD */}
+            <Grid item>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image='https://source.unsplash.com/featured/?dashboard/320x180'
+                  title='Team'
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography variant='h5' gutterBottom>
+                    Dashboard
+                  </Typography>
+                  <Typography>Team preview</Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size='sm' color='primary'>
+                    View
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
 
           {/* Welcome message */}
           <Typography

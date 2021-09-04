@@ -52,7 +52,7 @@ const EventList = ({ events, title }) => {
                   <ListItemIcon>
                     <FolderIcon />
                   </ListItemIcon>
-                  <ListItemText
+                  <ListItemText primary="Starred"
                     primary="Placeholder information about the card.  Here we will serve up the description of the event so users can read about what the event is all about.  For exampe, details about the event location, organizers, and general details that describe the event more fully, so attendees can best know what to expect."                  
                   />
                 </ListItem>

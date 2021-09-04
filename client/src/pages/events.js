@@ -52,7 +52,7 @@ const Events = () => {
           ) : (
             <EventList
               events={events}
-              title="Here's the current roster of friends..."
+              title="Here's your current roster of events:"
             />
           )}
         </div>

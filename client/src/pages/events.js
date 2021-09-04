@@ -42,6 +42,7 @@ const Events = () => {
 
   const events = data?.workEvents || [];
   console.log(events);
+  console.log(events);
 
   return (
     <main>

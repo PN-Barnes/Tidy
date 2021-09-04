@@ -55,15 +55,16 @@ const PolishNav = function () {
 
           {/* Login button */}
           <Box>
-            <Link
-              component="button"
+          <Link
+              to="/signin"
+              component={RouterLink}
               color="textSecondary"
               variant="h5"
               onClick={() => {
-                console.info("LogIn Request button hit");
+                console.info("Login Request button hit");
               }}
             >
-              LogIn
+              Sign In
             </Link>
           </Box>
         </Toolbar>

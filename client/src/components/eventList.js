@@ -20,7 +20,7 @@ const EventList = ({ events, title }) => {
                 <h6 className="card-header bg-dark text-light p-2 m-0">
                   {event.content} <br />
                 </h6>
-                <li></li>
+                <ul></ul>
               </div>
             </div>
           ))}

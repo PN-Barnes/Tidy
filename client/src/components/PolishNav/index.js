@@ -32,7 +32,7 @@ const PolishNav = function () {
             color="textSecondary"
             variant="h5"
             onClick={() => {
-              console.info("Gome Request button hit");
+              console.info("Home Request button hit");
             }}
           >
             <Typography variant="h6">TIDY</Typography>
@@ -49,7 +49,7 @@ const PolishNav = function () {
                 console.info("SignUp Request button hit");
               }}
             >
-              SignUp
+              Sign Up
             </Link>
           </Box>
 

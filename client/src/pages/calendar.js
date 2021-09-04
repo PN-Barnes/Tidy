@@ -4,11 +4,12 @@ import Calendar from '../components/calendar';
 function CalendarPage() {
   return (
     <>
-    <Typography variant="h1"></Typography>
-      <h1>Calendar</h1>
+    {/* <Typography variant="h1"></Typography> */}
+    <Typography variant='h1'>Calendar</Typography>
       <div className="App">
         <Calendar />
-        </Typography>
+        {/* </Typography> */}
+        
       </div>
     </>
   );

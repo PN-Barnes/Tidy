@@ -9,6 +9,12 @@ const typeDefs = gql`
     receiver_id: User
   }
 
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+  }
+
   type Photo {
     _id: ID
     url_link: String
@@ -61,6 +67,7 @@ const typeDefs = gql`
     photos: [Photo]
     photo(_id: ID!): [Photo]
     me: User
+    file: String!
   }
 
   type Mutation {
@@ -77,6 +84,7 @@ const typeDefs = gql`
     addEvent(date: String!, content: String!, attendees: [String]!): workEvent
     removeEvent(_id: ID!): workEvent
     login(email: String!, password: String!): Auth
+    fileUpload(file: Upload!): File!
   }
 `;
 

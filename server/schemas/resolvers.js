@@ -113,9 +113,9 @@ const resolvers = {
       return { token, user };
     },
     // * Successful mutation
-    // removeUser: async (parent, user) => {
-    //   return await User.findOneAndDelete({ _id: user });
-    // },
+    removeUser: async (parent, user) => {
+      return await User.findOneAndDelete({ _id: user });
+    },
     // // Can be further changed to specifically change userName or email or password
     // updateUser: async (parent, { userName, email, password }) => {
     //   return await User.findOneAndUpdate(
@@ -161,23 +161,29 @@ const resolvers = {
     //   });
     // },
     // * Successful mutation
-    // addEvent: async (parent, { date, content, attendees }) => {
-    //   return await workEvent.create({
-    //     date,
-    //     content,
-    //     attendees,
-    //   });
-    // },
+    addEvent: async (parent, { date, content, attendees }) => {
+      return await workEvent.create({
+        date,
+        content,
+        attendees,
+      });
+    },
     // * Successful mutation
-    // removeEvent: async (parent, event) => {
-    //   return await workEvent.findOneAndDelete({ _id: event });
-    // },
+    removeEvent: async (parent, event) => {
+      return await workEvent.findOneAndDelete({ _id: event });
+    },
     // // Can be further changed to specifically change content or attendees
     // updateWorkEvent: async (parent, { newContent, updatedAttendees }) => {
     //   return await workEvent.findOneAndUpdate(
     //     { content: newContent },
     //     { attendees: updatedAttendees }
     //   );
+    // },
+    // fileUpload: async (parent, { file }) => {
+    //   const { createReadStream, filename, mimetype, encoding } = await file;
+    //   const stream = createReadStream()
+
+    //   const out = require
     // },
   },
 };

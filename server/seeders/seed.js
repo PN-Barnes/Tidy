@@ -8,8 +8,6 @@ db.once('open', async () => {
   try {
     // await User.deleteMany({});
 
-    await User.create(userSeeds);
-    await Task.create(taskSeeds);
     await User.deleteMany({});
     const users = await User.create(userSeeds);
 

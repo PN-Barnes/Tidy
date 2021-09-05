@@ -9,7 +9,7 @@ function Tasks() {
 
   console.log(data);
 
-  const tasks = data.tasks;
+  const tasks = data?.tasks || [];
 
   return (
     <div className='App'>

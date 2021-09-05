@@ -4,9 +4,14 @@ import Calendar from '../components/calendar';
 function CalendarPage() {
   return (
     <>
-      <h1>Calendar</h1>
+    {/* <Typography variant="h1"></Typography> */}
+    <Typography variant='h1'>
+      Calendar
+      </Typography>
       <div className="App">
         <Calendar />
+        {/* </Typography> */}
+        
       </div>
     </>
   );

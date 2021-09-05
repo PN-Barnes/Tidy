@@ -16,6 +16,8 @@ import {
   Container,
 } from "@material-ui/core";
 
+import { Link as RouterLink } from "react-router-dom"; // routing link
+
 // import styles
 import useStyles from "./styles";
 
@@ -30,13 +32,13 @@ const Landing = () => {
         <div className={classes.container}>
           <Container maxwidth="sm">
             {/* TIDY logo */}
-            <Paper elevation={0} align="center" marginTop="50px">
+            <Paper elevation={0} align="center" margin="50px">
               <img src="/logo.png" alt="TIDY logo" />
             </Paper>
           </Container>
         </div>
-        <Container classname={classes.cardGrid} maxWidth="lg" align="center">
-          <Grid container spacing={4}>
+        <Container classname={classes.cardGrid} maxWidth="lg" align="center" padding="10px">
+          <Grid container spacing={4} align="center">
             {/* WEATHER CARD */}
             <Grid item>
               <Card className={classes.card}>
@@ -53,7 +55,17 @@ const Landing = () => {
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
-                    View
+                  <Link
+                  to="/weather"
+                  component={RouterLink}
+                  color="textSecondary"
+                  variant="h5"
+                  onClick={() => {
+                  console.info("Weather Request button hit");
+            }}
+          >
+            <Typography variant="h6">VIEW</Typography>
+          </Link>
                   </Button>
                 </CardActions>
               </Card>
@@ -75,7 +87,17 @@ const Landing = () => {
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
-                    View
+                  <Link
+                  to="/calendar"
+                  component={RouterLink}
+                  color="textSecondary"
+                  variant="h5"
+                  onClick={() => {
+                  console.info("Home Request button hit");
+               }}
+          >
+            <Typography variant="h6">VIEW</Typography>
+          </Link>
                   </Button>
                 </CardActions>
               </Card>
@@ -97,7 +119,17 @@ const Landing = () => {
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
-                    View
+                  <Link
+                  to="/todos"
+                  component={RouterLink}
+                  color="textSecondary"
+                  variant="h5"
+                  onClick={() => {
+                    console.info("Home Request button hit");
+                  }}
+          >
+            <Typography variant="h6">VIEW</Typography>
+          </Link>
                   </Button>
                 </CardActions>
               </Card>
@@ -119,7 +151,17 @@ const Landing = () => {
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
-                    View
+                  <Link
+                  to="/team"
+                  component={RouterLink}
+                  color="textSecondary"
+                  variant="h5"
+                  onClick={() => {
+                    console.info("Home Request button hit");
+                  }}
+          >
+            <Typography variant="h6">VIEW</Typography>
+          </Link>
                   </Button>
                 </CardActions>
               </Card>
@@ -141,7 +183,17 @@ const Landing = () => {
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
-                    View
+                  <Link
+                  to="/profile"
+                  component={RouterLink}
+                  color="textSecondary"
+                  variant="h5"
+                  onClick={() => {
+                    console.info("Home Request button hit");
+                  }}
+          >
+            <Typography variant="h6">VIEW</Typography>
+          </Link>
                   </Button>
                 </CardActions>
               </Card>
@@ -163,7 +215,17 @@ const Landing = () => {
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
-                    View
+                  <Link
+                  to="/contacts"
+                  component={RouterLink}
+                  color="textSecondary"
+                  variant="h5"
+                  onClick={() => {
+                    console.info("Home Request button hit");
+                  }}
+          >
+            <Typography variant="h6">VIEW</Typography>
+          </Link>
                   </Button>
                 </CardActions>
               </Card>
@@ -185,7 +247,17 @@ const Landing = () => {
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
-                    View
+                  <Link
+                  to="/photos"
+                  component={RouterLink}
+                  color="textSecondary"
+                  variant="h5"
+                  onClick={() => {
+                    console.info("Home Request button hit");
+                  }}
+          >
+            <Typography variant="h6">VIEW</Typography>
+          </Link>
                   </Button>
                 </CardActions>
               </Card>
@@ -207,7 +279,17 @@ const Landing = () => {
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
-                    View
+                  <Link
+                  to="/events"
+                  component={RouterLink}
+                  color="textSecondary"
+                  variant="h5"
+                  onClick={() => {
+                    console.info("Home Request button hit");
+                }}
+          >
+            <Typography variant="h6">VIEW</Typography>
+          </Link>
                   </Button>
                 </CardActions>
               </Card>
@@ -219,7 +301,7 @@ const Landing = () => {
                 <CardMedia
                   className={classes.cardMedia}
                   image="https://source.unsplash.com/featured/?dashboard/320x180"
-                  title="Team"
+                  title="Dashboard"
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography variant="h5" gutterBottom>

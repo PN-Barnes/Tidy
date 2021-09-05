@@ -10,7 +10,7 @@ import { AccountProvider } from './utils/GlobalState';
 import { setContext } from '@apollo/client/link/context';
 // import { createBrowserHistory } from 'history';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Calendar from './pages/calendar.js';
+import CalendarPage from './pages/calendar.js';
 import Contacts from './pages/contacts.js';
 import Events from './pages/events.js';
 import Home from './pages/Home.js';
@@ -27,7 +27,6 @@ import PolishNav from './components/PolishNav';
 import Dashboard from './pages/dashboard.js';
 import NoMatch from './pages/NoMatch';
 import Tests from './pages/testPage';
-
 
 // import 'assets/scss/material-kit-react.scss?v=1.10.0';
 
@@ -86,7 +85,7 @@ function App() {
             <PolishNav />
             <Switch>
               <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/calendar" component={Calendar} />
+              {/* <Route exact path="/calendar" component={Calendar} /> */}
               <Route exact path="/contacts" component={Contacts} />
               <Route exact path="/events" component={Events} />
               <Route exact path="/photos" component={Photos} />
@@ -98,6 +97,7 @@ function App() {
               <Route exact path="/tasks" component={Tasks} />
               <Route exact path="/tests" component={Tests} />
               <Route exact path="/weather" component={Weather} />
+              <Route exact path="/calendar" component={CalendarPage} />
               <Route exact path="/" component={Landing} />
               <Route component={NoMatch} />
             </Switch>

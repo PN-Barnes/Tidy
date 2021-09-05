@@ -13,12 +13,12 @@ function ToDos() {
   console.log(useParams());
 
   const { loading, data } = useQuery(useParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: 'HLin' },
-    credentials: 'include',
+    variables: { username: useParam },
   });
 
   const user = data?.me || data?.user || {};
 
+  // Successfully logs user data from database
   console.log('user', user);
 
   return (

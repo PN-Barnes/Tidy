@@ -69,11 +69,9 @@ const resolvers = {
       return workEvent.findOne({ _id: id }).populate('attendees');
     },
     me: async (parent, args, context) => {
-      console.log('Arrived at get me route');
+      // console.log('Arrived at get me route');
 
-      // console.log('context', context);
-
-      console.log('context.user', context.user);
+      // console.log('context.user', context.user);
 
       if (context.user) {
         // return user.findOne({ _id: context.user._id }).populate('');

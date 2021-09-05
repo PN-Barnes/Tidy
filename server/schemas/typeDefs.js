@@ -76,6 +76,7 @@ const typeDefs = gql`
     addUser(
       firstName: String!
       lastName: String!
+      username: String!
       email: String!
       password: String!
       role: String!

@@ -10,10 +10,11 @@ export const StyleWrapper = styled.div`
   .fc {
     background-image: 
       radial-gradient(rgba(0, 255, 0, 0.4),
-      rgba(0, 20, 0, 0.8)),
+      rgba(0, 20, 0, 0.7)),
       url("../../logo1920_42.png");
       background-repeat: no-repeat;
       background-size: 100%;
+      background-color: rgba(0, 100, 50, 0.5);
   },
 
   .fc .fc-col-header-cell-cushion {
@@ -22,7 +23,7 @@ export const StyleWrapper = styled.div`
     padding-bottom: 2px;
     font-size: 1.4em;
     text-align: center;
-    border: 2px solid green;
+    border: 2px solid rgba(100, 200, 150, 0.5);
     border-radius: 12px;
   }
 `

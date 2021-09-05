@@ -279,7 +279,17 @@ const Landing = () => {
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
-                    View
+                  <Link
+                  to="/events"
+                  component={RouterLink}
+                  color="textSecondary"
+                  variant="h5"
+                  onClick={() => {
+                    console.info("Home Request button hit");
+                }}
+          >
+            <Typography variant="h6">VIEW</Typography>
+          </Link>
                   </Button>
                 </CardActions>
               </Card>

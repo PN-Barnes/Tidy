@@ -6,7 +6,9 @@ const typeDefs = gql`
     date: String
     content: String
     sender_id: User
+    sender_username: String
     receiver_id: User
+    receiver_username: String
   }
 
   type Photo {

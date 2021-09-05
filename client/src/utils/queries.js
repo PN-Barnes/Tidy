@@ -92,17 +92,29 @@ export const QUERY_TASKS = gql`
   }
 `;
 
-// For testing
-// export const QUERY_TASKS = gql`
-//   query getTasks {
-//     tasks {
-//       content
-//       date
-//       userId {
-//         _id
-//         firstName
-//         lastName
-//       }
+export const QUERY_MESSAGES = gql`
+  query messages {
+    messages {
+      date
+      content
+      sender_id {
+        _id
+      }
+      sender_username
+      receiver_id {
+        _id
+      }
+      receiver_username
+    }
+  }
+`;
+
+// export const QUERY_PHOTOS = gql`
+//   query photos {
+//     photos {
+//       url_link
+//       description
+//       owner
 //     }
 //   }
 // `;

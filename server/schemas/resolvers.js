@@ -14,25 +14,21 @@ const resolvers = {
       return User.findOne({ username });
     },
 
-    // user: async (parent, { _id }) => {
-    //   return User.findOne({ _id });
-    // },
-
-    // messages: async () => {
-    //   return Message.find({});
-    // },
-    // message: async (parent, { message_id }) => {
-    //   return Message.findOne({ message_id }).populate(
-    //     'sender_id',
-    //     'receiver_id'
-    //   );
-    // },
-    // photos: async () => {
-    //   return Photo.find().populate('owner');
-    // },
-    // photo: async (parent, { photo_id }) => {
-    //   return Photo.findOne({ photo_id }).populate('owner');
-    // },
+    messages: async () => {
+      return Message.find();
+    },
+    message: async (parent, { message_id }) => {
+      return Message.findOne({ message_id }).populate(
+        'sender_id',
+        'receiver_id'
+      );
+    },
+    photos: async () => {
+      return Photo.find().populate('owner');
+    },
+    photo: async (parent, { photo_id }) => {
+      return Photo.findOne({ photo_id }).populate('owner');
+    },
     tasks: async () => {
       return Task.find();
     },
@@ -59,12 +55,7 @@ const resolvers = {
     // photo: async (parent, { photo_id }) => {
     //   return Photo.findOne({ photo_id }).populate('owner');
     // },
-    // tasks: async () => {
-    //   return Task.find().populate('userId');
-    // },
-    // task: async (parent, { task_id }) => {
-    //   return Task.findOne({ task_id }).populate('userId');
-    // },
+
     workEvents: async () => {
       return workEvent.find().populate('attendees');
     },

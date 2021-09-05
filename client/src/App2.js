@@ -94,6 +94,7 @@ function App() {
               <Route exact path="/todos" component={Todos} />
               <Route exact path="/signin" component={SignIn} />
               <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/signout" component={SignIn} />
               <Route exact path="/tasks" component={Tasks} />
               <Route exact path="/tests" component={Tests} />
               <Route exact path="/weather" component={Weather} />

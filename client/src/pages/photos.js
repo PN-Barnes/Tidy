@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import Draggable from "react-draggable";
+
 
 function Copyright() {
   return (
@@ -106,6 +108,7 @@ export default function Album() {
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
+                <Draggable>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
@@ -129,6 +132,7 @@ export default function Album() {
                     </Button>
                   </CardActions>
                 </Card>
+                </Draggable>
               </Grid>
             ))}
           </Grid>

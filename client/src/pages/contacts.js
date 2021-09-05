@@ -2,14 +2,15 @@ import React from 'react';
 import { Typography } from '@material-ui/core';
 
 import { useQuery } from '@apollo/client';
-import { QUERY_MESSAGES } from '../utils/queries';
+import { QUERY_MESSAGES, QUERY_USER } from '../utils/queries';
 
 function Contacts() {
   const { loading, data } = useQuery(QUERY_MESSAGES);
 
+  console.log(data);
+
   const messages = data?.messages || [];
 
-  console.log(messages);
   return (
     <div className='App'>
       <Typography variant='h1'>Contacts</Typography>

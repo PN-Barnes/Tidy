@@ -15,7 +15,7 @@ const resolvers = {
     },
 
     messages: async () => {
-      return Message.find();
+      return await Message.find();
     },
     message: async (parent, { message_id }) => {
       return Message.findOne({ message_id }).populate(
@@ -63,6 +63,10 @@ const resolvers = {
       return workEvent.findOne({ _id: id }).populate('attendees');
     },
     me: async (parent, args, context) => {
+      console.log('Arrived at get me route');
+
+      console.log('context', context);
+
       if (context.user) {
         return user.findOne({ _id: context.user._id }).populate('');
       }

@@ -71,11 +71,6 @@ export const QUERY_ME = gql`
         _id
         date
         content
-        attendees {
-          _id
-          firstname
-          lastname
-        }
       }
     }
   }

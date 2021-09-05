@@ -14,6 +14,12 @@ const resolvers = {
       return User.findOne({ username });
     },
 
+    // For testing
+    // Querying user by id works
+    // user: async (parent, { _id }) => {
+    //   return User.findOne({ _id });
+    // },
+
     messages: async () => {
       return await Message.find();
     },
@@ -65,10 +71,18 @@ const resolvers = {
     me: async (parent, args, context) => {
       console.log('Arrived at get me route');
 
-      console.log('context', context);
+      // console.log('context', context);
+
+      console.log('context.user', context.user);
 
       if (context.user) {
-        return user.findOne({ _id: context.user._id }).populate('');
+        // return user.findOne({ _id: context.user._id }).populate('');
+        const userData = User.findOne({
+          username: context.user.username,
+        }).populate('events');
+        // const user = userData.user;
+        // console.log('userData', userData);
+        return userData;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

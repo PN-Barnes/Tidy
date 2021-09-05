@@ -10,13 +10,16 @@ import Auth from '../utils/auth';
 function ToDos() {
   const { username: useParam } = useParams();
 
-  // console.log(user);
+  console.log(useParams());
 
   const { loading, data } = useQuery(useParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: useParam },
+    variables: { username: 'HLin' },
+    credentials: 'include',
   });
 
   const user = data?.me || data?.user || {};
+
+  console.log('user', user);
 
   return (
     <div className='App'>

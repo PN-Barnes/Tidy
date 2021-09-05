@@ -14,7 +14,6 @@ const userSchema = new Schema({
   },
   username: {
     type: String,
-    required: true,
     trim: true,
   },
   email: {
@@ -29,7 +28,6 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
-    required: true,
   },
   events: [
     {

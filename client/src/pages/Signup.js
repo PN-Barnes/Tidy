@@ -19,9 +19,9 @@ import { ADD_USER } from '../utils/mutations';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant='body2' color='textSecondary' align='center'>
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color='inherit' href='https://material-ui.com/'>
         Tidy
       </Link>{' '}
       {new Date().getFullYear()}
@@ -63,6 +63,8 @@ export default function SignUp() {
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
+    console.log('arrived at handleFormSubmit function');
+
     event.preventDefault();
     console.log(formState);
     try {
@@ -70,28 +72,34 @@ export default function SignUp() {
         variables: { ...formState },
       });
 
+      console.log('data', data);
+
       Auth.login(data.addUser.token);
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+
+    console.log(event.target);
     setFormState({
       ...formState,
       [name]: value,
     });
+
+    console.log(formState);
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component='h1' variant='h5'>
           Sign up
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleFormSubmit}>
@@ -99,97 +107,97 @@ export default function SignUp() {
             <Grid item xs={12} sm={6}>
               <TextField
                 // autoComplete="uname"
-                name="firstName"
-                variant="outlined"
+                name='firstName'
+                variant='outlined'
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id='firstName'
+                label='First Name'
                 autoFocus
                 onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                id='lastName'
+                label='Last Name'
+                name='lastName'
+                autoComplete='lname'
                 onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="username"
-                label="username"
-                name="username"
-                autoComplete="username"
+                id='username'
+                label='username'
+                name='username'
+                autoComplete='username'
                 onChange={handleChange}
               />
             </Grid>
 
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id='email'
+                label='Email Address'
+                name='email'
+                autoComplete='email'
                 onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                name='password'
+                label='Password'
+                type='password'
+                id='password'
+                autoComplete='current-password'
                 onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                name="role"
-                label="role"
-                type="text"
-                id="role"
+                name='role'
+                label='role'
+                type='text'
+                id='role'
                 onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                control={<Checkbox value='allowExtraEmails' color='primary' />}
+                label='I want to receive inspiration, marketing promotions and updates via email.'
               />
             </Grid>
           </Grid>
           <Button
-            type="submit"
+            type='submit'
             fullWidth
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             className={classes.submit}
           >
             Sign Up
           </Button>
-          <Grid container justifyContent="flex-end">
+          <Grid container justifyContent='flex-end'>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href='#' variant='body2'>
                 Already have an account? Sign in
               </Link>
             </Grid>

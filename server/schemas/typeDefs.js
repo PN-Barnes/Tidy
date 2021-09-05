@@ -6,7 +6,9 @@ const typeDefs = gql`
     date: String
     content: String
     sender_id: User
+    sender_username: String
     receiver_id: User
+    receiver_username: String
   }
 
   type File {
@@ -38,7 +40,7 @@ const typeDefs = gql`
     email: String
     password: String
     role: String
-    events: [workEvent]!
+    events: [workEvent]
   }
 
   type workEvent {

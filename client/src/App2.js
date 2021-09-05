@@ -84,22 +84,22 @@ function App() {
           <AccountProvider>
             <PolishNav />
             <Switch>
-              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path='/dashboard' component={Dashboard} />
               {/* <Route exact path="/calendar" component={Calendar} /> */}
-              <Route exact path="/contacts" component={Contacts} />
-              <Route exact path="/events" component={Events} />
-              <Route exact path="/photos" component={Photos} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/team" component={Team} />
-              <Route exact path="/todos" component={Todos} />
-              <Route exact path="/signin" component={SignIn} />
-              <Route exact path="/signup" component={SignUp} />
-              <Route exact path="/signout" component={SignIn} />
-              <Route exact path="/tasks" component={Tasks} />
-              <Route exact path="/tests" component={Tests} />
-              <Route exact path="/weather" component={Weather} />
-              <Route exact path="/calendar" component={CalendarPage} />
-              <Route exact path="/" component={Landing} />
+              <Route exact path='/contacts' component={Contacts} />
+              <Route exact path='/events' component={Events} />
+              <Route exact path='/photos' component={Photos} />
+              <Route exact path='/profile' component={Profile} />
+              <Route exact path='/team' component={Team} />
+              <Route exact path='/todos' component={Todos} />
+              <Route exact path='/signin' component={SignIn} />
+              <Route exact path='/signup' component={SignUp} />
+              <Route exact path='/signout' component={SignIn} />
+              <Route exact path='/tasks' component={Tasks} />
+              <Route exact path='/tests' component={Tests} />
+              <Route exact path='/weather' component={Weather} />
+              <Route exact path='/calendar' component={CalendarPage} />
+              <Route exact path='/' component={Landing} />
               <Route component={NoMatch} />
             </Switch>
           </AccountProvider>

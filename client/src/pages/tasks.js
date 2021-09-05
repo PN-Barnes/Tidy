@@ -9,9 +9,18 @@ function Tasks() {
 
   console.log(data);
 
+  const tasks = data.tasks;
+
   return (
     <div className='App'>
       <Typography variant='h1'>Tasks</Typography>
+      <div>
+        {tasks.map((task) => (
+          <div>
+            {task.content} was assign to {task.username} on {task.date}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

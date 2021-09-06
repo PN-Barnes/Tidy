@@ -91,7 +91,7 @@ function App() {
               <Route exact path='/photos' component={Photos} />
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/team' component={Team} />
-              <Route exact path='/todos' component={Todos} />
+              <Route exact path='/todos' component={Tasks} />
               <Route exact path='/signin' component={SignIn} />
               <Route exact path='/signup' component={SignUp} />
               <Route exact path='/signout' component={SignIn} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import FullCalendar from '@fullcalendar/react'; // must go before plugins
-import { formatDate } from '@fullcalendar/react';
+// import { formatDate } from '@fullcalendar/react';
 // allows style wrapper to be created
 import styled from '@emotion/styled';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!

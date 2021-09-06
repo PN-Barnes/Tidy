@@ -3,23 +3,13 @@ import { useQuery, useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { ADD_ATTENDEE } from '../utils/mutations';
 import {
-  Typography,
-  AppBar,
-  Box,
-  Button,
   Card,
-  CardActions,
-  CardContent,
-  CardMedia,
   CssBaseline,
-  Grid,
-  // Link, // styling from Materil-UI
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Paper,
-  Toolbar,
   Container,
 } from '@material-ui/core';
 

@@ -1,8 +1,6 @@
 import React from "react";
 import {
   Typography,
-  AppBar,
-  Box,
   Button,
   Card,
   CardActions,
@@ -12,7 +10,6 @@ import {
   Grid,
   Link, // styling from Materil-UI
   Paper,
-  Toolbar,
   Container,
 } from "@material-ui/core";
 
@@ -44,34 +41,34 @@ const Landing = () => {
             {/* WEATHER CARD */}
             <Grid item>
               <Draggable>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image="https://source.unsplash.com/featured/?weather/320x180"
-                  title="image title"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography variant="h5" gutterBottom>
-                    Weather
-                  </Typography>
-                  <Typography>Weather preview</Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="sm" color="primary">
-                  <Link
-                  to="/weather"
-                  component={RouterLink}
-                  color="textSecondary"
-                  variant="h5"
-                  onClick={() => {
-                  console.info("Weather Request button hit");
-            }}
-          >
-            <Typography variant="h6">VIEW</Typography>
-          </Link>
-                  </Button>
-                </CardActions>
-              </Card>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://source.unsplash.com/featured/?weather/320x180"
+                    title="image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography variant="h5" gutterBottom>
+                      Weather
+                    </Typography>
+                    <Typography>Weather preview</Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="sm" color="primary">
+                      <Link
+                        to="/weather"
+                        component={RouterLink}
+                        color="textSecondary"
+                        variant="h5"
+                        onClick={() => {
+                          console.info("Weather Request button hit");
+                        }}
+                      >
+                        <Typography variant="h6">VIEW</Typography>
+                      </Link>
+                    </Button>
+                  </CardActions>
+                </Card>
               </Draggable>
             </Grid>
 
@@ -326,7 +323,7 @@ const Landing = () => {
                   <Typography variant="h5" gutterBottom>
                     Dashboard
                   </Typography>
-                  <Typography>My Dashbpard</Typography>
+                  <Typography>My Dashboard</Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
@@ -357,7 +354,7 @@ const Landing = () => {
           >
             Welcome to your Dashboard! Here you can quickly and easily see an
             overview of each of your tools. Simply click on any of your tools
-           to drill into it.
+            to drill into it.  Also, feel free to drag these cards around wherever the hell you like!
           </Typography>
         </Container>
       </main>

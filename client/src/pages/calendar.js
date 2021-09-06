@@ -10,8 +10,7 @@ function CalendarPage() {
       </Typography>
       <div className="App">
         <Calendar />
-        {/* </Typography> */}
-        
+        {/* </Typography> */}   
       </div>
     </>
   );

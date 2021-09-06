@@ -164,6 +164,12 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
+    // removeTask: async (parent, { _id }, context) => {
+    //   if(context.user) {
+    //     if(context.user
+    //   }
+    // }
     // // Can be further changed to specifically change content or date or userId
     // updateTask: async (parent, { newContent, newDate, newUser }) => {
     //   return await Task.findOneAndUpdate(
@@ -216,8 +222,16 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     // * Successful mutation
-    removeEvent: async (parent, event) => {
-      return await workEvent.findOneAndDelete({ _id: event });
+    removeEvent: async (parent, { event }, context) => {
+      if (context.user) {
+        if (context.user.role === 'Manager') {
+          return await workEvent.findOneAndDelete({ _id: event });
+        }
+        throw new AuthenticationError(
+          'You need to be a manager to delete events!'
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
     addAttendee: async (parent, { _id }, context) => {
       console.log('context.user', context.user);
@@ -245,7 +259,7 @@ const resolvers = {
         await user.contacts.push(username);
 
         console.log('contact', user);
-        return user;
+        return user.save();
       }
       throw new AuthenticationError('You need to be logged in!');
     },

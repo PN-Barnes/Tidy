@@ -41,25 +41,33 @@ const ProfileList = ({ user, title }) => {
                         <ListItemIcon>
                           <AssignmentIcon />
                         </ListItemIcon>
-                        {user.events ? (
-                          <div>
+                        {user.events.length > 0 ? (
+                          <div display='flex' flexDirection='col'>
                             <h3>Here is a list of your events</h3>
-                            <ListItemText
-                              primary='Starred'
-                              primary={user.events[0].content}
-                              secondary={user.events[0].date}
-                            />
-                            {user.contacts ? (
-                              <>
-                                <h3>Here is a list of your contacts</h3>
-                                <ListItemText primary={user.contacts[0]} />
-                              </>
-                            ) : (
-                              <div> You have no contacts </div>
-                            )}
+                            {user.events.map((event) => (
+                              <ListItemText
+                                primary={event.content}
+                                secondary={event.date}
+                              />
+                            ))}
                           </div>
                         ) : (
                           <div>You have no events yet</div>
+                        )}
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <AssignmentIcon />
+                        </ListItemIcon>
+                        {user.contacts.length > 0 ? (
+                          <div display='flex' flexDirection='col'>
+                            <h3>Here is a list of your contacts</h3>
+                            {user.contacts.map((contact) => (
+                              <ListItemText primary={contact} />
+                            ))}
+                          </div>
+                        ) : (
+                          <div> You have no contacts yet</div>
                         )}
                       </ListItem>
                     </div>

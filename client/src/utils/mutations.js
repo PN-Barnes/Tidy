@@ -81,6 +81,14 @@ export const ADD_TASK_FOR_USER = gql`
   }
 `;
 
+export const REMOVE_TASK = gql`
+  mutation removeTask($_id: ID!) {
+    removeTask(_id: $_id) {
+      content
+    }
+  }
+`;
+
 export const ADD_CONTACT = gql`
   mutation addContact($username: String!) {
     addContact(username: $username) {

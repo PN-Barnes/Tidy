@@ -97,10 +97,10 @@ const Events = () => {
 
       // console.log(attendeeData);
 
-      const event = attendeeData?.event || {};
+      const event = attendeeData?.workEvents || {};
 
       // console.log('data', yo);
-      // console.log('event', event);
+      console.log('event', event);
     } catch (err) {
       console.log(err);
     }

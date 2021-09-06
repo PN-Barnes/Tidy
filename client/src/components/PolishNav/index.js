@@ -1,6 +1,6 @@
-import React from "react";
-import Auth from "../../utils/auth";
-import useStyles from "../../pages/styles";
+import React from 'react';
+import Auth from '../../utils/auth';
+import useStyles from '../../pages/styles';
 import {
   Typography,
   AppBar,
@@ -8,16 +8,16 @@ import {
   CssBaseline,
   Link,
   ListItemText,
-  Toolbar
-} from "@material-ui/core";
+  Toolbar,
+} from '@material-ui/core';
 
 // get Tools icon
-import { Pages } from "@material-ui/icons";
+import { Pages } from '@material-ui/icons';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
 
-import { Link as RouterLink } from "react-router-dom"; // routing link
+import { Link as RouterLink } from 'react-router-dom'; // routing link
 
 const PolishNav = function () {
   const classes = useStyles();
@@ -26,42 +26,42 @@ const PolishNav = function () {
     <>
       {/* Header */}
       <CssBaseline />
-      <AppBar position="relative" backgroundColor="alert">
+      <AppBar position='relative' backgroundColor='alert'>
         <Toolbar>
           <Pages className={classes.icon} />
 
           {/* TIDY home button */}
           <Link
-            to="/"
+            to='/'
             component={RouterLink}
-            color="textSecondary"
-            variant="h5"
+            color='textSecondary'
+            variant='h5'
             onClick={() => {
-              console.info("Home Request button hit");
+              console.info('Home Request button hit');
             }}
           >
-            <Typography variant="h6">TIDY</Typography>
+            <Typography variant='h6'>TIDY</Typography>
           </Link>
 
-            <Box mx="auto">
-            <Typography variant="h6">
-                {/* <ArrowUpwardIcon className={classes.icon} /> */}
-                Welcome!
-              </Typography>
-            </Box>
+          <Box mx='auto'>
+            <Typography variant='h6'>
+              {/* <ArrowUpwardIcon className={classes.icon} /> */}
+              Welcome!
+            </Typography>
+          </Box>
 
           {/* Signup button */}
-          <Box mx="10px">
+          <Box mx='10px'>
             <Link
-              to="/signup"
+              to='/signup'
               component={RouterLink}
-              color="textSecondary"
-              variant="h5"
+              color='textSecondary'
+              variant='h5'
               onClick={() => {
-                console.info("SignUp Request button hit");
+                console.info('SignUp Request button hit');
               }}
             >
-              <Typography variant="h6">
+              <Typography variant='h6'>
                 <ArrowUpwardIcon className={classes.icon} />
                 {/* Sign Up */}
               </Typography>
@@ -69,17 +69,17 @@ const PolishNav = function () {
           </Box>
 
           {/* Login button */}
-          <Box mx="10px">
+          <Box mx='10px'>
             <Link
-              to="/signin"
+              to='/signin'
               component={RouterLink}
-              color="textSecondary"
-              variant="h5"
+              color='textSecondary'
+              variant='h5'
               onClick={() => {
-                console.info("Login Request button hit");
+                console.info('Login Request button hit');
               }}
             >
-              <Typography variant="h6">
+              <Typography variant='h6'>
                 <FingerprintIcon className={classes.icon} />
                 {/* Sign In */}
               </Typography>
@@ -87,27 +87,24 @@ const PolishNav = function () {
           </Box>
 
           {/* SignOut button */}
-          <Box mx="10px">
-
+          <Box mx='10px'>
             <Link
-              to="/signout"
+              to='/signout'
               component={RouterLink}
-              color="textsecondary"
-              variant="h5"
+              color='textsecondary'
+              variant='h5'
               onClick={() => {
-                console.info("Signout button hit")
-                Auth.logout()
+                console.info('Signout button hit');
+                Auth.logout();
               }}
-              >
-                <Typography variant="h6">
-                  <ExitToAppIcon className={classes.icon} />
-                  {/* <a href="/" onClick={() => Auth.logout()}> */}
-                    {/* Sign Out */}
-                  {/* </a> */}
-                </Typography>
+            >
+              <Typography variant='h6'>
+                <ExitToAppIcon className={classes.icon} />
+                {/* <a href="/" onClick={() => Auth.logout()}> */}
+                {/* Sign Out */}
+                {/* </a> */}
+              </Typography>
             </Link>
-
-
           </Box>
         </Toolbar>
       </AppBar>
@@ -117,7 +114,8 @@ const PolishNav = function () {
 
 export default PolishNav;
 
-{/* <Link
+{
+  /* <Link
               to="/" onClick={() => Auth.logout()}
               // component={RouterLink}
               color="textSecondary"
@@ -130,4 +128,5 @@ export default PolishNav;
                 <ExitToAppIcon className={classes.icon} />
                 Sign Out
                 </Typography>
-            </Link> */}
+            </Link> */
+}

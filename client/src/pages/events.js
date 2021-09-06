@@ -4,7 +4,7 @@ import { QUERY_EVENTS } from '../utils/queries';
 import { makeStyles } from '@material-ui/core/styles';
 import EventList from '../components/eventList';
 
-import { ADD_EVENT } from '../utils/mutations';
+import { ADD_ATTENDEE, ADD_EVENT } from '../utils/mutations';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -42,11 +42,15 @@ const Events = () => {
   const { loading, data } = useQuery(QUERY_EVENTS);
   const events = data?.workEvents || [];
 
+  // console.log('data', data);
+
   const [formState, setFormState] = useState({
     content: '',
   });
 
   const [addEvent, { error }] = useMutation(ADD_EVENT);
+  const [addAttendee, { error: attendeeErr, data: attendeeData }] =
+    useMutation(ADD_ATTENDEE);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -81,6 +85,27 @@ const Events = () => {
     }
   };
 
+  const handleJoinEvent = (_id) => {
+    try {
+      console.log(_id);
+      const { attendeeData } = addAttendee({
+        variables: { _id },
+        onCompleted: (attendeeData) => {
+          console.log({ attendeeData });
+        },
+      });
+
+      // console.log(attendeeData);
+
+      const event = attendeeData?.event || {};
+
+      // console.log('data', yo);
+      // console.log('event', event);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <main>
       <div className='flex-row justify-center'>
@@ -88,10 +113,17 @@ const Events = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <EventList
-              events={events}
-              title="Here's your current roster of events:"
-            />
+            events.map((event) => (
+              <div>
+                <EventList
+                  event={event}
+                  // title="Here's your current roster of events:"
+                />
+                <button onClick={handleJoinEvent.bind(null, event._id)}>
+                  Join this event
+                </button>
+              </div>
+            ))
           )}
           <div>
             <form
@@ -122,7 +154,7 @@ const Events = () => {
                   className='btn btn-primary btn-block py-3'
                   type='submit'
                 >
-                  Add Thought
+                  Add Event
                 </button>
               </div>
               {error && (

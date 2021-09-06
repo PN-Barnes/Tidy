@@ -193,6 +193,32 @@ const resolvers = {
     removeEvent: async (parent, event) => {
       return await workEvent.findOneAndDelete({ _id: event });
     },
+    addAttendee: async (parent, { _id }, context) => {
+      console.log('context.user', context.user);
+      if (context.user) {
+        // console.log('event._id', _id);
+        const event = await workEvent.findOne({ _id: _id });
+
+        await event.attendees.push(context.user._id);
+        // console.log('event', event);
+
+        // const event = await workEvent.findOneAndUpdate(
+        //   { _id: _id },
+        //   {
+        //     $addToSet: { attendees: context.user._id },
+        //   },
+        //   {
+        //     new: true,
+        //     runValidators: true,
+        //   }
+        // );
+
+        console.log('event', event);
+        return event.save();
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
     // // Can be further changed to specifically change content or attendees
     // updateWorkEvent: async (parent, { newContent, updatedAttendees }) => {
     //   return await workEvent.findOneAndUpdate(

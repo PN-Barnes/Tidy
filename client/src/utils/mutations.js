@@ -90,6 +90,18 @@ export const ADD_EVENT = gql`
   }
 `;
 
+export const ADD_ATTENDEE = gql`
+  mutation addAttendee($_id: ID!) {
+    addAttendee(_id: $_id) {
+      date
+      content
+      attendees {
+        _id
+      }
+    }
+  }
+`;
+
 export const UPDATE_TASK = gql`
   mutation updateTask($content: String!, $date: Date!, $userId: ID!) {
     updateTask(content: $content, date: $date, userId: $userId) {

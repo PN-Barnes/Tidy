@@ -19,8 +19,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Paper,
-  Toolbar,
   Container,
 } from "@material-ui/core";
 import DraftsIcon from "@material-ui/icons/Drafts";

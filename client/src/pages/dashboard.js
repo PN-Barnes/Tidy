@@ -1,8 +1,6 @@
 import React from "react";
 import {
   Typography,
-  AppBar,
-  Box,
   Button,
   Card,
   CardActions,
@@ -12,7 +10,6 @@ import {
   Grid,
   Link, // styling from Materil-UI
   Paper,
-  Toolbar,
   Container,
 } from "@material-ui/core";
 

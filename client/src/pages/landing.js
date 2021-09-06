@@ -1,8 +1,6 @@
 import React from "react";
 import {
   Typography,
-  AppBar,
-  Box,
   Button,
   Card,
   CardActions,
@@ -12,7 +10,6 @@ import {
   Grid,
   Link, // styling from Materil-UI
   Paper,
-  Toolbar,
   Container,
 } from "@material-ui/core";
 
@@ -326,7 +323,7 @@ const Landing = () => {
                   <Typography variant="h5" gutterBottom>
                     Dashboard
                   </Typography>
-                  <Typography>My Dashbpard</Typography>
+                  <Typography>My Dashboard</Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">

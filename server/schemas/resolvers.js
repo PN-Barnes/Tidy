@@ -218,6 +218,17 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    addContact: async (parent, { _id }, context) => {
+      if (context.user) {
+        const user = await User.findOne({ _id: _id });
+
+        await user.contacts.push(context.user._id);
+
+        console.log('contact', user);
+        return user;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
 
     // // Can be further changed to specifically change content or attendees
     // updateWorkEvent: async (parent, { newContent, updatedAttendees }) => {

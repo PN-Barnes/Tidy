@@ -86,6 +86,7 @@ const typeDefs = gql`
     addEvent(content: String!): workEvent
 
     addAttendee(_id: ID!): workEvent
+    addContact(_id: ID!): User
 
     removeEvent(_id: ID!): workEvent
     login(email: String!, password: String!): Auth

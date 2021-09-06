@@ -35,6 +35,11 @@ const userSchema = new Schema({
       ref: 'workEvent',
     },
   ],
+  contacts: [
+    {
+      type: String,
+    },
+  ],
 });
 
 userSchema.pre('save', async function (next) {

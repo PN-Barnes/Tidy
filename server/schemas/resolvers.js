@@ -71,7 +71,7 @@ const resolvers = {
     me: async (parent, args, context) => {
       // console.log('Arrived at get me route');
 
-      // console.log('context.user', context.user);
+      console.log('context.user', context.user);
 
       if (context.user) {
         // return user.findOne({ _id: context.user._id }).populate('');
@@ -168,17 +168,62 @@ const resolvers = {
     //   });
     // },
     // * Successful mutation
-    addEvent: async (parent, { date, content, attendees }) => {
-      return await workEvent.create({
-        date,
-        content,
-        attendees,
-      });
+    addEvent: async (parent, { content }, context) => {
+      console.log('context.user', context.user);
+
+      if (context.user) {
+        console.log('Arrived at addEvent route');
+
+        const event = await workEvent.create({
+          // date: '09-07-2021 7:00pm',
+          content,
+          // attendees: ['6131f6ca0d7791558a175e86'],
+        });
+
+        const user = await User.findOneAndUpdate(
+          { username: context.user.username },
+          { $addToSet: { events: event._id } }
+        );
+
+        return event;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
     // * Successful mutation
     removeEvent: async (parent, event) => {
       return await workEvent.findOneAndDelete({ _id: event });
     },
+    addAttendee: async (parent, { _id }, context) => {
+      console.log('context.user', context.user);
+      if (context.user) {
+        // console.log('event._id', _id);
+        const event = await workEvent.findOne({ _id: _id });
+        await event.attendees.push(context.user._id);
+
+        const user = await User.findOne({ _id: context.user._id });
+        await user.events.push(event._id);
+        user.save();
+        console.log('user', user);
+
+        console.log('event', event);
+        return event.save();
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addContact: async (parent, { username }, context) => {
+      console.log('arrived at addContact route');
+
+      if (context.user) {
+        const user = await User.findOne({ _id: context.user._id });
+
+        await user.contacts.push(username);
+
+        console.log('contact', user);
+        return user.save();
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
     // // Can be further changed to specifically change content or attendees
     // updateWorkEvent: async (parent, { newContent, updatedAttendees }) => {
     //   return await workEvent.findOneAndUpdate(

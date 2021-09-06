@@ -14,6 +14,7 @@ const userSchema = new Schema({
   },
   username: {
     type: String,
+    unique: true,
     trim: true,
   },
   email: {
@@ -33,6 +34,11 @@ const userSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: 'workEvent',
+    },
+  ],
+  contacts: [
+    {
+      type: String,
     },
   ],
 });

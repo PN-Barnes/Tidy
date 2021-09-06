@@ -131,12 +131,38 @@ const resolvers = {
     //     { password: password }
     //   );
     // },
-    addTask: async (parent, { content, date, userId }) => {
-      return await Task.create({
-        content,
-        date,
-        userId,
-      });
+    addTask: async (parent, { content }, context) => {
+      console.log('context.user', context.user);
+      if (context.user) {
+        const task = await Task.create({
+          content,
+        });
+
+        const user = await User.findOne({ username: context.user.username });
+        user.tasks.push(task._id);
+        user.save();
+
+        task.userId = user._id;
+        task.username = user.username;
+        task.save();
+
+        return task;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    addTaskForUser: async (parent, { _id }, context) => {
+      console.log('Arrived at addTaskForUser route');
+      console.log('context.user', context.user);
+      console.log('Task._id', _id);
+      if (context.user) {
+        const user = await User.findOne({ username: context.user.username });
+
+        user.tasks.push(_id);
+        console.log('user', user);
+        return user.save();
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
     // // Can be further changed to specifically change content or date or userId
     // updateTask: async (parent, { newContent, newDate, newUser }) => {
@@ -219,7 +245,7 @@ const resolvers = {
         await user.contacts.push(username);
 
         console.log('contact', user);
-        return user.save();
+        return user;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

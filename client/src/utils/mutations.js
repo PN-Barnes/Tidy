@@ -64,13 +64,19 @@ export const REMOVE_USER = gql`
 `;
 
 export const ADD_TASK = gql`
-  mutation addTask($content: String!, $date: String!, $username: String!) {
-    addTask(content: $content, date: $date, username: $username) {
-      task {
-        content
-        date
-        userId
-      }
+  mutation addTask($content: String!) {
+    addTask(content: $content) {
+      _id
+      content
+      date
+    }
+  }
+`;
+
+export const ADD_TASK_FOR_USER = gql`
+  mutation addTaskForUser($_id: ID!) {
+    addTaskForUser(_id: $_id) {
+      username
     }
   }
 `;

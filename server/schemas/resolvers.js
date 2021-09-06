@@ -168,12 +168,26 @@ const resolvers = {
     //   });
     // },
     // * Successful mutation
-    addEvent: async (parent, { date, content, attendees }) => {
-      return await workEvent.create({
-        date,
-        content,
-        attendees,
-      });
+    addEvent: async (parent, { content }, context) => {
+      console.log('context.user', context.user);
+
+      if (context.user) {
+        console.log('Arrived at addEvent route');
+
+        const event = await workEvent.create({
+          // date: '09-07-2021 7:00pm',
+          content,
+          // attendees: ['6131f6ca0d7791558a175e86'],
+        });
+
+        const user = await User.findOneAndUpdate(
+          { username: context.user.username },
+          { $addToSet: { events: event._id } }
+        );
+
+        return event;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
     // * Successful mutation
     removeEvent: async (parent, event) => {

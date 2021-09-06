@@ -76,8 +76,8 @@ export const ADD_TASK = gql`
 `;
 
 export const ADD_EVENT = gql`
-  mutation addEvent($date: String, $content: String!, $attendees: [ID]!) {
-    addEvent(date: $date, content: $content, attendees: $attendees) {
+  mutation addEvent($content: String!) {
+    addEvent(content: $content) {
       _id
       date
       content

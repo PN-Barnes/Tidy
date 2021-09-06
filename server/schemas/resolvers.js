@@ -131,12 +131,24 @@ const resolvers = {
     //     { password: password }
     //   );
     // },
-    addTask: async (parent, { content, date, userId }) => {
-      return await Task.create({
-        content,
-        date,
-        userId,
-      });
+    addTask: async (parent, { content }, context) => {
+      console.log('context.user', context.user);
+      if (context.user) {
+        const task = await Task.create({
+          content,
+        });
+
+        const user = await User.findOne({ username: context.user.username });
+        user.tasks.push(task._id);
+        user.save();
+
+        task.userId = user._id;
+        task.username = user.username;
+        task.save();
+
+        return task;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     addTaskForUser: async (parent, { _id }, context) => {

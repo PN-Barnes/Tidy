@@ -26,7 +26,7 @@ const typeDefs = gql`
 
   type Task {
     _id: ID
-    content: String
+    content: String!
     date: String
     userId: User
     username: String
@@ -83,7 +83,7 @@ const typeDefs = gql`
       role: String!
     ): Auth
     removeUser(_id: ID!): User
-    addTask(content: String, date: String, username: String!): Task
+    addTask(content: String!): Task
     addTaskForUser(_id: ID!): User
 
     addEvent(content: String!): workEvent

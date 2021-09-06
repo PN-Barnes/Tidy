@@ -82,9 +82,6 @@ export const ADD_CONTACT = gql`
       username
       firstName
       lastName
-      contact {
-        username
-      }
     }
   }
 `;

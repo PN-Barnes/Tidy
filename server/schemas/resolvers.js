@@ -218,11 +218,13 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addContact: async (parent, { _id }, context) => {
-      if (context.user) {
-        const user = await User.findOne({ _id: _id });
+    addContact: async (parent, { username }, context) => {
+      console.log('arrived at addContact route');
 
-        await user.contacts.push(context.user._id);
+      if (context.user) {
+        const user = await User.findOne({ _id: context.user._id });
+
+        await user.contacts.push(username);
 
         console.log('contact', user);
         return user;

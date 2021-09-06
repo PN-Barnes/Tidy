@@ -19,10 +19,10 @@ function Contacts() {
 
   const [addContact, { error }] = useMutation(ADD_CONTACT);
 
-  const handleAddContact = (_id) => {
+  const handleAddContact = (username) => {
     try {
       const { data } = addContact({
-        variables: { _id },
+        variables: { username },
       });
 
       const contact = data?.user || {};
@@ -62,8 +62,10 @@ function Contacts() {
             contacts.map((contact) => (
               <div>
                 <ContactList contact={contact} />
-                ))
-                <button>Add to contacts</button>
+                {/* null is passed as the first argument to bind, which sets the scope of the handleJoinEvent function to the current page. This is how event._id is passed to the function as an argument. */}
+                <button onClick={handleAddContact.bind(null, contact.username)}>
+                  Add to contacts
+                </button>
               </div>
             ))
           )}

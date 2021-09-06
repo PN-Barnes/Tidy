@@ -27,6 +27,7 @@
     "cloudinary": "^1.26.3",
     "graphql": "^15.5.2",
     "graphql-upload": "^12.0.0",
-    "react-draggable": "^4.4.4"
+    "react-draggable": "^4.4.4",
+    "weather": "^1.0.4"
   }
 }

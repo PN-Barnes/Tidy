@@ -84,6 +84,8 @@ const typeDefs = gql`
     ): Auth
     removeUser(_id: ID!): User
     addTask(content: String, date: String, username: String!): Task
+    addTaskForUser(_id: ID!): User
+
     addEvent(content: String!): workEvent
 
     addAttendee(_id: ID!): workEvent

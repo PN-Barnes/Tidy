@@ -1,8 +1,9 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_TASKS, QUERY_EVENTS } from '../utils/queries';
+import { ADD_TASK, ADD_TASK_FOR_USER } from '../utils/mutations';
 
 import TaskList from '../components/taskList';
 
@@ -40,32 +41,40 @@ const useStyles = makeStyles((theme) => ({
 
 function Tasks() {
   const { loading, data } = useQuery(QUERY_TASKS);
-
   console.log(data);
-
   const tasks = data?.tasks || [];
 
+  const [addTaskForUser, { error }] = useMutation(ADD_TASK_FOR_USER);
+
+  const handleAddTask = async (_id) => {
+    try {
+      const { data } = await addTaskForUser({
+        variables: { _id },
+      });
+
+      const user = data?.user || {};
+      console.log('user', user);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    // <div className='App'>
-    //   <Typography variant='h1'>Tasks</Typography>
-    //   <div>
-    //     {tasks.map((task) => (
-    //       <div>
-    //         {task.content} was assign to {task.username} on {task.date}
-    //       </div>
-    //     ))}
-    //   </div>
-    // </div>
     <main>
       <div className='flex-row justify-center'>
         <div className='col-12 col-md-10 my-3'>
+          <h3>title="Here's your current list of tasks:"</h3>
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <TaskList
-              tasks={tasks}
-              title="Here's your current list of tasks:"
-            />
+            tasks.map((task) => (
+              <>
+                <TaskList task={task} />
+                <button onClick={handleAddTask.bind(null, task._id)}>
+                  Add to contacts
+                </button>
+              </>
+            ))
           )}
         </div>
       </div>

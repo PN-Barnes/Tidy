@@ -138,6 +138,20 @@ const resolvers = {
         userId,
       });
     },
+
+    addTaskForUser: async (parent, { _id }, context) => {
+      console.log('Arrived at addTaskForUser route');
+      console.log('context.user', context.user);
+      console.log('Task._id', _id);
+      if (context.user) {
+        const user = await User.findOne({ username: context.user.username });
+
+        user.tasks.push(_id);
+        console.log('user', user);
+        return user.save();
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
     // // Can be further changed to specifically change content or date or userId
     // updateTask: async (parent, { newContent, newDate, newUser }) => {
     //   return await Task.findOneAndUpdate(
@@ -219,7 +233,7 @@ const resolvers = {
         await user.contacts.push(username);
 
         console.log('contact', user);
-        return user.save();
+        return user;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

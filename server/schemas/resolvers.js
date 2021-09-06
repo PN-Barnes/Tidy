@@ -71,7 +71,7 @@ const resolvers = {
     me: async (parent, args, context) => {
       // console.log('Arrived at get me route');
 
-      // console.log('context.user', context.user);
+      console.log('context.user', context.user);
 
       if (context.user) {
         // return user.findOne({ _id: context.user._id }).populate('');
@@ -198,20 +198,12 @@ const resolvers = {
       if (context.user) {
         // console.log('event._id', _id);
         const event = await workEvent.findOne({ _id: _id });
-
         await event.attendees.push(context.user._id);
-        // console.log('event', event);
 
-        // const event = await workEvent.findOneAndUpdate(
-        //   { _id: _id },
-        //   {
-        //     $addToSet: { attendees: context.user._id },
-        //   },
-        //   {
-        //     new: true,
-        //     runValidators: true,
-        //   }
-        // );
+        const user = await User.findOne({ _id: context.user._id });
+        await user.events.push(event._id);
+        user.save();
+        console.log('user', user);
 
         console.log('event', event);
         return event.save();
@@ -227,7 +219,7 @@ const resolvers = {
         await user.contacts.push(username);
 
         console.log('contact', user);
-        return user;
+        return user.save();
       }
       throw new AuthenticationError('You need to be logged in!');
     },

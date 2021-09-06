@@ -43,15 +43,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ToDos() {
-  const { username: useParam } = useParams();
+  // const { username: useParam } = useParams();
 
-  console.log(useParams());
+  // console.log(useParams());
 
-  const { loading, data } = useQuery(useParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: useParam },
-  });
+  // const { loading, data } = useQuery(useParam ? QUERY_USER : QUERY_ME, {
+  //   variables: { username: useParam },
+  // });
 
-  const user = data?.me || data?.user || {};
+  // const user = data?.me || data?.user || {};
+
+  const { loading, data } = useQuery(QUERY_ME);
+  const user = data?.me || {};
 
   // Successfully logs user data from database
   console.log('user', user);

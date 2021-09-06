@@ -98,7 +98,7 @@ const Landing = () => {
                   color="textSecondary"
                   variant="h5"
                   onClick={() => {
-                  console.info("Home Request button hit");
+                  console.info("Calendar Request button hit");
                }}
           >
             <Typography variant="h6">VIEW</Typography>
@@ -132,7 +132,7 @@ const Landing = () => {
                   color="textSecondary"
                   variant="h5"
                   onClick={() => {
-                    console.info("Home Request button hit");
+                    console.info("ToDo's Request button hit");
                   }}
           >
             <Typography variant="h6">VIEW</Typography>
@@ -166,7 +166,7 @@ const Landing = () => {
                   color="textSecondary"
                   variant="h5"
                   onClick={() => {
-                    console.info("Home Request button hit");
+                    console.info("Team Request button hit");
                   }}
           >
             <Typography variant="h6">VIEW</Typography>
@@ -200,7 +200,7 @@ const Landing = () => {
                   color="textSecondary"
                   variant="h5"
                   onClick={() => {
-                    console.info("Home Request button hit");
+                    console.info("Profile Request button hit");
                   }}
           >
             <Typography variant="h6">VIEW</Typography>
@@ -234,7 +234,7 @@ const Landing = () => {
                   color="textSecondary"
                   variant="h5"
                   onClick={() => {
-                    console.info("Home Request button hit");
+                    console.info("Contacts Request button hit");
                   }}
           >
             <Typography variant="h6">VIEW</Typography>
@@ -268,7 +268,7 @@ const Landing = () => {
                   color="textSecondary"
                   variant="h5"
                   onClick={() => {
-                    console.info("Home Request button hit");
+                    console.info("Photos Request button hit");
                   }}
           >
             <Typography variant="h6">VIEW</Typography>
@@ -302,7 +302,7 @@ const Landing = () => {
                   color="textSecondary"
                   variant="h5"
                   onClick={() => {
-                    console.info("Home Request button hit");
+                    console.info("work events Request button hit");
                 }}
           >
             <Typography variant="h6">VIEW</Typography>
@@ -330,7 +330,17 @@ const Landing = () => {
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
-                    View
+                  <Link
+                  to="/dashboard"
+                  component={RouterLink}
+                  color="textSecondary"
+                  variant="h5"
+                  onClick={() => {
+                    console.info("Dashboard Request button hit");
+                  }}
+          >
+            <Typography variant="h6">VIEW</Typography>
+          </Link>
                   </Button>
                 </CardActions>
               </Card>

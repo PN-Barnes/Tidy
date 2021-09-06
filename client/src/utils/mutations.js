@@ -75,9 +75,20 @@ export const ADD_TASK = gql`
   }
 `;
 
+export const ADD_CONTACT = gql`
+  mutation addContact($username: String!) {
+    addContact(username: $username) {
+      _id
+      username
+      firstName
+      lastName
+    }
+  }
+`;
+
 export const ADD_EVENT = gql`
-  mutation addEvent($date: String, $content: String!, $attendees: [ID]!) {
-    addEvent(date: $date, content: $content, attendees: $attendees) {
+  mutation addEvent($content: String!) {
+    addEvent(content: $content) {
       _id
       date
       content
@@ -85,6 +96,18 @@ export const ADD_EVENT = gql`
         _id
         lastName
         firstName
+      }
+    }
+  }
+`;
+
+export const ADD_ATTENDEE = gql`
+  mutation addAttendee($_id: ID!) {
+    addAttendee(_id: $_id) {
+      date
+      content
+      attendees {
+        _id
       }
     }
   }

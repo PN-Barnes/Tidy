@@ -51,11 +51,26 @@ const ProfileList = ({ user, title }) => {
                         <ListItemIcon>
                           <AssignmentIcon />
                         </ListItemIcon>
-                        <ListItemText
-                          primary='Starred'
-                          primary='Placeholder information about the card.  Here we will serve up the description of the event so users can read about what the event is all about.  For exampe, details about the event location, organizers, and general details that describe the event more fully, so attendees can best know what to expect.'
-                          primary='Here is a list of your events'
-                        />
+                        {user.events ? (
+                          <div>
+                            <h3>Here is a list of your events</h3>
+                            <ListItemText
+                              primary='Starred'
+                              primary={user.events[0].content}
+                              secondary={user.events[0].date}
+                            />
+                            {user.contacts ? (
+                              <>
+                                <h3>Here is a list of your contacts</h3>
+                                <ListItemText primary={user.contacts[0]} />
+                              </>
+                            ) : (
+                              <div> You have no contacts </div>
+                            )}
+                          </div>
+                        ) : (
+                          <div>You have no events yet</div>
+                        )}
                       </ListItem>
                     </div>
                   </Card>

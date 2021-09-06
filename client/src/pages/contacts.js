@@ -1,10 +1,11 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_MESSAGES, QUERY_USERS } from '../utils/queries';
 
 import ContactList from '../components/contactList';
+import { ADD_CONTACT } from '../utils/mutations';
 
 function Contacts() {
   // const { loading, data } = useQuery(QUERY_MESSAGES);
@@ -14,8 +15,21 @@ function Contacts() {
   // const messages = data?.messages || [];
 
   const { loading, data } = useQuery(QUERY_USERS);
+  const contacts = data?.users || [];
 
-  const users = data?.users || [];
+  const [addContact, { error }] = useMutation(ADD_CONTACT);
+
+  const handleAddContact = (username) => {
+    try {
+      const { data } = addContact({
+        variables: { username },
+      });
+
+      const contact = data?.user || {};
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     // <div className='App'>
@@ -45,10 +59,15 @@ function Contacts() {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ContactList
-              users={users}
-              title="Here's your current list of contacts:"
-            />
+            contacts.map((contact) => (
+              <div>
+                <ContactList contact={contact} />
+                {/* null is passed as the first argument to bind, which sets the scope of the handleJoinEvent function to the current page. This is how event._id is passed to the function as an argument. */}
+                <button onClick={handleAddContact.bind(null, contact.username)}>
+                  Add to contacts
+                </button>
+              </div>
+            ))
           )}
         </div>
       </div>

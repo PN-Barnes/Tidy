@@ -14,25 +14,27 @@ const resolvers = {
       return User.findOne({ username });
     },
 
+    // For testing
+    // Querying user by id works
     // user: async (parent, { _id }) => {
     //   return User.findOne({ _id });
     // },
 
-    // messages: async () => {
-    //   return Message.find({});
-    // },
-    // message: async (parent, { message_id }) => {
-    //   return Message.findOne({ message_id }).populate(
-    //     'sender_id',
-    //     'receiver_id'
-    //   );
-    // },
-    // photos: async () => {
-    //   return Photo.find().populate('owner');
-    // },
-    // photo: async (parent, { photo_id }) => {
-    //   return Photo.findOne({ photo_id }).populate('owner');
-    // },
+    messages: async () => {
+      return await Message.find();
+    },
+    message: async (parent, { message_id }) => {
+      return Message.findOne({ message_id }).populate(
+        'sender_id',
+        'receiver_id'
+      );
+    },
+    photos: async () => {
+      return Photo.find().populate('owner');
+    },
+    photo: async (parent, { photo_id }) => {
+      return Photo.findOne({ photo_id }).populate('owner');
+    },
     tasks: async () => {
       return Task.find();
     },
@@ -59,12 +61,7 @@ const resolvers = {
     // photo: async (parent, { photo_id }) => {
     //   return Photo.findOne({ photo_id }).populate('owner');
     // },
-    // tasks: async () => {
-    //   return Task.find().populate('userId');
-    // },
-    // task: async (parent, { task_id }) => {
-    //   return Task.findOne({ task_id }).populate('userId');
-    // },
+
     workEvents: async () => {
       return workEvent.find().populate('attendees');
     },
@@ -72,8 +69,18 @@ const resolvers = {
       return workEvent.findOne({ _id: id }).populate('attendees');
     },
     me: async (parent, args, context) => {
+      // console.log('Arrived at get me route');
+
+      // console.log('context.user', context.user);
+
       if (context.user) {
-        return user.findOne({ _id: context.user._id }).populate('');
+        // return user.findOne({ _id: context.user._id }).populate('');
+        const userData = User.findOne({
+          username: context.user.username,
+        }).populate('events');
+        // const user = userData.user;
+        // console.log('userData', userData);
+        return userData;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

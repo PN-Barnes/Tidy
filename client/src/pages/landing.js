@@ -21,6 +21,8 @@ import { Link as RouterLink } from "react-router-dom"; // routing link
 // import styles
 import useStyles from "./styles";
 
+import Draggable from "react-draggable";
+
 const Landing = () => {
   const classes = useStyles();
 
@@ -41,6 +43,7 @@ const Landing = () => {
           <Grid container spacing={4} align="center">
             {/* WEATHER CARD */}
             <Grid item>
+              <Draggable>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
@@ -69,9 +72,11 @@ const Landing = () => {
                   </Button>
                 </CardActions>
               </Card>
+              </Draggable>
             </Grid>
 
             {/* CALENDAR CARD */}
+            <Draggable>
             <Grid item>
               <Card className={classes.card}>
                 <CardMedia
@@ -102,8 +107,10 @@ const Landing = () => {
                 </CardActions>
               </Card>
             </Grid>
+            </Draggable>
 
             {/* TODOS CARD */}
+            <Draggable>
             <Grid item>
               <Card className={classes.card}>
                 <CardMedia
@@ -115,7 +122,7 @@ const Landing = () => {
                   <Typography variant="h5" gutterBottom>
                     ToDo's
                   </Typography>
-                  <Typography>ToDos preview</Typography>
+                  <Typography>All of the things I need To Do</Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
@@ -134,8 +141,10 @@ const Landing = () => {
                 </CardActions>
               </Card>
             </Grid>
+            </Draggable>
 
             {/* TEAM CARD */}
+            <Draggable>
             <Grid item>
               <Card className={classes.card}>
                 <CardMedia
@@ -147,7 +156,7 @@ const Landing = () => {
                   <Typography variant="h5" gutterBottom>
                     Team
                   </Typography>
-                  <Typography>Team preview</Typography>
+                  <Typography>Who's on the Team</Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
@@ -166,8 +175,10 @@ const Landing = () => {
                 </CardActions>
               </Card>
             </Grid>
+            </Draggable>
 
             {/* PROFILE CARD */}
+            <Draggable>
             <Grid item>
               <Card className={classes.card}>
                 <CardMedia
@@ -198,8 +209,10 @@ const Landing = () => {
                 </CardActions>
               </Card>
             </Grid>
+            </Draggable>
 
             {/* CONTACTS CARD */}
+            <Draggable>
             <Grid item>
               <Card className={classes.card}>
                 <CardMedia
@@ -211,7 +224,7 @@ const Landing = () => {
                   <Typography variant="h5" gutterBottom>
                     Contacts
                   </Typography>
-                  <Typography>Team preview</Typography>
+                  <Typography>All of my Contacts</Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
@@ -230,8 +243,10 @@ const Landing = () => {
                 </CardActions>
               </Card>
             </Grid>
+            </Draggable>
 
             {/* PHOTOS CARD */}
+            <Draggable>
             <Grid item>
               <Card className={classes.card}>
                 <CardMedia
@@ -243,7 +258,7 @@ const Landing = () => {
                   <Typography variant="h5" gutterBottom>
                     Photos
                   </Typography>
-                  <Typography>Team preview</Typography>
+                  <Typography>Upload and view my Photos</Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
@@ -262,8 +277,10 @@ const Landing = () => {
                 </CardActions>
               </Card>
             </Grid>
+            </Draggable>
 
             {/* WORK EVENTS CARD */}
+            <Draggable>
             <Grid item>
               <Card className={classes.card}>
                 <CardMedia
@@ -275,7 +292,7 @@ const Landing = () => {
                   <Typography variant="h5" gutterBottom>
                     Work Events
                   </Typography>
-                  <Typography>Team preview</Typography>
+                  <Typography>Upcoming Events I need to attend</Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
@@ -294,8 +311,10 @@ const Landing = () => {
                 </CardActions>
               </Card>
             </Grid>
+            </Draggable>
 
             {/* DASHBOARD CARD */}
+            <Draggable>
             <Grid item>
               <Card className={classes.card}>
                 <CardMedia
@@ -307,7 +326,7 @@ const Landing = () => {
                   <Typography variant="h5" gutterBottom>
                     Dashboard
                   </Typography>
-                  <Typography>Team preview</Typography>
+                  <Typography>My Dashbpard</Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="sm" color="primary">
@@ -326,6 +345,7 @@ const Landing = () => {
                 </CardActions>
               </Card>
             </Grid>
+            </Draggable>
           </Grid>
 
           {/* Welcome message */}
@@ -337,7 +357,7 @@ const Landing = () => {
           >
             Welcome to your Dashboard! Here you can quickly and easily see an
             overview of each of your tools. Simply click on any of your tools
-            below to drill into it.
+           to drill into it.
           </Typography>
         </Container>
       </main>

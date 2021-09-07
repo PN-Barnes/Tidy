@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import SignIn from './pages/SignIn.js';
 import {
   Card,
   CssBaseline,
@@ -16,7 +17,7 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import AirlineSeatFlatAngledIcon from '@material-ui/icons/AirlineSeatFlatAngled';
 
 const ProfileList = ({ user, title }) => {
-  if (!user) {
+  if (user === undefined) {
     return <h3>Please login</h3>;
   }
 

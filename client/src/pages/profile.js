@@ -98,6 +98,9 @@ function ToDos() {
   // Successfully logs user data from database
   console.log('user', user);
 
+  if (Object.keys(user).length === 0) {
+    window.location.assign('/signin');
+  }
   return (
     // <div className='App'>
     //   <Typography variant='h1'>Profile</Typography>

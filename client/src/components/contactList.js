@@ -22,27 +22,32 @@ const ContactList = ({ contact }) => {
     <CssBaseline>
       <div>
         {/* <h3 className='text-primary'>{title}</h3> */}
-        <div className='flex-row justify-space-between my-4'>
-          <div key={contact.username} className='col-12 col-xl-6'>
+        <div className="flex-row justify-space-between my-4">
+          <div key={contact.username} className="col-12 col-xl-6">
             <Container>
               <List>
                 <Card>
-                  <div className='card mb-3'>
-                    <h4 className='card-header bg-dark text-light p-2 m-0'>
-                      {contact.firstName} <br />
+                  <div className="card mb-3">
+                    <h4 className="card-header bg-dark text-light p-0 m-0">
+                      {contact.firstName} {contact.lastName} {contact.role}
+                      
+                      <Typography>username: {contact.username} <br /></Typography>
+                    
+                      <ListItem>
+                      email: 
+                        <a href="mailto:{contact.email}" target="_top">
+                        {contact.email}
+                        </a>
+                      </ListItem>
+                    
                     </h4>
-                    <Paper>
-                      <h5 className='card-header bg-dark text-light p-2 m-0'>
-                        {contact.lastName} <br />
-                      </h5>
-                    </Paper>
                     <ListItem>
                       <ListItemIcon>
                         <AssignmentIcon />
                       </ListItemIcon>
                       <ListItemText
-                        primary='Starred'
-                        primary='Placeholder information about the card.  Here we will serve up the description of the event so users can read about what the event is all about.  For exampe, details about the event location, organizers, and general details that describe the event more fully, so attendees can best know what to expect.'
+                        primary="Starred"
+                        primary="Here is a good place to jot down notes about each of your contacts.  Suggested information might include reminders about their birdthday, favorite music, or pet's name.  Click Add to Contacts to add this user to your Team."
                       />
                     </ListItem>
                   </div>

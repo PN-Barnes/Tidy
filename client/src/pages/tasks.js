@@ -1,4 +1,4 @@
-import Reac, { useState } from 'react';
+import React, { useState } from 'react';
 import {  Typography, Container, Paper, Button, Card  } from '@material-ui/core';
 import styled from '@emotion/styled';
 import { makeStyles } from '@material-ui/core/styles';

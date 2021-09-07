@@ -1,10 +1,46 @@
 import React, { useState } from 'react';
+import {  Typography, Container, Paper, Button, Card  } from '@material-ui/core';
+import styled from '@emotion/styled';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_EVENTS } from '../utils/queries';
 import { makeStyles } from '@material-ui/core/styles';
 import EventList from '../components/eventList';
 
 import { ADD_ATTENDEE, ADD_EVENT } from '../utils/mutations';
+
+export const StyleWrapper = styled.div`
+  #cardStyle {
+    background-image: 
+      radial-gradient(rgba(0, 255, 0, 0.4),
+      rgba(0, 20, 0, 0.7)));
+      // url("../../logo.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-color: rgba(0, 100, 50, 0.5);
+      margin: 20px
+  },
+  .namesCard {
+    background-image: 
+      radial-gradient(rgba(0, 255, 0, 0.4),
+      rgba(0, 20, 0, 0.7)));
+      // url("../../logo.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-color: rgba(0, 100, 50, 0.5);
+      margin: 20px
+  },
+
+  #paperStyle {
+    
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 1.4em;
+    text-align: center;
+    border: 2px solid rgba(100, 200, 150, 0.5);
+    border-radius: 12px;
+    background-color: rgba(0, 100, 50, 0.5);
+  }
+`
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -108,13 +144,17 @@ const Events = () => {
 
   return (
     <main>
+      <StyleWrapper>
+        <Container>
       <div className='flex-row justify-center'>
+      <Paper id='paperStyle'>
         <div className='col-12 col-md-10 my-3'>
           {loading ? (
             <div>Loading...</div>
           ) : (
             events.map((event) => (
-              <div>
+              <Card id='cardStyle'>
+              <div class='namesCard'>
                 <EventList
                   event={event}
                   // title="Here's your current roster of events:"
@@ -123,9 +163,10 @@ const Events = () => {
                   Join this event
                 </button>
               </div>
+              </Card>
             ))
           )}
-          <div>
+          <div class='namesCard'>
             <form
               className='flex-row justify-center justify-space-between-md align-center'
               onSubmit={handleFormSubmit}
@@ -165,7 +206,10 @@ const Events = () => {
             </form>
           </div>
         </div>
+        </Paper>
       </div>
+      </Container>
+      </StyleWrapper>
     </main>
   );
 };

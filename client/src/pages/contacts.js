@@ -8,10 +8,10 @@ import { QUERY_MESSAGES, QUERY_USERS } from '../utils/queries';
 import ContactList from '../components/contactList';
 import { ADD_CONTACT } from '../utils/mutations';
 
-  // import styles
-  import useStyles from "./styles";
+// import styles
+import useStyles from './styles';
 
-  export const StyleWrapper = styled.div`
+export const StyleWrapper = styled.div`
   #cardStyle {
     background-image: 
       radial-gradient(rgba(0, 255, 0, 0.4),
@@ -43,7 +43,7 @@ import { ADD_CONTACT } from '../utils/mutations';
     border-radius: 12px;
     background-color: rgba(0, 100, 50, 0.5);
   }
-`
+`;
 
 function Contacts() {
   const classes = useStyles();
@@ -94,33 +94,38 @@ function Contacts() {
     // </div>
     <main>
       <StyleWrapper>
-      <Container>
-      <div className='flex-row justify-center'>
-      <Paper id='paperStyle'>
-        <div className='col-12 col-md-10 my-3'>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            contacts.map((contact) => (
-              <Card  className={classes.card} id='cardStyle'>
-              <Typography variant="h5">
-              <div id='namesCard'>
-                <ContactList contact={contact}/>
-                {/* null is passed as the first argument to bind, which sets the scope of the handleJoinEvent function to the current page. This is how event._id is passed to the function as an argument. */}
-                <Button>
-                <button onClick={handleAddContact.bind(null, contact.username)}>
-                  Add to contacts
-                </button>
-                </Button>
+        <Container>
+          <div className='flex-row justify-center'>
+            <Paper id='paperStyle'>
+              <div className='col-12 col-md-10 my-3'>
+                {loading ? (
+                  <div>Loading...</div>
+                ) : (
+                  contacts.map((contact) => (
+                    <Card className={classes.card} id='cardStyle'>
+                      <Typography variant='h5'>
+                        <div id='namesCard'>
+                          <ContactList contact={contact} />
+                          {/* null is passed as the first argument to bind, which sets the scope of the handleJoinEvent function to the current page. This is how event._id is passed to the function as an argument. */}
+                          <Button>
+                            <button
+                              onClick={handleAddContact.bind(
+                                null,
+                                contact.username
+                              )}
+                            >
+                              Add to contacts
+                            </button>
+                          </Button>
+                        </div>
+                      </Typography>
+                    </Card>
+                  ))
+                )}
               </div>
-              </Typography>
-              </Card>
-            ))
-          )}
-        </div>
-        </Paper>
-      </div>
-      </Container>
+            </Paper>
+          </div>
+        </Container>
       </StyleWrapper>
     </main>
   );

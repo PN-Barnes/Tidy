@@ -1,11 +1,46 @@
-import Reac, { useState } from 'react';
-import { Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import {  Typography, Container, Paper, Button, Card  } from '@material-ui/core';
+import styled from '@emotion/styled';
 import { makeStyles } from '@material-ui/core/styles';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_TASKS, QUERY_EVENTS } from '../utils/queries';
 import { ADD_TASK, ADD_TASK_FOR_USER } from '../utils/mutations';
 
 import TaskList from '../components/taskList';
+
+export const StyleWrapper = styled.div`
+  #cardStyle {
+    background-image: 
+      radial-gradient(rgba(0, 255, 0, 0.4),
+      rgba(0, 20, 0, 0.7)));
+      // url("../../logo.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-color: rgba(0, 100, 50, 0.5);
+      margin: 20px
+  },
+  #namesCard {
+    background-image: 
+      radial-gradient(rgba(0, 255, 0, 0.4),
+      rgba(0, 20, 0, 0.7)));
+      // url("../../logo.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-color: rgba(0, 100, 50, 0.5);
+      margin: 20px
+  },
+
+  #paperStyle {
+    
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 1.4em;
+    text-align: center;
+    border: 2px solid rgba(100, 200, 150, 0.5);
+    border-radius: 12px;
+    background-color: rgba(0, 100, 50, 0.5);
+  }
+`
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -40,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Tasks() {
+  const classes = useStyles();
   const { loading, data } = useQuery(QUERY_TASKS);
   console.log(data);
   const tasks = data?.tasks || [];
@@ -102,19 +138,24 @@ function Tasks() {
 
   return (
     <main>
+      <StyleWrapper>
+      <Container>
       <div className='flex-row justify-center'>
+      <Paper id='paperStyle'>
         <div className='col-12 col-md-10 my-3'>
-          <h3>title="Here's your current list of tasks:"</h3>
+          <h3>Here's your current list of tasks:</h3>
           {loading ? (
             <div>Loading...</div>
           ) : (
             tasks.map((task) => (
-              <>
+              <Card id='cardStyle'>
+                <div id='namesCard'>
                 <TaskList task={task} />
                 <button onClick={handleAddTask.bind(null, task._id)}>
                   Add to Tasks
                 </button>
-              </>
+                </div>
+              </Card>
             ))
           )}
           <div className='col-12 col-lg-3'>
@@ -157,7 +198,10 @@ function Tasks() {
             </form>
           </div>
         </div>
+        </Paper>
       </div>
+      </Container>
+      </StyleWrapper>
     </main>
   );
 }

@@ -9,6 +9,7 @@ A functional app for the working professional trying to add a bit of fun to thei
 
 
 **Technologies Used**
+
 MATERIAL UI - NEW TECH
 
 REACT JS
@@ -44,6 +45,8 @@ JWT
 NODE.JS
 
 JSON
+
+DRAGGABLE - NEW TECH
 
 
 

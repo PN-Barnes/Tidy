@@ -65,6 +65,8 @@ export const QUERY_ME = gql`
   query me {
     me {
       _id
+      firstName
+      lastName
       username
       email
       events {

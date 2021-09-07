@@ -83,12 +83,14 @@ const typeDefs = gql`
       role: String!
     ): Auth
     removeUser(_id: ID!): User
+
     addTask(content: String!): Task
     addTaskForUser(_id: ID!): User
+    removeTask(_id: ID!): Task
 
     addEvent(content: String!): workEvent
-
     addAttendee(_id: ID!): workEvent
+
     addContact(username: String!): User
 
     removeEvent(_id: ID!): workEvent

@@ -38,39 +38,6 @@ const Landing = () => {
         </div>
         <Container classname={classes.cardGrid} maxWidth="lg" align="center" padding="10px">
           <Grid container spacing={4} align="center">
-            {/* WEATHER CARD */}
-            <Grid item>
-              <Draggable>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/featured/?weather/320x180"
-                    title="image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography variant="h5" gutterBottom>
-                      Weather
-                    </Typography>
-                    <Typography>Weather preview</Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="sm" color="primary">
-                      <Link
-                        to="/weather"
-                        component={RouterLink}
-                        color="textSecondary"
-                        variant="h5"
-                        onClick={() => {
-                          console.info("Weather Request button hit");
-                        }}
-                      >
-                        <Typography variant="h6">VIEW</Typography>
-                      </Link>
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Draggable>
-            </Grid>
 
             {/* CALENDAR CARD */}
             <Draggable>
@@ -309,6 +276,40 @@ const Landing = () => {
               </Card>
             </Grid>
             </Draggable>
+
+            {/* WEATHER CARD */}
+            <Grid item>
+              <Draggable>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://source.unsplash.com/featured/?weather/320x180"
+                    title="image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography variant="h5" gutterBottom>
+                      Weather
+                    </Typography>
+                    <Typography>Weather preview</Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="sm" color="primary">
+                      <Link
+                        to="/weather"
+                        component={RouterLink}
+                        color="textSecondary"
+                        variant="h5"
+                        onClick={() => {
+                          console.info("Weather Request button hit");
+                        }}
+                      >
+                        <Typography variant="h6">VIEW</Typography>
+                      </Link>
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Draggable>
+            </Grid>
 
             {/* DASHBOARD CARD */}
             <Draggable>

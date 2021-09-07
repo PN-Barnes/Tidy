@@ -1,3 +1,90 @@
+# Tidy
+
+**What is Tidy?**
+
+
+A functional app for the working professional trying to add a bit of fun to their work life! The ability to bring your own personal touch to your workplace dashboard - including, but not limited to, lively photos, personal notes, weather, and more.
+
+![tidy](https://user-images.githubusercontent.com/85534144/132278204-46251ce3-8e7f-4546-9392-dbe0f5da6af0.gif)
+
+
+**Technologies Used**
+
+MATERIAL UI - NEW TECH
+
+REACT JS
+
+JAVASCRIPT
+
+HTML
+
+CSS
+
+Models
+
+Messages
+
+Photos
+
+Tasks
+
+Mutations GraphQL
+
+TypeDefs
+
+Resolvers
+
+Schemas
+
+MONGODB
+
+GRAPHQL - NEW TECH
+
+JWT
+
+NODE.JS
+
+JSON
+
+DRAGGABLE - NEW TECH
+
+
+
+**Concept**
+
+*Description*
+
+An application that allows for a company to organize and personalize an employee's dashboard pertaining to their role.
+
+*Motivation for development?*
+
+Limited resources on the market. Many companies offer a dashboard that’s cohesive without the ability to personalize the app to their specific role/needs.
+
+*User story*
+
+I want to sign into my company workspace, so that I can see my dashboard pertaining to my role (I want to log into my account, so that I can access my custom dashboard).
+I want to view my dashboard, so that I can navigate through my specific customizations.
+I want to click the login button, so that I am prompted to log into my account.
+
+
+**Authors**
+Paul Barnes
+
+Huiran Lin
+
+James Boblak
+
+Cristina Hripsime Tepelikian
+
+
+
+**Links**
+
+https://tidy-clean.herokuapp.com
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -3,6 +3,9 @@
 **What is Tidy?**
 A functional app for the working professional trying to add a bit of fun to their work life! The ability to bring your own personal touch to your workplace dashboard - including, but not limited to, lively photos, personal notes, weather, and more.
 
+![tidy](https://user-images.githubusercontent.com/85534144/132278204-46251ce3-8e7f-4546-9392-dbe0f5da6af0.gif)
+
+
 **Technologies Used**
 MATERIAL UI - NEW TECH
 REACT JS

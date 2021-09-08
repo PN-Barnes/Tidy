@@ -17,7 +17,7 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import AirlineSeatFlatAngledIcon from '@material-ui/icons/AirlineSeatFlatAngled';
 
 const ProfileList = ({ user, title }) => {
-  if (user === undefined) {
+  if (JSON.stringify(user) === '{}') {
     return <h3>Please login</h3>;
   }
 

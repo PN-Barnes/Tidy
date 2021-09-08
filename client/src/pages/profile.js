@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { Typography, Container, Paper, Button, Card } from '@material-ui/core';
 
@@ -12,6 +12,7 @@ import Auth from '../utils/auth';
 import styled from '@emotion/styled';
 // import styles
 import useStyles from './styles';
+import { render } from '@testing-library/react';
 
 export const StyleWrapper = styled.div`
   #cardStyle {
@@ -82,39 +83,38 @@ export const StyleWrapper = styled.div`
 function ToDos() {
   const classes = useStyles();
 
-  // const { username: useParam } = useParams();
-
-  // console.log(useParams());
-
-  // const { loading, data } = useQuery(useParam ? QUERY_USER : QUERY_ME, {
-  //   variables: { username: useParam },
-  // });
-
-  // const user = data?.me || data?.user || {};
-
   const { loading, data } = useQuery(QUERY_ME);
   const user = data?.me || {};
 
   // Successfully logs user data from database
   console.log('user', user);
 
-  if (Object.keys(user).length === 0) {
-    window.location.assign('/signin');
-  }
+  // const [count, setCount] = useState({});
+
+  // if (JSON.stringify(user) !== '{}') {
+  //   if (user.events.length > count) {
+  //     setCount(user.events.length);
+  //     localStorage.setItem('eventLenght', true);
+  //   }
+  // }
+  // // console.log('me', state.me);
+
+  // useEffect(() => {
+  //   // localStorage.setItem('me', me);
+  //   // setState((state) => ({ ...state, me: user }));
+
+  //   // if (user !== state.me) {
+  //   //   localStorage.setItem('reloadNeeded', true);
+  //   // } else {
+  //   //   localStorage.setItem('reloadNeeded', false);
+  //   // }
+
+  //   localStorage.setItem('reloadNeeded', false);
+
+  //   // console.log('state changed');
+  // }, []);
+
   return (
-    // <div className='App'>
-    //   <Typography variant='h1'>Profile</Typography>
-    //   {/* {users.map((user) => (
-    //     <div>
-    //       <p>{user.username}</p>
-    //       <p>{user.email}</p>
-    //       <p>{user.role}</p>
-    //       {user.events.map((event) => (
-    //         <p>{event._id}</p>
-    //       ))}
-    //     </div>
-    //   ))} */}
-    // </div>
     <main>
       <StyleWrapper>
         <Container>

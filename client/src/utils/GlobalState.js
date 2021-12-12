@@ -8,6 +8,7 @@ const AccountProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useAccountReducer({
     isLoggedIn: false,
     userName: 'admin',
+    tasks_current_user: [],
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

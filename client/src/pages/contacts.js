@@ -8,8 +8,11 @@ import { QUERY_MESSAGES, QUERY_USERS } from '../utils/queries';
 import ContactList from '../components/contactList';
 import { ADD_CONTACT } from '../utils/mutations';
 
+import { useAccountContext } from '../utils/GlobalState';
+
 // import styles
 import useStyles from './styles';
+import { ADD_CONTACTS, UPDATE_CONTACTS } from '../utils/actions';
 
 export const StyleWrapper = styled.div`
   #cardStyle {
@@ -46,6 +49,8 @@ export const StyleWrapper = styled.div`
 `;
 
 function Contacts() {
+  const [state, dispatch] = useAccountContext();
+
   const classes = useStyles();
   // const { loading, data } = useQuery(QUERY_MESSAGES);
 
@@ -65,33 +70,17 @@ function Contacts() {
       });
 
       const contact = data?.user || {};
+
+      dispatch({
+        type: ADD_CONTACTS,
+        contacts_current_user: contact,
+      });
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    // <div className='App'>
-    //   <Typography variant='h1'>Contacts</Typography>
-    //   <div>
-    //     {loading ? (
-    //       <div>Loading...</div>
-    //     ) : (
-    //       <ContactList
-    //         events={users}
-    //         title="Here's your current roster of users:"
-    //       />
-    //     )}
-
-    //     {/* {users.map((user) => (
-    //       <div>
-    //         <p> Username: {user.username}</p>
-    //         <p> First Name: {user.firstName}</p>
-    //         <p> Last Name: {user.lastName} </p>
-    //       </div>
-    //     ))} */}
-    //   </div>
-    // </div>
     <main>
       <StyleWrapper>
         <Container>

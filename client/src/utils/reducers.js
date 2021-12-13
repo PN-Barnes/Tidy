@@ -2,6 +2,8 @@ import { useReducer } from 'react';
 import {
   UPDATE_TASKS,
   ADD_TASK,
+  UPDATE_CONTACTS,
+  ADD_CONTACTS,
   UPDATE_EVENTS,
   UPDATE_MESSAGES,
   UPDATE_CURRENT_CATEGORY,
@@ -24,7 +26,19 @@ export const reducer = (state, action) => {
           action.tasks_current_user,
         ],
       };
-
+    case ADD_CONTACTS:
+      return {
+        ...state,
+        contacts_current_user: [
+          ...state.contacts_current_user,
+          action.contacts_current_user,
+        ],
+      };
+    case UPDATE_CONTACTS:
+      return {
+        ...state,
+        contacts_current_user: [...action.contacts_current_user],
+      };
     case UPDATE_ACCOUNT_STATUS:
       console.log('UPDATE_ACCOUNT_STATUS dispatched');
       return {

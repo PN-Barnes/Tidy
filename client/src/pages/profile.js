@@ -63,17 +63,6 @@ function ToDos() {
   // Successfully logs user data from database
   console.log('user', user);
 
-  useEffect(() => {
-    if (data) {
-    }
-  }, [data, user]);
-
-  // useEffect(() => {
-  //   if (data) {
-  //     setCurrentUser(data.me);
-  //   }
-  // }, [data]);
-
   return (
     <main>
       <StyleWrapper>

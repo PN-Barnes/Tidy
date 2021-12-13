@@ -63,16 +63,11 @@ function ToDos() {
   // Successfully logs user data from database
   console.log('user', user);
 
-  useEffect(() => {
-    if (data) {
-    }
-  }, [data, user]);
+  const { contacts_current_user } = state;
 
-  // useEffect(() => {
-  //   if (data) {
-  //     setCurrentUser(data.me);
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    console.log('contacts_current_user: ', state.contacts_current_user);
+  }, [state.contacts_current_user]);
 
   return (
     <main>
@@ -88,7 +83,7 @@ function ToDos() {
                     <Typography variant='h5'>
                       <div id='namesCard'>
                         <Profile
-                          user={currentUser}
+                          user={user}
                           title="Here's your current roster of events:"
                         />
                       </div>

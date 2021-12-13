@@ -9,6 +9,7 @@ const AccountProvider = ({ value = [], ...props }) => {
     isLoggedIn: false,
     userName: 'admin',
     tasks_current_user: [],
+    contacts_current_user: [],
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

@@ -55,19 +55,16 @@ function ToDos() {
 
   const [state, dispatch] = useAccountContext();
 
-  const [currentUser, setCurrentUser] = useState();
-
   const { loading, data } = useQuery(QUERY_ME);
   const user = data?.me || {};
 
   // Successfully logs user data from database
   console.log('user', user);
 
-  const { contacts_current_user } = state;
+  console.log("Fetched current user on re-render");
 
-  useEffect(() => {
-    console.log('contacts_current_user: ', state.contacts_current_user);
-  }, [state.contacts_current_user]);
+  // const { current_user } = state;
+
 
   return (
     <main>

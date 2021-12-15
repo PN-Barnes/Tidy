@@ -110,7 +110,6 @@ function Tasks() {
 
   const handleAddTask = async (_id) => {
     // console.log('task', task);
-
     try {
       const { data } = await addTaskForUser({
         variables: { _id },

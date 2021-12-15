@@ -10,6 +10,7 @@ const AccountProvider = ({ value = [], ...props }) => {
     userName: 'admin',
     tasks_current_user: [],
     contacts_current_user: [],
+    current_user: {}
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

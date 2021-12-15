@@ -12,7 +12,7 @@ import { useAccountContext } from '../utils/GlobalState';
 
 // import styles
 import useStyles from './styles';
-import { ADD_CONTACTS, UPDATE_CONTACTS } from '../utils/actions';
+import { ADD_CONTACTS, UPDATE_CONTACTS, UPDATE_CURRENT_USER } from '../utils/actions';
 
 export const StyleWrapper = styled.div`
   #cardStyle {
@@ -63,17 +63,21 @@ function Contacts() {
 
   const [addContact, { error }] = useMutation(ADD_CONTACT);
 
-  const handleAddContact = (username) => {
+  const handleAddContact = async (username) => {
     try {
-      const { data } = addContact({
+      const { data } = await addContact({
         variables: { username },
       });
 
-      const contact = data?.user || {};
+      console.log("data:", data);
+
+      const user = data?.addContact || {};
+
+      console.log('user:', user);
 
       dispatch({
-        type: ADD_CONTACTS,
-        contacts_current_user: contact,
+        type: UPDATE_CURRENT_USER,
+        current_user: user,
       });
     } catch (err) {
       console.log(err);

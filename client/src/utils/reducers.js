@@ -4,6 +4,7 @@ import {
   ADD_TASK,
   UPDATE_CONTACTS,
   ADD_CONTACTS,
+  UPDATE_CURRENT_USER,
   UPDATE_EVENTS,
   UPDATE_MESSAGES,
   UPDATE_CURRENT_CATEGORY,
@@ -39,6 +40,11 @@ export const reducer = (state, action) => {
         ...state,
         contacts_current_user: [...action.contacts_current_user],
       };
+    case UPDATE_CURRENT_USER:
+      return {
+        ...state,
+        current_user: action.current_user
+      }
     case UPDATE_ACCOUNT_STATUS:
       console.log('UPDATE_ACCOUNT_STATUS dispatched');
       return {

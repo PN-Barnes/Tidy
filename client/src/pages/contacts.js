@@ -3,7 +3,7 @@ import { Typography, Container, Paper, Button, Card } from '@material-ui/core';
 import styled from '@emotion/styled';
 
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_MESSAGES, QUERY_USERS } from '../utils/queries';
+import { QUERY_MESSAGES, QUERY_USERS, QUERY_ME } from '../utils/queries';
 
 import ContactList from '../components/contactList';
 import { ADD_CONTACT } from '../utils/mutations';
@@ -52,33 +52,45 @@ function Contacts() {
   const [state, dispatch] = useAccountContext();
 
   const classes = useStyles();
-  // const { loading, data } = useQuery(QUERY_MESSAGES);
 
-  // console.log(data);
-
-  // const messages = data?.messages || [];
 
   const { loading, data } = useQuery(QUERY_USERS);
-  const contacts = data?.users || [];
+  const users = data?.users || [];
+
+  console.log("users", users);
+
+  const { me } = useQuery(QUERY_ME).data;
+  const current_user = me;
+
+  console.log("current_user", current_user);
+
 
   const [addContact, { error }] = useMutation(ADD_CONTACT);
 
   const handleAddContact = async (username) => {
     try {
-      const { data } = await addContact({
-        variables: { username },
-      });
 
-      console.log("data:", data);
+      if(!current_user.contacts.includes(username))
+      {
+        const { data } = await addContact({
+          variables: { username },
+        });
 
-      const user = data?.addContact || {};
+        console.log("data:", data);
 
-      console.log('user:', user);
+        const user = data?.addContact || {};
 
-      dispatch({
-        type: UPDATE_CURRENT_USER,
-        current_user: user,
-      });
+        console.log('user:', user);
+
+        dispatch({
+          type: UPDATE_CURRENT_USER,
+          current_user: user,
+        });
+      }
+      else
+      {
+        alert("This person is already in your contact list!");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -94,17 +106,17 @@ function Contacts() {
                 {loading ? (
                   <div>Loading...</div>
                 ) : (
-                  contacts.map((contact) => (
+                  users.map((user) => (
                     <Card className={classes.card} id='cardStyle'>
                       <Typography variant='h5'>
                         <div id='namesCard'>
-                          <ContactList contact={contact} />
+                          <ContactList contact={user} />
                           {/* null is passed as the first argument to bind, which sets the scope of the handleJoinEvent function to the current page. This is how event._id is passed to the function as an argument. */}
                           <Button>
                             <button
                               onClick={handleAddContact.bind(
                                 null,
-                                contact.username
+                                user.username
                               )}
                             >
                               Add to contacts

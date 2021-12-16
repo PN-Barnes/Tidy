@@ -53,7 +53,6 @@ function Contacts() {
 
   const classes = useStyles();
 
-
   const { loading, data } = useQuery(QUERY_USERS);
   const users = data?.users || [];
 

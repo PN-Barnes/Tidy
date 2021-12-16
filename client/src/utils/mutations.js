@@ -122,6 +122,7 @@ export const ADD_ATTENDEE = gql`
       content
       attendees {
         _id
+        username
       }
     }
   }

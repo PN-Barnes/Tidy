@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
-import {  Typography, Container, Paper, Button, Card  } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Typography, Container, Paper, Button, Card } from '@material-ui/core';
 import styled from '@emotion/styled';
 import { makeStyles } from '@material-ui/core/styles';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_TASKS, QUERY_EVENTS } from '../utils/queries';
+import { QUERY_TASKS, QUERY_TASK, QUERY_EVENTS } from '../utils/queries';
 import { ADD_TASK, ADD_TASK_FOR_USER } from '../utils/mutations';
+
+import { UPDATE_TASKS } from '../utils/actions';
+
+import { useAccountContext } from '../utils/GlobalState';
 
 import TaskList from '../components/taskList';
 
@@ -40,7 +44,7 @@ export const StyleWrapper = styled.div`
     border-radius: 12px;
     background-color: rgba(0, 100, 50, 0.5);
   }
-`
+`;
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -74,11 +78,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Stuck in infinite loop of state changes
 function Tasks() {
-  const classes = useStyles();
+  const [state, dispatch] = useAccountContext();
+
   const { loading, data } = useQuery(QUERY_TASKS);
-  console.log(data);
   const tasks = data?.tasks || [];
+
+  const { tasks_current_user } = state;
+
+  const classes = useStyles();
+
+  console.log(data);
+
+  // useEffect(() => {
+  //   if (data) {
+  //     dispatch({
+  //       type: UPDATE_TASKS,
+  //       tasks_current_user: data.tasks,
+  //     });
+  //   }
+  // }, [data, loading, dispatch, tasks_current_user]);
 
   const [formState, setFormState] = useState({
     content: '',
@@ -89,13 +109,19 @@ function Tasks() {
     useMutation(ADD_TASK_FOR_USER);
 
   const handleAddTask = async (_id) => {
+    // console.log('task', task);
     try {
       const { data } = await addTaskForUser({
         variables: { _id },
       });
-
       const user = data?.user || {};
       console.log('user', user);
+      // tasks is the list of tasks retrieved by line 88
+      // add the updated tasks to the global state
+      dispatch({
+        type: UPDATE_TASKS,
+        tasks_current_user: tasks,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -139,40 +165,40 @@ function Tasks() {
   return (
     <main>
       <StyleWrapper>
-      <Container>
-      <div className='flex-row justify-center'>
-      <Paper id='paperStyle'>
-        <div className='col-12 col-md-10 my-3'>
-          <h3>Here's your current list of tasks:</h3>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            tasks.map((task) => (
-              <Card id='cardStyle'>
-                <div id='namesCard'>
-                <TaskList task={task} />
-                <button onClick={handleAddTask.bind(null, task._id)}>
-                  Add to Tasks
-                </button>
-                </div>
-              </Card>
-            ))
-          )}
-          <div className='col-12 col-lg-3'>
-            <form
-              className='flex-row justify-center justify-space-between-md align-center'
-              onSubmit={handleFormSubmit}
-            >
-              <div className='col-12'>
-                <textarea
-                  name='content'
-                  placeholder='Add a task'
-                  value={formState.content}
-                  className='form-input w-100'
-                  onChange={handleChange}
-                ></textarea>
-              </div>
-              {/* <div className='col-12 col-lg-9'>
+        <Container>
+          <div className='flex-row justify-center'>
+            <Paper id='paperStyle'>
+              <div className='col-12 col-md-10 my-3'>
+                <h3>Here's your current list of tasks:</h3>
+                {loading ? (
+                  <div>Loading...</div>
+                ) : (
+                  tasks.map((task) => (
+                    <Card id='cardStyle'>
+                      <div id='namesCard'>
+                        <TaskList task={task} />
+                        <button onClick={handleAddTask.bind(task._id)}>
+                          Add to Tasks
+                        </button>
+                      </div>
+                    </Card>
+                  ))
+                )}
+                <div className='col-12 col-lg-3'>
+                  <form
+                    className='flex-row justify-center justify-space-between-md align-center'
+                    onSubmit={handleFormSubmit}
+                  >
+                    <div className='col-12'>
+                      <textarea
+                        name='content'
+                        placeholder='Add a task'
+                        value={formState.content}
+                        className='form-input w-100'
+                        onChange={handleChange}
+                      ></textarea>
+                    </div>
+                    {/* <div className='col-12 col-lg-9'>
                 <input
                   name='thoughtAuthor'
                   placeholder='Add your name to get credit for the thought...'
@@ -182,25 +208,25 @@ function Tasks() {
                 />
               </div> */}
 
-              <div className='col-12 col-lg-3'>
-                <button
-                  className='btn btn-primary btn-block py-3'
-                  type='submit'
-                >
-                  Add New Task
-                </button>
-              </div>
-              {error && (
-                <div className='col-12 my-3 bg-danger text-white p-3'>
-                  Something went wrong...
+                    <div className='col-12 col-lg-3'>
+                      <button
+                        className='btn btn-primary btn-block py-3'
+                        type='submit'
+                      >
+                        Add New Task
+                      </button>
+                    </div>
+                    {error && (
+                      <div className='col-12 my-3 bg-danger text-white p-3'>
+                        Something went wrong...
+                      </div>
+                    )}
+                  </form>
                 </div>
-              )}
-            </form>
+              </div>
+            </Paper>
           </div>
-        </div>
-        </Paper>
-      </div>
-      </Container>
+        </Container>
       </StyleWrapper>
     </main>
   );

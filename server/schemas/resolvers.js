@@ -234,18 +234,17 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     addAttendee: async (parent, { _id }, context) => {
-      console.log('context.user', context.user);
+
       if (context.user) {
-        // console.log('event._id', _id);
+
         const event = await workEvent.findOne({ _id: _id });
         await event.attendees.push(context.user._id);
 
         const user = await User.findOne({ _id: context.user._id });
         await user.events.push(event._id);
+        
         user.save();
-        console.log('user', user);
 
-        console.log('event', event);
         return event.save();
       }
       throw new AuthenticationError('You need to be logged in!');
@@ -256,8 +255,10 @@ const resolvers = {
       if (context.user) {
         const user = await User.findOne({ _id: context.user._id });
 
-        await user.contacts.push(username);
-
+        if (username != user.username && !username in user.contacts) {
+          await user.contacts.push(username);
+        }
+          
         console.log('contact', user);
         return user.save();
       }

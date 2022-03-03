@@ -8,6 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Profile from '../components/profile';
 
+import { useAccountContext } from '../utils/GlobalState';
+
 import Auth from '../utils/auth';
 import styled from '@emotion/styled';
 // import styles
@@ -48,40 +50,10 @@ export const StyleWrapper = styled.div`
   }
 `;
 
-// const useStyles = makeStyles((theme) => ({
-//   icon: {
-//     marginRight: theme.spacing(2),
-//   },
-//   heroContent: {
-//     backgroundColor: theme.palette.background.paper,
-//     padding: theme.spacing(8, 0, 6),
-//   },
-//   heroButtons: {
-//     marginTop: theme.spacing(4),
-//   },
-//   cardGrid: {
-//     paddingTop: theme.spacing(8),
-//     paddingBottom: theme.spacing(8),
-//   },
-//   card: {
-//     height: '100%',
-//     display: 'flex',
-//     flexDirection: 'column',
-//   },
-//   cardMedia: {
-//     paddingTop: '56.25%', // 16:9
-//   },
-//   cardContent: {
-//     flexGrow: 1,
-//   },
-//   footer: {
-//     backgroundColor: theme.palette.background.paper,
-//     padding: theme.spacing(6),
-//   },
-// }));
-
 function ToDos() {
   const classes = useStyles();
+
+  const [state, dispatch] = useAccountContext();
 
   const { loading, data } = useQuery(QUERY_ME);
   const user = data?.me || {};
@@ -89,30 +61,10 @@ function ToDos() {
   // Successfully logs user data from database
   console.log('user', user);
 
-  // const [count, setCount] = useState({});
+  console.log("Fetched current user on re-render");
 
-  // if (JSON.stringify(user) !== '{}') {
-  //   if (user.events.length > count) {
-  //     setCount(user.events.length);
-  //     localStorage.setItem('eventLenght', true);
-  //   }
-  // }
-  // // console.log('me', state.me);
+  // const { current_user } = state;
 
-  // useEffect(() => {
-  //   // localStorage.setItem('me', me);
-  //   // setState((state) => ({ ...state, me: user }));
-
-  //   // if (user !== state.me) {
-  //   //   localStorage.setItem('reloadNeeded', true);
-  //   // } else {
-  //   //   localStorage.setItem('reloadNeeded', false);
-  //   // }
-
-  //   localStorage.setItem('reloadNeeded', false);
-
-  //   // console.log('state changed');
-  // }, []);
 
   return (
     <main>

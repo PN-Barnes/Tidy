@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import {  Typography, Container, Paper, Button, Card  } from '@material-ui/core';
 import styled from '@emotion/styled';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_EVENTS } from '../utils/queries';
+import { QUERY_EVENTS, QUERY_ME } from '../utils/queries';
 import { makeStyles } from '@material-ui/core/styles';
 import EventList from '../components/eventList';
 
+import { useAccountContext } from '../utils/GlobalState';
+
 import { ADD_ATTENDEE, ADD_EVENT } from '../utils/mutations';
+import { UPDATE_CURRENT_USER } from '../utils/actions';
 
 export const StyleWrapper = styled.div`
   #cardStyle {
@@ -75,10 +78,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Events = () => {
+
+  const [state, dispatch] = useAccountContext();
+
   const { loading, data } = useQuery(QUERY_EVENTS);
   const events = data?.workEvents || [];
 
-  // console.log('data', data);
+  const current_user = useQuery(QUERY_ME).data.me;
+  console.log("current_user", current_user);
 
   const [formState, setFormState] = useState({
     content: '',
@@ -121,22 +128,20 @@ const Events = () => {
     }
   };
 
-  const handleJoinEvent = (_id) => {
+  const handleJoinEvent = async (_id) => {
     try {
       console.log(_id);
-      const { attendeeData } = addAttendee({
+      const { data } = await addAttendee({
         variables: { _id },
-        onCompleted: (attendeeData) => {
-          console.log({ attendeeData });
-        },
       });
 
-      // console.log(attendeeData);
+      console.log("data:", data);
 
-      const event = attendeeData?.workEvents || {};
+      dispatch({
+        type: UPDATE_CURRENT_USER,
+        current_user: current_user
+      });
 
-      // console.log('data', yo);
-      console.log('event', event);
     } catch (err) {
       console.log(err);
     }

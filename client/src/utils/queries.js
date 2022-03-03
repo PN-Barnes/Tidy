@@ -90,6 +90,18 @@ export const QUERY_TASKS = gql`
   }
 `;
 
+export const QUERY_TASK = gql`
+  query getTask {
+    task {
+      _id
+      content
+      date
+      userId
+      username
+    }
+  }
+`;
+
 export const QUERY_MESSAGES = gql`
   query messages {
     messages {

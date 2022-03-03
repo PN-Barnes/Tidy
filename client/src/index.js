@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import App from './App2';
 import reportWebVitals from './reportWebVitals';
-import theme from './theme'
+import theme from './theme';
 
-
+// App2.js is used
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-    <App />
+      <App />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

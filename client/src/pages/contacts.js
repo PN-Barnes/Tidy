@@ -75,16 +75,16 @@ function Contacts() {
           variables: { username },
         });
 
-        console.log("data:", data);
-
         const user = data?.addContact || {};
 
-        console.log('user:', user);
-
-        dispatch({
-          type: UPDATE_CURRENT_USER,
-          current_user: user,
-        });
+        if (user.contacts.length == state.current_user.contacts.length)
+          alert("The user is already in your contact list!");
+        else {
+          dispatch({
+            type: UPDATE_CURRENT_USER,
+            current_user: user,
+          });
+        }
       }
       else
       {

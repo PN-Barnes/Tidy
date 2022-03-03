@@ -142,7 +142,6 @@ const Events = () => {
         current_user: current_user
       });
 
-
     } catch (err) {
       console.log(err);
     }
